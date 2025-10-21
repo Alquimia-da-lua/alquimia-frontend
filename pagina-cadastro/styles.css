@@ -1,0 +1,80 @@
+* {
+  font-family: "Arimo";
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(45deg, #faf5ff, #fdf2f8);
+}
+
+.container {
+}
+
+#criarContaBtn {
+  background: linear-gradient(#c084fc, #a855f7);
+  border: none;
+}
+
+#login {
+  text-decoration: none;
+  color: #c084fc;
+}
+
+input:focus {
+  color: #a855f7;
+}
+
+#termos {
+  all: unset;
+  border: 1px solid rgb(218, 218, 218);
+  background-color: rgb(218, 218, 218);
+  border-radius: 5px;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+}
+#termos:hover {
+  cursor: pointer;
+}
+
+#termos:checked {
+  background-color: #c084fc;
+  width: 12px;
+  height: 12px;
+}
+
+.card-login {
+  width: 450px;
+  height: 620px;
+  margin: 0 auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.cor-termo {
+  color: #a855f7;
+  cursor: pointer;
+}
+
+#seta {
+  font-size: 30px;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+}
+
+#nome {
+  font-size: 24px;
+  font-weight: 600;
+  color: #c084fc;
+  margin-bottom: 0px;
+}
+
+.titulo-card {
+  width: 450px;
+}
