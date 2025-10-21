@@ -8,29 +8,40 @@
 }
 
 /*header*/
-header{
-    
 
+.div-cabecalho{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;   
+    height: 6.5rem; 
 }
 
+.logo-nome-loja{
+    justify-content:flex-start;
+    margin-left: 2rem;
+}
+
+.icones-pg{
+    justify-content: flex-end;
+}
 .icon{
-    height: 2rem;
+    height: 1.5rem;
 }
 
 
 .icon-logo{
-    border-radius: 10%;
+    height: 3rem;
+    border-radius: 20%;
+    margin-right: 0.5rem;
 }
 
-.input-buscar{
-    padding: auto;
-}
 .img-lupinha{
     height: 1rem;
 }
 
 .nome-loja{
-    font-size: medium;
+    font-size: large;
     color: var(--cor-principal);
 }
 
@@ -38,6 +49,11 @@ header{
     font-size: small;   
 
 }
+
+.input-buscar{
+    margin: 3rem;
+}
+
 
 /*nav/tab*/
 .nav-custom-color .nav-link.active {
@@ -56,5 +72,15 @@ header{
     margin: 2rem;
 }
 
+/*footer*/
+footer{
+    width: 100%;
+    height: 3rem;
+    background-color: #1E2939;
+}
 
+/*carrinho*/
+.botao-carrinho{
+    background-color: var(--cor-principal) !important;
+}
 
