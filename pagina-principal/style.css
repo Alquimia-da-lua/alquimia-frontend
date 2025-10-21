@@ -1,0 +1,60 @@
+:root{
+    --cor-principal: #C27AFF;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*header*/
+header{
+    
+
+}
+
+.icon{
+    height: 2rem;
+}
+
+
+.icon-logo{
+    border-radius: 10%;
+}
+
+.input-buscar{
+    padding: auto;
+}
+.img-lupinha{
+    height: 1rem;
+}
+
+.nome-loja{
+    font-size: medium;
+    color: var(--cor-principal);
+}
+
+.descricao-loja{
+    font-size: small;   
+
+}
+
+/*nav/tab*/
+.nav-custom-color .nav-link.active {
+    background-color: white !important;
+    color: var(--cor-principal) !important; 
+    border: 1px solid var(--cor-principal);
+    
+}
+
+.nav-custom-color .nav-link {
+    background-color: var(--cor-principal) !important; 
+    color: white !important;
+}
+
+.nav-item{
+    margin: 2rem;
+}
+
+
+

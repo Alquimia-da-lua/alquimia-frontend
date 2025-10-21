@@ -1,36 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alquimia da lua</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
+
 <body>
     <header>
-        <div class="">
+        <div class="d-flex">
             <section class="logo-nome-loja d-flex">
-                <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt=""></a>
+                <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="" class="icon icon-logo"></a>
                 <div>
-                    <h4>Alquimia da Lua</h4>
-                    <p>Cosméticos Naturais</p>
+                    <h4 class="nome-loja">Alquimia da Lua</h4>
+                    <p class="descricao-loja">Cosméticos Naturais</p>
                 </div>
             </section>
-            
 
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Buscar..." aria-label="Recipient’s username" aria-describedby="basic-addon2">
-                <span class="input-group-text" id="basic-addon2"><img src="../images/icon/lupa.png" alt="lupinha"></span>
+                <input type="text" class="form-control" placeholder="Buscar..." class="input-buscar">
+                <span class="input-group-text" id="" class="span-lupinha"><img src="../images/icon/lupa.png"
+                        alt="lupinha" class="img-lupinha"></span>
             </div>
 
-            <div class="icones-pg d-flex">
-                <button type="button" class="btn"><img src="../images/icon/shopping-cart-preto.png" alt="icone carrinho"></button>
-                <button type="button" class="btn"><img src="../images/icon/user-preto.png" alt="icone user"></button>
-                <button type="button" class="btn"><img src="../images/icon/night-mode-dark.png" alt=""></button>
-            </div>
+            <section class="icones-pg d-flex">
+                <button type="button" class="btn"><img src="../images/icon/shopping-cart-preto.png" alt="icone carrinho"
+                        class="icon icon-carrinho"></button>
+                <button type="button" class="btn"><img src="../images/icon/user-preto.png" alt="icone user"
+                        class="icon icon-user"></button>
+                <button type="button" class="btn"><img src="../images/icon/night-mode-dark.png" alt="icone darkmode"
+                        class="icon icon-dark-mode"></button>
+            </section>
         </div>
     </header>
+    <main>
+        <section class="banner">
+            <div id="bannerCarrossel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../images/banners/banner_aromatizante.png" alt="aromatizante banner" class="w-100" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../images/banners/banner_produtos.png" alt="produtos banner" class="w-100" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../images/banners/banner_sabonete.png" alt="sabonete banner" class="w-100" />
+                    </div>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarrossel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#bannerCarrossel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </section>
+
+        <section>
+            <nav class="nav nav-pills nav-fill nav-custom-color">
+                <a class="nav-item nav-link active" href="#" id="">Inicio</a>
+                <a class="nav-item nav-link" href="#">Pele</a>
+                <a class="nav-item nav-link" href="#">Cabelo</a>
+                <a class="nav-item nav-link" href="#">Arromatizante</a>
+            </nav>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
