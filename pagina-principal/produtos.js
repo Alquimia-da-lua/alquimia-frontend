@@ -193,4 +193,23 @@ export const produtos = [
     }
 ];
 
+const linkcategoria = document.querySelectorAll('.nav a.nav-item[data-categoria]');
+
+linkcategoria.forEach(link =>{
+    link.addEventListener("click", (e) =>{
+        e.preventDefault();
+        const categoriaSel = link.dataset.categoria;
+        const cards = document.querySelectorAll(".roleCard[data-categoria]").forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        cards.forEach(card =>{
+                const categoriaCard = card.dataset.categoria;
+                card.hidden = (categoriaCard !== categoriaSel);
+            });
+
+        document.querySelectorAll('.navbar-nav a.nav-link').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+    });
+});
+
 
