@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedidos</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <header><p>aqui vai a header</p></header>
+  <body class="p-2 mx-3">
+    
+    <div class="position-absolute start-50 translate-middle">
+      <!-- <div class="btn-group g-2" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary">Lista de Produtos</button>
+      <button type="button" class="btn btn-primary">Cadastrar Produto</button>
+      <button type="button" class="btn btn-primary">Pedidos Vendidos</button>
+    </div> -->
+      <div
+        class="btn-group"
+        role="group"
+        aria-label="Basic radio toggle button group"
+        id="grupo-botao"
+      >
+        <input
+          type="radio"
+          class="btn-check"
+          name="btnradio"
+          id="btnradio1"
+          autocomplete="off"
+          checked
+        />
+        <label class="btn btn-outline-primary" for="btnradio1">Lista de Produto</label>
+
+        <input
+          type="radio"
+          class="btn-check"
+          name="btnradio"
+          id="btnradio2"
+          autocomplete="off"
+        />
+        <label class="btn btn-outline-primary" for="btnradio2">Cadastrar Produto</label>
+
+        <input
+          type="radio"
+          class="btn-check"
+          name="btnradio"
+          id="btnradio3"
+          autocomplete="off"
+        />
+        <label class="btn btn-outline-primary" for="btnradio3">Pedidos Vendidos</label>
+      </div>
+    </div>
+    <div class="janelao">
+      <h3>Pedidos Vendidos</h3>
+      <h6 class="text-muted">6 pedidos</h6>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Pedido</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item row">
+          <div class="col-md-3" id="item-lista">
+            <div class="display-6" id="num-pedido">#0134</div>
+            <div class="col-md-6" id="texto">
+              <span class="" id="nome-usuario">Eliane Nina Tânia Sales</span>
+              <span class="text-muted" id="endereco-usuario">
+                Rua Romeu José de Lima, 269, São João (Margem Direita) - Tubarão
+                SC
+              </span>
+            </div>
+            <div class="col-md-3 card-header" id="acao">
+              <span class="text-center" id="status-pedido">Em análise</span>
+              <button class="btn btn-primary btn-sm" id="botao-visualizar">
+                Visualizar Pedido
+              </button>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="" id="item-lista">
+            <div class="display-6" id="num-pedido">#0134</div>
+            <div id="texto">
+              <span class="" id="nome-usuario">Eliane Nina Tânia Sales</span>
+              <span class="text-muted" id="endereco-usuario">
+                Rua Romeu José de Lima, 269, São João (Margem Direita) - Tubarão
+                SC
+              </span>
+            </div>
+            <div class="card-header" id="acao">
+              <span class="text-center" id="status-pedido">Em análise</span>
+              <button class="btn btn-primary btn-sm" id="botao-visualizar">
+                Visualizar Pedido
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <script src="./script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
