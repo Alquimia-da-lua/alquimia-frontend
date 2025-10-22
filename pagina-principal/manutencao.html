@@ -14,7 +14,7 @@
     <header class="w-100">
         <div class="row d-flex div-cabecalho">
             <section class="col logo-nome-loja d-flex">
-                <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="" class="icon icon-logo"></a>
+                <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Imagem de Lua com folhas" class="icon icon-logo"></a>
                 <div>
                     <h4 class="nome-loja">Alquimia da Lua</h4>
                     <p class="descricao-loja">Cosméticos Naturais</p>
@@ -22,7 +22,7 @@
             </section>
 
             <div class="col input-buscar input-group mt-3">
-                <input type="text" class="form-control" placeholder="Buscar..." class="input-buscar" id="barra-buscar">
+                <input type="text" class="form-control" placeholder="Buscar..." class="input-buscar">
                 <span class="input-group-text span-lupinha" id="input-buscar-produtos"><img src="../images/icon/lupa.png"
                         alt="lupinha" class="img-lupinha"></span>
             </div>
@@ -42,47 +42,9 @@
             </section>
         </div>
     </header>
+
     <main>
-        <section class="banner">
-            <div id="bannerCarrossel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="../images/banners/banner_aromatizante.png" alt="aromatizante banner" class="w-100" />
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../images/banners/banner_produtos.png" alt="produtos banner" class="w-100" />
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../images/banners/banner_sabonete.png" alt="sabonete banner" class="w-100" />
-                    </div>
-                </div>
-
-                <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarrossel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#bannerCarrossel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
-            </div>
-        </section>
-
-        <section>
-            <nav class="nav nav-pills nav-fill nav-custom-color">
-                <a class="nav-item nav-link active" href="#" id="">Inicio</a>
-                <a class="nav-item nav-link" href="#">Pele</a>
-                <a class="nav-item nav-link" href="#">Cabelo</a>
-                <a class="nav-item nav-link" href="#">Arromatizante</a>
-            </nav>
-        </section>
-
-        <h3 class="text-center mb-5 mt-5">APRECIE OS PRODUTOS</h3>
-        <div class="container-fluid">
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4" id="produtos-catalogo">
-                <!--PRODUTOS AQUI-->
-            </div>
-        </div>
+        <h1>EM MANUTENÇÃO</h1>
     </main>
 
     <footer class="mb-5">
@@ -122,34 +84,10 @@
             </div>
     </footer>
 
-    <!--carrinho-->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrinho" aria-labelledby="offcanvasCarrinhoLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Meu carrinho</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
-        </div>
 
-        <div class="offcanvas-body d-flex flex-column justify-content-between">
-            <div id="itensCarrinho">
-
-                <p class="text-muted">Seu carrinho está vazio</p>
-            </div>
-        </div>
-
-        <div class="border-top pt-3">
-            <div class="d-flex justify-content-around mt-3 mb-5">
-                <button class="botao-carrinho btn btn-dark" id="btLimpar">Finalizar compra</button>
-                <button class="botao-carrinho btn btn-dark" id="btFinalizar">Continuar Comprando</button>
-            </div>
-        </div>
-    </div>
-
-
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <script type="module" src="./script.js"></script>
-    <script src="./produtos.js"></script>
 </body>
+
 </html>
