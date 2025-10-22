@@ -1,5 +1,6 @@
 :root{
     --cor-principal: #C27AFF;
+    --bs-secondary: #99A1AF;
 }
 
 *{
@@ -75,8 +76,14 @@
 /*footer*/
 footer{
     width: 100%;
-    height: 3rem;
+    height: 13rem;
     background-color: #1E2939;
+    color: #99A1AF;
+}
+
+.footer-a {
+    color: #99A1AF;
+    text-decoration: none;
 }
 
 /*carrinho*/
