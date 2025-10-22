@@ -1,0 +1,57 @@
+/* .janelao {
+}
+header{
+    background-color: blue;
+}
+
+body {
+    background-color: #F9FAFB;
+}
+
+.btn-group {
+  width: 38rem;
+  border-radius: 50px;
+}
+
+#num-pedido {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+#item-lista {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 6rem;
+}
+
+#texto {
+  width: 35rem;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  column-gap: 0;
+  row-gap: 0;
+}
+
+#acao {
+  height: 2.5rem;
+  width: 30rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: rem;
+  border-radius: 50px;
+}
+
+#status-pedido {
+  width: 15rem;
+}
+
+#botao-visualizar {
+  width: 15rem;
+  border-radius: 25px;
+} */
