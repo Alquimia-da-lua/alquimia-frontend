@@ -8,19 +8,19 @@ body {
   background: linear-gradient(45deg, #faf5ff, #fdf2f8);
 }
 
-#criarContaBtn {
-  background: linear-gradient(#c084fc, #a855f7);
+#loginBtn {
+  background-image: linear-gradient(#c084fc, #a855f7);
   border: none;
 }
 
-#login-link {
-  text-decoration: none;
-  color: #c084fc;
+#loginBtn:hover {
+  background-image: linear-gradient(#9d4edd, #9d4edd);
+  transition: all 0.5 ease-in-out;
 }
 
-.card-register {
+.card-login {
   width: 450px;
-  height: 710px;
+  height: 430px;
   margin: 0 auto;
 }
 
@@ -52,6 +52,25 @@ img {
   bottom: 30px;
   color: rgb(163, 163, 163);
   border: none;
+}
+
+#esqueceuSenha {
+  text-decoration: none;
+  color: #c084fc;
+  width: fit-content;
+}
+
+#esqueceuSenha:hover {
+  color: #9d4edd;
+}
+
+#register {
+  text-decoration: none;
+  color: #c084fc;
+}
+
+#register:hover {
+  color: #9d4edd;
 }
 
 @media screen and (max-width: 600px) {
