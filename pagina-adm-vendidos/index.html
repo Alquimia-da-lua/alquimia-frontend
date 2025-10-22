@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alquimia da Lua - Adm</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="container-xxl mx-4">
+        <div class="header-content">
+          <div class="logo">
+            <img
+              class="logo-img"
+              src="../images/icon/icon-logo-branco.png"
+              alt="Logo da marca com uma lua e um ramo de folhas"
+            />
+          </div>
+          <div class="brand-info">
+            <h1>Alquimia da Lua</h1>
+            <p>Cosméticos Naturais</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="container-xxl mx-4">
+      <div class="tab-container mt-4">
+        <div class="nav-tabs-container">
+          <button class="nav-tab active" onclick="switchTab(this, 'lista')">
+            Lista de Produtos
+          </button>
+          <button class="nav-tab" onclick="switchTab(this, 'cadastro')">
+            Cadastrar Produto
+          </button>
+          <button class="nav-tab" onclick="switchTab(this, 'pedidos')">
+            Pedidos Vendidos
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-container">
+        <!-- Lista de Produtos Tab -->
+        <div id="lista" class="tab-content active">
+          <div class="section-header">
+            <div>
+              <h2>Gerenciar Produtos</h2>
+              <p class="subtitle">6 produtos cadastrados</p>
+            </div>
+            <button
+              class="btn btn-novo-produto"
+              onclick="openNewProductModal()"
+            >
+              <i class="fas fa-plus"></i>
+              Novo Produto
+            </button>
+          </div>
+
+          <table class="products-table">
+            <thead>
+              <tr>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- linha produto -->
+              <tr>
+                <td>
+                  <img
+                    src="../images/produtos/cabelo/shampoo_amendoas.png"
+                    alt="Shampoo"
+                    class="product-image"
+                  />
+                </td>
+                <td>
+                  <div class="product-info">
+                    <span class="product-name"
+                      >Shampoo natural de Amendoas 250ml</span
+                    >
+                    <span class="product-description"
+                      >Shampoo natural à base de Amendoas, ideal para cabelos
+                      danificados</span
+                    >
+                  </div>
+                </td>
+                <td><span class="category-badge">Cabelo</span></td>
+                <td><span class="price">R$ 149,90</span></td>
+                <td>
+                  <div class="actions">
+                    <button class="action-btn edit" title="Editar">
+                      <img
+                        class="icon-img"
+                        src="../images/icon/pincel.png"
+                        alt="Imagem de um lápis"
+                      />
+                    </button>
+                    <button class="action-btn delete" title="Deletar">
+                      <img
+                        class="icon-img"
+                        src="../images/icon/lixo.png"
+                        alt="Imagem de uma lixeira"
+                      />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Cadastrar Produto Tab -->
+        <div id="cadastro" class="tab-content" style="display: none">
+          <div class="section-header">
+            <div>
+              <h2>Cadastrar Novo Produto</h2>
+              <p class="subtitle">Preencha os dados do novo produto</p>
+            </div>
+          </div>
+          <div
+            class="card"
+            style="border: 1px solid var(--border-light); border-radius: 8px"
+          >
+            <div class="card-body" style="padding: 30px">
+              <form id="productForm">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label
+                      for="productName"
+                      class="form-label"
+                      style="font-weight: 600; color: var(--text-dark)"
+                      >Nome do Produto</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="productName"
+                      placeholder="Digite o nome do produto"
+                      style="
+                        border: 1px solid var(--border-light);
+                        border-radius: 6px;
+                      "
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label
+                      for="productCategory"
+                      class="form-label"
+                      style="font-weight: 600; color: var(--text-dark)"
+                      >Categoria</label
+                    >
+                    <select
+                      class="form-control"
+                      id="productCategory"
+                      style="
+                        border: 1px solid var(--border-light);
+                        border-radius: 6px;
+                      "
+                    >
+                      <option>Selecione uma categoria</option>
+                      <option>Cabelo</option>
+                      <option>Pele</option>
+                      <option>Aromatizante</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label
+                      for="productPrice"
+                      class="form-label"
+                      style="font-weight: 600; color: var(--text-dark)"
+                      >Preço</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="productPrice"
+                      placeholder="0,00"
+                      step="0.01"
+                      style="
+                        border: 1px solid var(--border-light);
+                        border-radius: 6px;
+                      "
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label
+                      for="productDescription"
+                      class="form-label"
+                      style="font-weight: 600; color: var(--text-dark)"
+                      >Descrição</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="productDescription"
+                      placeholder="Descrição do produto"
+                      style="
+                        border: 1px solid var(--border-light);
+                        border-radius: 6px;
+                      "
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <button
+                      type="submit"
+                      class="btn-novo-produto"
+                      style="width: 100%; justify-content: center"
+                    >
+                      <i class="fas fa-save"></i>
+                      Salvar Produto
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista de pedidos Vendidos Tab -->
+        <div id="pedidos" class="tab-content" style="display: none">
+          <div class="section-header">
+            <div>
+              <h2>Pedidos Vendidos</h2>
+              <p class="subtitle">Histórico de vendas</p>
+            </div>
+          </div>
+
+          <table class="products-table">
+            <thead>
+              <tr>
+                <th>Pedido</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- linha pedido-->
+              <tr>
+                <td>
+                  <div class="col">
+                    <span>#0134</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="product-info">
+                    <span class="product-name"
+                      >Shampoo natural de Amendoas 250ml</span
+                    >
+                    <span class="product-description"
+                      >Shampoo natural à base de Amendoas, ideal para cabelos
+                      danificados</span
+                    >
+                  </div>
+                </td>
+
+                <td>
+                  <div class="actions">
+                    <div>
+                      <span>Em análise</span>
+                      <button class="action-btn delete" title="Deletar">
+                        <img
+                          class="icon-img"
+                          src="../images/icon/lixo.png"
+                          alt="Imagem de uma lixeira"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- alert de pedidos não feitos -->
+          <div
+            class="alert alert-info"
+            style="
+              background-color: rgba(199, 125, 255, 0.1);
+              border: 1px solid var(--primary-purple);
+              color: var(--text-dark);
+              border-radius: 8px;
+            "
+          >
+            <i class="fas fa-info-circle"></i> Nenhum pedido registrado ainda.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

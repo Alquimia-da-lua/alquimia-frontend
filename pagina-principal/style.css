@@ -1,6 +1,8 @@
 :root{
     --cor-principal: #C27AFF;
     --bs-secondary: #99A1AF;
+    --dark-purple: #9d4edd;
+
 }
 
 *{
@@ -89,5 +91,17 @@ footer{
 /*carrinho*/
 .botao-carrinho{
     background-color: var(--cor-principal) !important;
+}
+
+/*card*/
+.botao-card, .botao-modal{
+    background-color: var(--cor-principal) !important;
+    color: white !important;
+    cursor: pointer !important;
+    transition: background-color 0.5s !important;
+}
+
+.botao-card :hover{
+    background-color: var(--dark-purple) ;
 }
 
