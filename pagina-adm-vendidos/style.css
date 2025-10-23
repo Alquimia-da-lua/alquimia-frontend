@@ -1,12 +1,13 @@
 :root {
   --primary-purple: #c27aff;
-  --dark-purple: #9d4edd;
+  --dark-purple: rgb(157, 78, 221);
   --light-purple: #e0aaff;
   --text-dark: #333333;
   --text-light: #666666;
   --border-light: #e0e0e0;
   --bg-light: #f8f8f8;
-  --bg-gray: #ECECF0;
+  --bg-gray: #ececf0;
+  --blur-dark-purple: rgba(157, 78, 221,0.25);
 }
 
 * {
@@ -16,6 +17,7 @@
 }
 
 body {
+  width: 98vw;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #ffffff;
   color: var(--text-dark);
@@ -50,22 +52,21 @@ body {
 .logo-img {
   width: 3rem;
 }
-.brand-info h1 {
+.info-marca h1 {
   font-size: 20px;
   font-weight: 600;
   color: var(--primary-purple);
   margin: 0;
 }
 
-.brand-info p {
+.info-marca p {
   font-size: 13px;
   color: var(--text-light);
   margin: 0;
 }
 
-
-/* Navigation Tabs */
-.tab-container{
+/* Nav Tabs */
+.tab-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,7 +78,6 @@ body {
   justify-content: center;
   gap: 1.5rem;
   border-radius: 25px;
-  
 }
 
 .nav-tab {
@@ -149,7 +149,7 @@ body {
   box-shadow: 0 4px 12px rgba(199, 125, 255, 0.3);
 }
 
-/* Table */
+/* Tabelas */
 .products-table {
   width: 100%;
   border-collapse: collapse;
@@ -189,19 +189,22 @@ body {
   border-radius: 8px;
 }
 
-.product-info {
+.product-info,
+.order-info {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.product-name {
+.product-name,
+.order-name {
   font-weight: 600;
   color: var(--text-dark);
   font-size: 14px;
 }
 
-.product-description {
+.product-description,
+.address-description {
   color: var(--text-light);
   font-size: 12px;
 }
@@ -229,7 +232,6 @@ body {
 .actions {
   display: flex;
   gap: 10px;
-  justify-content: flex-end;
 }
 
 .action-btn {
@@ -266,6 +268,71 @@ body {
 .action-btn.delete:hover {
   background-color: rgba(255, 107, 107, 0.1);
   border-color: #ff6b6b;
+}
+
+.badge-action {
+  display: flex;
+  background-color: var(--bg-gray);
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  border-radius: 25px;
+}
+
+.badge-status {
+  text-align: center;
+}
+
+.badge-btn {
+  height: 2rem;
+  width: 15rem;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--primary-purple);
+  color: white;
+  border-radius: 25px;
+}
+
+.badge-btn:hover {
+  background-color: var(--dark-purple);
+  color: white;
+}
+
+.card {
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.form-control {
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+}
+
+.form-control:focus {
+  border-color: var(--primary-purple);         
+  box-shadow: 0 0 0 .25rem var(--blur-dark-purple);
+}
+
+.alert {
+  background-color: rgba(199, 125, 255, 0.1);
+  border: 1px solid var(--primary-purple);
+  color: var(--text-dark);
+  border-radius: 8px;
+}
+
+.modal-body{
+  display: flex;
+  flex-direction: column;
+}
+
+.qtd{
+  background-color: var(--primary-purple);
 }
 
 /* Responsive */
