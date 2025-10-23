@@ -78,7 +78,7 @@
 /*footer*/
 footer{
     width: 100%;
-    height: 13rem;
+    height: 14rem;
     background-color: #1E2939;
     color: #99A1AF;
 }
@@ -103,5 +103,9 @@ footer{
 
 .botao-card :hover{
     background-color: var(--dark-purple) ;
+}
+
+#input-buscar-produtos{
+    background-color: #C27AFF;
 }
 

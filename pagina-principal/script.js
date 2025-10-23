@@ -1,4 +1,5 @@
 import { produtos } from "./produtos.js";
+import { inicializarCatalogo } from "./produtos.js";
 
 function mostrarProdutosAleatorios(idContainer, qtde) {
     const container = document.getElementById(idContainer);
@@ -61,3 +62,7 @@ function mostrarProdutosAleatorios(idContainer, qtde) {
 document.addEventListener("DOMContentLoaded", () => {
     mostrarProdutosAleatorios("produtos-catalogo", 8);
 })
+
+document.addEventListener("DOMContentLoaded", () => {
+    inicializarCatalogo();
+});
