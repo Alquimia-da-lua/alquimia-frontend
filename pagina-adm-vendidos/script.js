@@ -1,40 +1,40 @@
 function switchTab(element, tabName) {
-  // Remove active class from all tabs
+  // Remove o ativo de todos
   document.querySelectorAll(".nav-tab").forEach((tab) => {
     tab.classList.remove("active");
   });
 
-  // Add active class to clicked tab
+  // Adiciona o ativo no botão clicado
   element.classList.add("active");
 
-  // Hide all tab contents
+  //Esconde todos os elementos
   document.querySelectorAll(".tab-content").forEach((content) => {
     content.style.display = "none";
   });
 
-  // Show selected tab content
+  // Mostra o elemento na tab
   document.getElementById(tabName).style.display = "block";
 }
 
-function openNewProductModal() {
+function openModalNovoProduto() {
   document.querySelector(".nav-tab:nth-child(2)").click();
 }
 
-// Handle product form submission
+//Controla o cadastro
 document.getElementById("productForm").addEventListener("submit", function (e) {
   e.preventDefault();
   alert("Produto cadastrado com sucesso!");
   this.reset();
 });
 
-// Handle edit buttons
+// Controla o editar
 document.querySelectorAll(".action-btn.edit").forEach((btn) => {
   btn.addEventListener("click", function () {
-    alert("Editar produto");
+    openModalNovoProduto()
   });
 });
 
-// Handle delete buttons
+// Controla o delete
 document.querySelectorAll(".action-btn.delete").forEach((btn) => {
   btn.addEventListener("click", function () {
     if (confirm("Tem certeza que deseja deletar este produto?")) {
