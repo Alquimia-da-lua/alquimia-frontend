@@ -11,6 +11,11 @@
     scroll-behavior: smooth;
 }
 
+.accordion-button{
+    background-color: white !important;
+    box-shadow: none !important;
+    
+}
 
 /*header*/
 

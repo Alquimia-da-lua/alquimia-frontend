@@ -48,7 +48,8 @@
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                    <div id="bannerCarrossel" class="carousel slide accordion-body p-0" data-bs-ride="carousel" data-bs-interval="5000">
+                    <div id="bannerCarrossel" class="carousel slide accordion-body p-0" data-bs-ride="carousel"
+                        data-bs-interval="5000">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="../images/banners/banner_aromatizante.png" alt="aromatizante banner"
@@ -78,7 +79,6 @@
 
         <section>
             <nav class="nav nav-pills nav-fill nav-custom-color">
-                <button></button>
                 <a class="nav-item nav-link active" href="#" id="">Inicio</a>
                 <a class="nav-item nav-link" href="#" data-categoria="pele">Pele</a>
                 <a class="nav-item nav-link" href="#" data-categoria="cabelo">Cabelo</a>
@@ -95,36 +95,23 @@
     </main>
 
     <footer>
-            <div class="row mb-3">
-                <div class="col">
-                    <section class="col logo-nome-loja d-flex">
-                        <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Imagem de Lua com folhas" class="icon icon-logo mt-3 text-start"></a>
-                        <div>
-                            <h4 class="nome-loja text-nowrap mt-3 text-start">Alquimia da Lua</h4>
-                            <p class="descricao-loja mt-3">Cosméticos Naturais</p>
-                        </div>
-                    </section>
-                    <h6 class="ms-4">Sua loja de cosméticos naturais e artesanais de confiança.</h6>
-                </div>
-                <div class="col mt-3">
-                    <h6 class="text-white">Categorias</h6>
-                    <a href="./pele" class="footer-a">Pele</a><br>
-                    <a href="./cabelo" class="footer-a">Cabelo</a><br>
-                    <a href="./aromatizante" class="footer-a">Aromatizante</a>
-                </div>
-                <div class="col mt-3">
-                    <h6 class="text-white">Atendimento</h6>
-                    <a href="./manutencao.html" class="footer-a">Central de Ajuda</a><br>
-                    <a href="./manutencao.html" class="footer-a">Troca e Devoluções</a><br>
-                    <a href="./manutencao.html" class="footer-a">Política de Privacidade</a><br>
-                    <a href="./manutencao.html" class="footer-a">Termos de Uso</a><br>
-                </div>
-                <div class="col mt-3">
-                    <h6 class="text-white">Contato</h6>
-                    <span>WhatsApp: (48)99244-7559</span><br>
-                    <span>Email: contato@alquimiadalua.com.br</span><br>
-                    <span>Seg-Sex: 9h às 18h</span>
-                </div>
+        <div class="row mb-3">
+            <div class="col">
+                <section class="col logo-nome-loja d-flex">
+                    <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Imagem de Lua com folhas"
+                            class="icon icon-logo mt-3 text-start"></a>
+                    <div>
+                        <h4 class="nome-loja text-nowrap mt-3 text-start">Alquimia da Lua</h4>
+                        <p class="descricao-loja mt-3">Cosméticos Naturais</p>
+                    </div>
+                </section>
+                <h6 class="ms-4">Sua loja de cosméticos naturais e artesanais de confiança.</h6>
+            </div>
+            <div class="col mt-3">
+                <h6 class="text-white">Categorias</h6>
+                <a href="./pele" class="footer-a">Pele</a><br>
+                <a href="./cabelo" class="footer-a">Cabelo</a><br>
+                <a href="./aromatizante" class="footer-a">Aromatizante</a>
             </div>
             <div class="col mt-3">
                 <h6 class="text-white">Atendimento</h6>
@@ -139,6 +126,7 @@
                 <span>Email: contato@alquimiadalua.com.br</span><br>
                 <span>Seg-Sex: 9h às 18h</span>
             </div>
+        </div>
         </div>
         <div class="row border-top border-secondary">
             <p class="text-center mt-3">&copy;2025 Alquimia da lua. Todos os direitos reservados.</p>
@@ -163,6 +151,34 @@
             <div class="d-flex justify-content-around mt-3 mb-5">
                 <button class="botao-carrinho btn btn-dark" id="btLimpar">Finalizar compra</button>
                 <button class="botao-carrinho btn btn-dark" id="btFinalizar">Continuar Comprando</button>
+            </div>
+        </div>
+    </div>
+
+    <!--toast carrinho-->
+    <div class="position-fixed top-0 end-0" style="z-index: 11">
+        <div id="toastCarrinho" class="toast align-items-center text-bg-success border-0 hide" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Item adicionado ao carrinho!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!--toast pedido finalizado-->
+    <div class="position-fixed top-0 end-0" style="z-index: 11">
+        <div id="toastPedidoFinalizado" class="toast align-items-center text-bg-success border-0 hide" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Pedido finalizado!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
             </div>
         </div>
     </div>
