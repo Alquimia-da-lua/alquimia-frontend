@@ -22,51 +22,59 @@
             </section>
 
             <div class="col input-buscar input-group mt-3">
-                <input type="text" class="form-control" placeholder="Buscar..." class="input-buscar" id="barra-buscar">
-                <span class="input-group-text span-lupinha" id="input-buscar-produtos"><img src="../images/icon/lupa.png"
-                        alt="lupinha" class="img-lupinha"></span>
+                <input type="text" class="form-control" placeholder="Buscar..." class="input-buscar" id="buscaInput">
+                <span class="input-group-text span-lupinha" id="input-buscar-produtos"><img
+                        src="../images/icon/lupa.png" alt="lupinha" class="img-lupinha"></span>
             </div>
 
             <section class="col icones-pg d-flex w-100">
-                <button type="button" class="botao-icone btn" 
-                    data-bs-toggle="offcanvas" 
-                    data-bs-target="#offcanvasCarrinho"
-                    aria-controls="offcanvasCarrinho" 
-                    aria-label="Abrir carrinho"><img
-                        src="../images/icon/shopping-cart-preto.png" alt="icone carrinho"
+                <button type="button" class="botao-icone btn" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasCarrinho" aria-controls="offcanvasCarrinho"
+                    aria-label="Abrir carrinho"><img src="../images/icon/shopping-cart-preto.png" alt="icone carrinho"
                         class="icon icon-carrinho"></button>
                 <button type="button" class="botao-icone btn"><img src="../images/icon/user-preto.png" alt="icone user"
                         class="icon icon-user"></button>
-                <button type="button" class="botao-icone btn"><img src="../images/icon/night-mode-dark.png" alt="icone darkmode"
-                        class="icon icon-dark-mode"></button>
+                <button type="button" class="botao-icone btn"><img src="../images/icon/night-mode-dark.png"
+                        alt="icone darkmode" class="icon icon-dark-mode"></button>
             </section>
         </div>
     </header>
     <main>
-        <section class="banner">
-            <div id="bannerCarrossel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="../images/banners/banner_aromatizante.png" alt="aromatizante banner" class="w-100" />
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../images/banners/banner_produtos.png" alt="produtos banner" class="w-100" />
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../images/banners/banner_sabonete.png" alt="sabonete banner" class="w-100" />
-                    </div>
-                </div>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div id="bannerCarrossel" class="carousel slide accordion-body p-0" data-bs-ride="carousel" data-bs-interval="5000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../images/banners/banner_aromatizante.png" alt="aromatizante banner"
+                                    class="w-100" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../images/banners/banner_produtos.png" alt="produtos banner" class="w-100" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../images/banners/banner_sabonete.png" alt="sabonete banner" class="w-100" />
+                            </div>
+                        </div>
 
-                <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarrossel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#bannerCarrossel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarrossel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#bannerCarrossel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+
+                </div>
             </div>
-        </section>
+        </div>
 
         <section>
             <nav class="nav nav-pills nav-fill nav-custom-color">
@@ -78,9 +86,9 @@
             </nav>
         </section>
 
-        <h3 class="text-center mb-5 mt-5">APRECIE OS PRODUTOS</h3>
+        <h3 class="text-center mb-3 mt-3">APRECIE OS PRODUTOS</h3>
         <div class="container-fluid">
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4" id="produtos-catalogo">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5" id="produtos-catalogo">
                 <!--PRODUTOS AQUI-->
             </div>
         </div>
@@ -118,9 +126,23 @@
                     <span>Seg-Sex: 9h às 18h</span>
                 </div>
             </div>
-            <div class="row border-top border-secondary">
-                <p class="text-center mt-3">&copy;2025 Alquimia da lua. Todos os direitos reservados.</p>
+            <div class="col mt-3">
+                <h6 class="text-white">Atendimento</h6>
+                <a href="./manutencao.html" class="footer-a">Central de Ajuda</a><br>
+                <a href="./manutencao.html" class="footer-a">Troca e Devoluções</a><br>
+                <a href="./manutencao.html" class="footer-a">Política de Privacidade</a><br>
+                <a href="./manutencao.html" class="footer-a">Termos de Uso</a><br>
             </div>
+            <div class="col mt-3">
+                <h6 class="text-white">Contato</h6>
+                <span>WhatsApp: (48)99244-7559</span><br>
+                <span>Email: contato@alquimiadalua.com.br</span><br>
+                <span>Seg-Sex: 9h às 18h</span>
+            </div>
+        </div>
+        <div class="row border-top border-secondary">
+            <p class="text-center mt-3">&copy;2025 Alquimia da lua. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
     <!--carrinho-->
@@ -146,11 +168,12 @@
     </div>
 
 
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script type="module" src="./script.js"></script>
     <script src="./produtos.js"></script>
 </body>
+
 </html>

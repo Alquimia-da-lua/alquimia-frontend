@@ -1,20 +1,54 @@
 import { produtos } from "./produtos.js";
 import { inicializarCatalogo } from "./produtos.js";
 
-function mostrarProdutosAleatorios(idContainer, qtde) {
-    const container = document.getElementById(idContainer);
+/*quando a pagina inicia*/ 
+document.addEventListener("DOMContentLoaded", () => {
+    mostrarProdutos();
+})
 
-    if (!container) return;
-    container.innerHTML = "";
+/*input de busca*/
 
-    const listaProdutosAleatorios = produtos
-        .slice()
-        .sort(() => 0.5 - Math.random())
-        .slice(0, qtde);
+let termoBusca = "";
+const buscaInput = document.getElementById("buscaInput");
 
-    let html = "";
+ 
 
-    listaProdutosAleatorios.forEach(produto => {
+buscaInput.addEventListener("input", function(){
+    const accordionCollapse = document.querySelector("#collapseOne");
+    const bsCollapse = bootstrap.Collapse.getOrCreateInstance(accordionCollapse); //api bootstrap p/ fechar suave
+    bsCollapse.hide(); // ← fecha com animação suave
+
+    if(this.value ===""){
+        bsCollapse.show();
+    }
+
+    termoBusca = this.value;
+    mostrarProdutos();
+
+});
+
+function filtrarProdutos(){
+    return produtos.filter((produto) => {
+        const matchBusca = 
+            produto.nmProduto.toLowerCase().includes(termoBusca.toLowerCase()) ||
+            produto.categoria.toLowerCase().includes(termoBusca.toLowerCase());
+        return matchBusca;
+    });
+}
+
+
+function mostrarProdutos(){
+    const container = document.getElementById("produtos-catalogo");
+
+    const produtosFiltrados = filtrarProdutos();
+
+    if ((produtosFiltrados).length === 0) {
+        container.innerHTML = "";
+    
+    } else {
+        let html = "";
+
+        produtosFiltrados.forEach(produto => {
         html += `
             <div class="col-md-4 mb-4 roleCard" data-categoria="${produto.categoria}">
                 <div class="card h-100">
@@ -54,9 +88,10 @@ function mostrarProdutosAleatorios(idContainer, qtde) {
                 </div>
             </div>
         `;
-    });
+    }); 
 
     container.innerHTML = html;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
