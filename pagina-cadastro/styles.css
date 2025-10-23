@@ -20,11 +20,11 @@ body {
 
 .card-register {
   width: 450px;
-  height: 710px;
+  height: 100%;
   margin: 0 auto;
 }
 
-#seta {
+.card-register- #seta {
   font-size: 30px;
 }
 
@@ -34,7 +34,11 @@ img {
   border-radius: 8px;
 }
 
-#nome {
+#seta {
+  font-size: 30px;
+}
+
+#nome-alquimia {
   font-size: 24px;
   font-weight: 600;
   color: #c084fc;
