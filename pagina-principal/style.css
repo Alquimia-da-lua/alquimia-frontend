@@ -8,7 +8,9 @@
 *{
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
 }
+
 
 /*header*/
 
@@ -104,4 +106,6 @@ footer{
 .botao-card :hover{
     background-color: var(--dark-purple) ;
 }
+
+
 
