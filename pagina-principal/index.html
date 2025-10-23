@@ -10,7 +10,7 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header class="w-100">
         <div class="row d-flex div-cabecalho">
             <section class="col logo-nome-loja d-flex">
@@ -34,12 +34,12 @@
                         class="icon icon-carrinho"></button>
                 <button type="button" class="botao-icone btn"><img src="../images/icon/user-preto.png" alt="icone user"
                         class="icon icon-user"></button>
-                <button type="button" class="botao-icone btn"><img src="../images/icon/night-mode-dark.png"
+                <button type="button" class="botao-icone btn btn-outline-light" id="mudaTema"><img src="../images/icon/night-mode-dark.png"
                         alt="icone darkmode" class="icon icon-dark-mode"></button>
             </section>
         </div>
     </header>
-    <main>
+    <main class="flex-grow-1">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -95,37 +95,36 @@
     </main>
 
     <footer>
-        <div class="row mb-3">
-            <div class="col">
-                <section class="col logo-nome-loja d-flex">
-                    <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Imagem de Lua com folhas"
-                            class="icon icon-logo mt-3 text-start"></a>
-                    <div>
-                        <h4 class="nome-loja text-nowrap mt-3 text-start">Alquimia da Lua</h4>
-                        <p class="descricao-loja mt-3">Cosméticos Naturais</p>
-                    </div>
-                </section>
-                <h6 class="ms-4">Sua loja de cosméticos naturais e artesanais de confiança.</h6>
-            </div>
-            <div class="col mt-3">
-                <h6 class="text-white">Categorias</h6>
-                <a href="./pele" class="footer-a">Pele</a><br>
-                <a href="./cabelo" class="footer-a">Cabelo</a><br>
-                <a href="./aromatizante" class="footer-a">Aromatizante</a>
-            </div>
-            <div class="col mt-3">
-                <h6 class="text-white">Atendimento</h6>
-                <a href="./manutencao.html" class="footer-a">Central de Ajuda</a><br>
-                <a href="./manutencao.html" class="footer-a">Troca e Devoluções</a><br>
-                <a href="./manutencao.html" class="footer-a">Política de Privacidade</a><br>
-                <a href="./manutencao.html" class="footer-a">Termos de Uso</a><br>
-            </div>
-            <div class="col mt-3">
-                <h6 class="text-white">Contato</h6>
-                <span>WhatsApp: (48)99244-7559</span><br>
-                <span>Email: contato@alquimiadalua.com.br</span><br>
-                <span>Seg-Sex: 9h às 18h</span>
-            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <section class="col logo-nome-loja d-flex">
+                        <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Imagem de Lua com folhas" class="icon icon-logo mt-3 text-start"></a>
+                        <div>
+                            <h4 class="nome-loja text-nowrap mt-3 text-start">Alquimia da Lua</h4>
+                            <p class="descricao-loja mt-3">Cosméticos Naturais</p>
+                        </div>
+                    </section>
+                    <h6 class="ms-4">Sua loja de cosméticos naturais e artesanais de confiança.</h6>
+                </div>
+                <div class="col mt-3">
+                    <h6 class="text-white">Categorias</h6>
+                    <a href="./pele" class="footer-a">Pele</a><br>
+                    <a href="./cabelo" class="footer-a">Cabelo</a><br>
+                    <a href="./aromatizante" class="footer-a">Aromatizante</a>
+                </div>
+                <div class="col mt-3">
+                    <h6 class="text-white">Atendimento</h6>
+                    <a href="./manutencao.html" class="footer-a">Central de Ajuda</a><br>
+                    <a href="./manutencao.html" class="footer-a">Troca e Devoluções</a><br>
+                    <a href="./manutencao.html" class="footer-a">Política de Privacidade</a><br>
+                    <a href="./manutencao.html" class="footer-a">Termos de Uso</a><br>
+                </div>
+                <div class="col mt-3">
+                    <h6 class="text-white">Contato</h6>
+                    <span>WhatsApp: (48)99244-7559</span><br>
+                    <span>Email: contato@alquimiadalua.com.br</span><br>
+                    <span>Seg-Sex: 9h às 18h</span>
+                </div>
         </div>
         </div>
         <div class="row border-top border-secondary">
