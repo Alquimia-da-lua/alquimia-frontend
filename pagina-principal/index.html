@@ -48,7 +48,8 @@
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                    <div id="bannerCarrossel" class="carousel slide accordion-body p-0" data-bs-ride="carousel" data-bs-interval="5000">
+                    <div id="bannerCarrossel" class="carousel slide accordion-body p-0" data-bs-ride="carousel"
+                        data-bs-interval="5000">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="../images/banners/banner_aromatizante.png" alt="aromatizante banner"
@@ -78,7 +79,6 @@
 
         <section>
             <nav class="nav nav-pills nav-fill nav-custom-color">
-                <button></button>
                 <a class="nav-item nav-link active" href="#" id="">Inicio</a>
                 <a class="nav-item nav-link" href="#" data-categoria="pele">Pele</a>
                 <a class="nav-item nav-link" href="#" data-categoria="cabelo">Cabelo</a>
@@ -126,6 +126,7 @@
                     <span>Seg-Sex: 9h às 18h</span>
                 </div>
         </div>
+        </div>
         <div class="row border-top border-secondary">
             <p class="text-center mt-3">&copy;2025 Alquimia da lua. Todos os direitos reservados.</p>
         </div>
@@ -149,6 +150,34 @@
             <div class="d-flex justify-content-around mt-3 mb-5">
                 <button class="botao-carrinho btn btn-dark" id="btLimpar">Finalizar compra</button>
                 <button class="botao-carrinho btn btn-dark" id="btFinalizar">Continuar Comprando</button>
+            </div>
+        </div>
+    </div>
+
+    <!--toast carrinho-->
+    <div class="position-fixed top-0 end-0" style="z-index: 11">
+        <div id="toastCarrinho" class="toast align-items-center text-bg-success border-0 hide" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Item adicionado ao carrinho!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!--toast pedido finalizado-->
+    <div class="position-fixed top-0 end-0" style="z-index: 11">
+        <div id="toastPedidoFinalizado" class="toast align-items-center text-bg-success border-0 hide" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Pedido finalizado!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
             </div>
         </div>
     </div>

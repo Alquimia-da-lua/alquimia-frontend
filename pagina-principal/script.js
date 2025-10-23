@@ -11,8 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
 let termoBusca = "";
 const buscaInput = document.getElementById("buscaInput");
 
- 
-
 buscaInput.addEventListener("input", function(){
     const accordionCollapse = document.querySelector("#collapseOne");
     const bsCollapse = bootstrap.Collapse.getOrCreateInstance(accordionCollapse); //api bootstrap p/ fechar suave
@@ -26,6 +24,10 @@ buscaInput.addEventListener("input", function(){
     mostrarProdutos();
 
 });
+
+/*carrinho e funcoes*/
+ 
+
 
 function filtrarProdutos(){
     return produtos.filter((produto) => {
@@ -101,3 +103,4 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     inicializarCatalogo();
 });
+    

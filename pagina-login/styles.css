@@ -54,22 +54,22 @@ img {
   border: none;
 }
 
-#esqueceuSenha {
+#esqueceuSenha-link {
   text-decoration: none;
   color: #c084fc;
   width: fit-content;
 }
 
-#esqueceuSenha:hover {
+#esqueceuSenha-link:hover {
   color: #9d4edd;
 }
 
-#register {
+#register-link {
   text-decoration: none;
   color: #c084fc;
 }
 
-#register:hover {
+#register-link:hover {
   color: #9d4edd;
 }
 

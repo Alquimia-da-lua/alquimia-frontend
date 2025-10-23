@@ -39,7 +39,7 @@
               </a>
               <img src="../images/icon/logo-alquimia.png" alt="Logo Alquimia" />
               <div>
-                <p class="ms-2" id="nome">Alquimia da Lua</p>
+                <p class="ms-2" id="nome-alquimia">Alquimia da Lua</p>
                 <span class="text-muted ms-2">Cosméticos Naturais</span>
               </div>
             </nav>
@@ -55,24 +55,24 @@
 
               <form class="row g-3" id="form-cadastro">
                 <div class="col-12">
-                  <label for="nomeUsuario" class="form-label"
+                  <label for="nmUsuario" class="form-label"
                     >Nome completo</label
                   >
                   <input
                     type="text"
                     class="form-control bg-secondary bg-opacity-10"
-                    id="nomeUsuario"
+                    id="nmUsuario"
                     placeholder="Maria"
                     required
                   />
                 </div>
 
                 <div class="col-12">
-                  <label for="email" class="form-label">E-mail</label>
+                  <label for="emailUsuario" class="form-label">E-mail</label>
                   <input
                     type="email"
                     class="form-control bg-secondary bg-opacity-10"
-                    id="email"
+                    id="emailUsuario"
                     placeholder="seuemail@email.com"
                     required
                   />
@@ -99,26 +99,34 @@
                     id="nuCpf"
                     placeholder="000.000.000-00"
                     oninput="mascara(this)"
+                    oninput="validaCPF(this)"
                     required
                   />
+                  <div class="d-none text-danger mt-2" id="feedback-cpf">
+                    CPF inválido
+                  </div>
                 </div>
 
                 <div class="col-12">
-                  <label for="senha" class="form-label">Senha</label>
+                  <label for="senhaUsuario" class="form-label">Senha</label>
 
                   <input
                     type="password"
                     class="form-control bg-secondary bg-opacity-10"
-                    id="senha"
+                    id="senhaUsuario"
                     placeholder="Digite sua senha"
+                    minlength="8"
+                    oninput="validarSenhas()"
                     required
                   />
-
                   <button
                     class="bi bi-eye olhoSenha"
                     id="verSenha"
                     type="button"
                   ></button>
+                  <div class="d-none text-danger" id="feedback">
+                    Senha deve conter no minimo 8 caracteres
+                  </div>
                 </div>
 
                 <div class="col-12 mt-0">
@@ -131,11 +139,15 @@
                     class="form-control bg-secondary bg-opacity-10"
                     id="confirmarSenha"
                     placeholder="Confirme sua senha"
+                    oninput="validarSenhas()"
                     required
                   />
+                  <div class="d-none text-danger mt-3" id="feedback-confirm">
+                    Senhas não coincidem
+                  </div>
                 </div>
 
-                <div class="col-12 text-center mt-4">
+                <div class="col-12 text-center mt-3">
                   <button
                     id="criarContaBtn"
                     type="submit"
