@@ -193,23 +193,103 @@ export const produtos = [
     }
 ];
 
-const linkcategoria = document.querySelectorAll('.nav a.nav-item[data-categoria]');
 
-linkcategoria.forEach(link =>{
-    link.addEventListener("click", (e) =>{
-        e.preventDefault();
-        const categoriaSel = link.dataset.categoria;
-        const cards = document.querySelectorAll(".roleCard[data-categoria]").forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
+const containerProdutos = document.getElementById("produtos-catalogo");
+const linksCategoria = document.querySelectorAll('.nav-custom-color a.nav-item');
 
-        cards.forEach(card =>{
-                const categoriaCard = card.dataset.categoria;
-                card.hidden = (categoriaCard !== categoriaSel);
-            });
+function renderizarTodosProdutos() {
 
-        document.querySelectorAll('.navbar-nav a.nav-link').forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
+    if(!containerProdutos){
+        return;
+    }
+    containerProdutos.innerHTML = ""; 
+
+    let html = "";
+    
+    produtos.forEach(produto => {
+        const categoriaCard = produto.categoria.toLowerCase();
+        
+        html += `
+            <div class="col-md-4 mb-4 roleCard" data-categoria="${categoriaCard}">
+                <div class="card h-100">
+                    <img src="${produto.imagem}" alt="${produto.nmProduto}" style="" class="card-img">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">${produto.nmProduto}</h5>
+                        <p class="card-text">${produto.dsProduto}</p>
+                        <p class="fw-bold">R$ ${produto.vlProduto.toFixed(2).replace('.', ',')}</p>
+                        <div class="mt-auto">
+                            <button class="botao-card btn w-100" data-bs-toggle="modal" data-bs-target="#cardModal-${produto.cdProduto}">Adicionar ao pedido</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="cardModal-${produto.cdProduto}" tabindex="-1" aria-labelledby="cardModalLabel-${produto.cdProduto}" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="cardModalLabel-${produto.cdProduto}">${produto.nmProduto}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img id="modalImagem-${produto.cdProduto}" src="${produto.imagem}" class="img-fluid rounded mb-3" alt="Imagem do Produto">
+                            <p>${produto.dsProduto}</p>
+                            <strong>R$ ${produto.vlProduto.toFixed(2).replace('.', ',')}</strong><br>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="botao-modal btn btnAddCarrinho"
+                                data-id="${produto.cdProduto}"
+                                data-nome = "${produto.nmProduto}"
+                                data-valor = "${produto.vlProduto}">
+                                Adicionar ao carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
     });
-});
+
+    containerProdutos.innerHTML = html;
+}
+
+function filtrarProdutos(categoriaSelecionada) {
+    const cards = document.querySelectorAll('#produtos-catalogo .roleCard');
+
+    cards.forEach(card => {
+        const categoriaCard = card.dataset.categoria;
+        
+        if(categoriaSelecionada === 'inicio' || categoriaCard === categoriaSelecionada) {
+            card.classList.remove('d-none'); 
+        } else {
+            card.classList.add('d-none');
+        }
+    });
+}
 
 
+function atualizarEstiloAtivo(linkClicado) {
+    linksCategoria.forEach(l => l.classList.remove('active'));
+    linkClicado.classList.add('active');
+}
+
+export function inicializarCatalogo() {
+    renderizarTodosProdutos();
+
+    linksCategoria.forEach(link => {
+        if (link.textContent.trim() === 'Inicio' && !link.dataset.categoria) {
+            link.dataset.categoria = 'inicio';
+        }
+
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const categoriaSel = link.dataset.categoria; 
+
+            atualizarEstiloAtivo(link);
+            filtrarProdutos(categoriaSel);
+        });
+    });
+    
+    filtrarProdutos('inicio'); 
+}

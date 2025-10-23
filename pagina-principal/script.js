@@ -1,4 +1,5 @@
 import { produtos } from "./produtos.js";
+import { inicializarCatalogo } from "./produtos.js";
 
 /*quando a pagina inicia*/ 
 document.addEventListener("DOMContentLoaded", () => {
@@ -93,3 +94,10 @@ function mostrarProdutos(){
     }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    mostrarProdutosAleatorios("produtos-catalogo", 8);
+})
+
+document.addEventListener("DOMContentLoaded", () => {
+    inicializarCatalogo();
+});
