@@ -1,15 +1,12 @@
+/* Variáveis CSS */
 :root {
   --primary-purple: #c27aff;
-  --dark-purple: rgb(157, 78, 221);
+  --dark-purple: #9d4edd;
   --light-purple: #e0aaff;
-  --text-dark: #333333;
-  --text-light: #666666;
-  --border-light: #e0e0e0;
-  --bg-light: #f8f8f8;
-  --bg-gray: #ececf0;
-  --blur-dark-purple: rgba(157, 78, 221,0.25);
+  --blur-dark-purple: rgba(157, 78, 221, 0.25);
 }
 
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -17,347 +14,145 @@
 }
 
 body {
-  width: 98vw;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #ffffff;
-  color: var(--text-dark);
 }
 
-/* Header */
-.header {
-  width: 100%;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border-light);
-  background-color: #ffffff;
+/* Classes customizadas de cores */
+.text-primary-purple {
+  color: var(--primary-purple) !important;
 }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.bg-primary-purple {
+  background-color: var(--primary-purple) !important;
 }
 
-.logo {
+.bg-light-gray {
+  background-color: #ececf0 !important;
+}
+
+/* Logo Container */
+.logo-container {
   width: 3.125rem;
   height: 3.125rem;
   background: var(--primary-purple);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 28px;
-  font-weight: bold;
 }
+
 .logo-img {
   width: 3rem;
 }
-.info-marca h1 {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--primary-purple);
-  margin: 0;
-}
 
-.info-marca p {
-  font-size: 13px;
-  color: var(--text-light);
-  margin: 0;
-}
-
-/* Nav Tabs */
-.tab-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.nav-tabs-container {
-  display: flex;
-  background-color: var(--bg-gray);
-  justify-content: center;
-  gap: 1.5rem;
-  border-radius: 25px;
-}
-
-.nav-tab {
+/* Botões de Tab Customizados */
+.btn-tab {
   height: 2rem;
   width: 15rem;
-  border: none;
   background-color: transparent;
-  color: var(--text-dark);
+  border: none;
+  border-radius: 25px;
   font-size: 14px;
-  cursor: pointer;
-  position: relative;
+  color: #333;
   transition: all 0.3s ease;
 }
 
-.nav-tab.active {
+.btn-tab.active {
   background: var(--primary-purple);
   color: white;
-  border-radius: 25px;
 }
 
-.nav-tab:hover:not(.active) {
+.btn-tab:hover:not(.active) {
   background-color: var(--dark-purple);
-  border-radius: 25px;
   color: white;
 }
 
-/* Main Content */
-.main-container {
-  padding: 40px 0;
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 30px;
-}
-
-.section-header h2 {
-  font-size: 32px;
-  font-weight: 600;
-  color: var(--text-dark);
-  margin: 0;
-}
-
-.section-header .subtitle {
-  font-size: 14px;
-  color: var(--text-light);
-  margin-top: 5px;
-}
-
-.btn-novo-produto {
+/* Botões Primários Customizados */
+.btn-primary-custom {
   background: var(--primary-purple);
   color: white;
   border: none;
   padding: 12px 25px;
   font-size: 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
   transition: all 0.3s ease;
 }
 
-.btn-novo-produto:hover {
+.btn-primary-custom:hover {
   transform: translateY(-2px);
   background-color: var(--dark-purple);
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(199, 125, 255, 0.3);
 }
 
-/* Tabelas */
-.products-table {
-  width: 100%;
-  border-collapse: collapse;
+.btn-outline-primary-custom {
   background-color: white;
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.products-table thead {
-  background-color: var(--bg-light);
-}
-
-.products-table th {
-  padding: 15px;
-  text-align: left;
-  font-weight: 600;
-  color: var(--text-dark);
-  font-size: 13px;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.products-table td {
-  padding: 20px 15px;
-  border-bottom: 1px solid var(--border-light);
-  font-size: 14px;
-}
-
-.products-table tbody tr:hover {
-  background-color: #fafafa;
-}
-
-.product-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.product-info,
-.order-info {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.product-name,
-.order-name {
-  font-weight: 600;
-  color: var(--text-dark);
-  font-size: 14px;
-}
-
-.product-description,
-.address-description {
-  color: var(--text-light);
-  font-size: 12px;
-}
-
-.category-badge {
-  display: inline-block;
-  background-color: var(--bg-light);
-  color: var(--text-dark);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  width: fit-content;
-}
-
-.icon-img {
-  width: 1.5rem;
-}
-
-.price {
   color: var(--primary-purple);
-  font-weight: 600;
+  border: 2px solid var(--primary-purple);
+  padding: 12px 25px;
   font-size: 14px;
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-}
-
-.action-btn {
-  width: 2rem;
-  height: 2rem;
-  border: 2px solid var(--border-light);
-  background-color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-weight: 600;
   transition: all 0.3s ease;
-  font-size: 16px;
 }
 
+.btn-outline-primary-custom:hover {
+  background-color: rgba(199, 125, 255, 0.05);
+  color: var(--primary-purple);
+  border-color: var(--primary-purple);
+}
+.btn-pedido{
+  width: 12rem;
+}
+
+/* Form Control Focus */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 0.25rem var(--blur-dark-purple);
+}
+
+/* Upload Area */
+.upload-area {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+  border-color: var(--primary-purple) !important;
+  background-color: rgba(199, 125, 255, 0.05) !important;
+}
+
+/* Alert Customizado */
+.alert-info-custom {
+  background-color: rgba(199, 125, 255, 0.1);
+  border: 1px solid var(--primary-purple);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Action Buttons */
 .action-btn.edit {
   color: var(--primary-purple);
-}
-
-.action-btn.delete {
-  color: #ff6b6b;
-}
-
-.action-btn:hover {
-  transform: scale(1.1);
+  border-color: var(--primary-purple) !important;
 }
 
 .action-btn.edit:hover {
-  background-color: rgba(199, 125, 255, 0.1);
-  border-color: var(--primary-purple);
+  background-color: rgba(199, 125, 255, 0.1) !important;
+  border-color: var(--primary-purple) !important;
+  transform: scale(1.1);
 }
 
 .action-btn.delete:hover {
-  background-color: rgba(255, 107, 107, 0.1);
-  border-color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1) !important;
+  border-color: #ff6b6b !important;
+  transform: scale(1.1);
 }
 
-.badge-action {
-  display: flex;
-  background-color: var(--bg-gray);
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  border-radius: 25px;
-}
-
-.badge-status {
-  text-align: center;
-}
-
-.badge-btn {
-  height: 2rem;
-  width: 15rem;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: var(--primary-purple);
-  color: white;
-  border-radius: 25px;
-}
-
-.badge-btn:hover {
-  background-color: var(--dark-purple);
-  color: white;
-}
-
-.card {
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-}
-
-.form-label {
-  font-weight: 600;
-  color: var(--text-dark);
-}
-
-.form-control {
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-}
-
-.form-control:focus {
-  border-color: var(--primary-purple);         
-  box-shadow: 0 0 0 .25rem var(--blur-dark-purple);
-}
-
-.alert {
-  background-color: rgba(199, 125, 255, 0.1);
-  border: 1px solid var(--primary-purple);
-  color: var(--text-dark);
-  border-radius: 8px;
-}
-
-.modal-body{
-  display: flex;
-  flex-direction: column;
-}
-
-.qtd{
-  background-color: var(--primary-purple);
-}
-
-/* Responsive */
+/* Responsivo */
 @media (max-width: 768px) {
-  .section-header {
-    flex-direction: column;
-    gap: 20px;
+  .btn-tab {
+    width: auto;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
   }
 
-  .nav-tabs-container {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+  .btn-pedido{
+  width: 5rem;
+}
 
-  .products-table {
-    font-size: 12px;
-  }
-
-  .products-table th,
-  .products-table td {
-    padding: 10px;
-  }
-
-  .product-image {
-    width: 60px;
-    height: 60px;
-  }
 }
