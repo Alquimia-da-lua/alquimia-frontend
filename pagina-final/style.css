@@ -1,3 +1,10 @@
+:root {
+  --primary-purple: #c27aff;
+  --dark-purple: #9d4edd;
+  --light-purple: #e0aaff;
+  --blur-dark-purple: rgba(157, 78, 221, 0.25);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,111 +21,111 @@ body {
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-  font-size: 14px;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
 }
 .back-link:hover {
   color: #666;
 }
 .page-title {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 .page-subtitle {
   color: #6c757d;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 .section-card {
   background: white;
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 20px;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 .section-title {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 18px;
+  gap: 0.625rem;
+  font-size: 1.125rem;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 .section-title i {
   color: #666;
 }
 .form-label {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   color: #333;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 .form-control {
   border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 14px;
+  border-radius: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
   background-color: #f5f5f5;
 }
 .form-control:focus {
   border-color: #8b5cf6;
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+  box-shadow: 0 0 0 3px var(--blur-dark-purple);
   background-color: white;
 }
 .payment-option {
   border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 12px;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .label-paymento{
     margin: 0; cursor: pointer; flex: 1;
 }
 .payment-option:hover {
-  border-color: #c0c0c0;
+  border-color: var(--dark-purple);
 }
 .payment-option.active {
-  border-color: #8b5cf6;
+  border-color: var(--primary-purple);
   background-color: #f3f0ff;
 }
 .payment-option input[type="radio"] {
-  width: 20px;
-  height: 20px;
-  accent-color: #8b5cf6;
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--dark-purple);
 }
 .payment-option i {
-  font-size: 20px;
+  font-size: 1.25rem;
   color: #666;
 }
 .order-summary {
   background: white;
-  border-radius: 12px;
-  padding: 24px;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   position: sticky;
-  top: 20px;
+  top: 1.25rem;
 }
 .order-summary-title {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 .product-item {
   display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 .product-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 0.5rem;
   object-fit: cover;
   background-color: #e0e0e0;
 }
@@ -126,55 +133,55 @@ body {
   flex: 1;
 }
 .product-name {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 .product-qty {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #6c757d;
 }
 .product-price {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .summary-line {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
-  font-size: 14px;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
 }
 .summary-line.total {
   border-top: 1px solid #e0e0e0;
-  padding-top: 12px;
-  margin-top: 12px;
-  font-size: 18px;
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+  font-size: 1.125rem;
   font-weight: 600;
 }
 .summary-line.total .price {
-  color: #8b5cf6;
+  color: var(--primary-purple)
 }
 .btn-finalize {
-  background-color: #8b5cf6;
+  background-color: var(--primary-purple);
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 14px;
+  border-radius: 0.5rem;
+  padding: 0.875rem;
   width: 100%;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
   transition: all 0.2s;
 }
 .btn-finalize:hover {
-  background-color: #7c3aed;
+  background-color: var(--dark-purple)
 }
 .parcela-option {
-  font-size: 14px;
-  padding: 8px 12px;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
 }
 .parcela-option input[type="radio"] {
-  accent-color: #8b5cf6;
+  accent-color: var(--dark-purple)
 }

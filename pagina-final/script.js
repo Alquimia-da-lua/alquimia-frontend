@@ -4,11 +4,16 @@ function selecionarPagamento(type) {
   });
   event.currentTarget.classList.add("active");
 
+  document.getElementById(type).checked = true;
+  
   const cardDetails = document.getElementById("cardDetails");
+  const pixDetails = document.getElementById("pixDetails");
   if (type === "pix") {
     cardDetails.style.display = "none";
+    pixDetails.style.display = "block"
   } else {
     cardDetails.style.display = "block";
+     pixDetails.style.display = "none"
   }
 }
 
