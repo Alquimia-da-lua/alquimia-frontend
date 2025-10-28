@@ -1,0 +1,196 @@
+[data-bs-theme="dark"] {
+    --bs-body-bg: #0d1117;        
+    --bs-body-color: #f0f6fc;     
+    --bs-secondary-color: #99A1AF;  
+    
+    --card-bg: #161b22;            
+    --input-bg: #1e1e1e;           
+    --table-header-bg: #1f2229;     
+    --border-color-dark: #333;      
+    
+    --primary-purple: #C27AFF;      
+    --custom-purple: #c084fc;      
+    
+    transition: all 0.5s ease;
+}
+
+[data-bs-theme="dark"] body {
+    background: var(--bs-body-bg) !important; 
+    color: var(--bs-body-color) !important; 
+}
+
+[data-bs-theme="dark"] header,
+[data-bs-theme="dark"] .div-cabecalho {
+    background-color: var(--card-bg) !important;
+    border-bottom-color: var(--border-color-dark) !important;
+}
+
+[data-bs-theme="dark"] .card, 
+[data-bs-theme="dark"] .card-login, 
+[data-bs-theme="dark"] .card-register,
+[data-bs-theme="dark"] .section-card,
+[data-bs-theme="dark"] .order-summary, 
+[data-bs-theme="dark"] .modal-content,
+[data-bs-theme="dark"] .offcanvas {
+    background-color: var(--card-bg) !important;
+    color: var(--bs-body-color) !important;
+    border-color: var(--border-color-dark) !important;
+}
+
+[data-bs-theme="dark"] h1, [data-bs-theme="dark"] h2,
+[data-bs-theme="dark"] h3, [data-bs-theme="dark"] h4,
+[data-bs-theme="dark"] h5, [data-bs-theme="dark"] p,
+[data-bs-theme="dark"] label,
+[data-bs-theme="dark"] span:not(.badge) { 
+    color: var(--bs-body-color) !important;
+}
+
+[data-bs-theme="dark"] .form-control,
+[data-bs-theme="dark"] .form-select,
+[data-bs-theme="dark"] .input-group-text,
+[data-bs-theme="dark"] textarea {
+    background-color: var(--input-bg) !important;
+    color: var(--bs-body-color) !important;
+    border-color: var(--border-color-dark) !important;
+}
+
+[data-bs-theme="dark"] .form-control::placeholder,
+[data-bs-theme="dark"] .text-muted,
+[data-bs-theme="dark"] .descricao-loja {
+    color: var(--bs-secondary-color) !important;
+}
+
+[data-bs-theme="dark"] hr {
+    border-color: var(--border-color-dark) !important;
+}
+
+[data-bs-theme="dark"] .text-primary-purple,
+[data-bs-theme="dark"] #nome-alquimia,
+[data-bs-theme="dark"] #esqueceuSenha-link,
+[data-bs-theme="dark"] #register-link,
+[data-bs-theme="dark"] #login-link {
+    color: var(--custom-purple) !important;
+}
+
+[data-bs-theme="dark"] .bi-arrow-left-short,
+[data-bs-theme="dark"] .fas,
+[data-bs-theme="dark"] .olhoSenha {
+    color: var(--bs-body-color) !important;
+    background: transparent !important; 
+}
+
+[data-bs-theme="dark"] .action-btn img {
+    filter: invert(1) hue-rotate(180deg) brightness(1.5) !important; 
+}
+
+[data-bs-theme="dark"] .nav-custom-color .nav-link {
+    background-color: var(--primary-purple) !important; 
+    color: white !important; 
+    border: 1px solid var(--primary-purple) !important;
+}
+
+[data-bs-theme="dark"] .nav-custom-color .nav-link.active {
+    background-color: var(--table-header-bg) !important; 
+    color: var(--bs-body-color) !important; 
+    border-color: var(--table-header-bg) !important;
+}
+
+[data-bs-theme="dark"] .bg-light-gray {
+    background-color: var(--card-bg) !important; 
+    border: 1px solid var(--border-color-dark) !important; 
+}
+
+[data-bs-theme="dark"] .btn-tab {
+    background-color: var(--primary-purple) !important; 
+    color: white !important; 
+    border-color: var(--primary-purple) !important;
+}
+
+[data-bs-theme="dark"] .btn-tab.active {
+    background-color: var(--table-header-bg) !important; 
+    color: var(--bs-body-color) !important; 
+    border-color: var(--table-header-bg) !important;
+}
+
+[data-bs-theme="dark"] .h2.fw-semibold,
+[data-bs-theme="dark"] p.text-muted.small {
+    color: var(--bs-body-color) !important;
+}
+
+[data-bs-theme="dark"] .table.bg-white,
+[data-bs-theme="dark"] .table {
+    background-color: var(--card-bg) !important;
+    color: var(--bs-body-color) !important;
+    border-color: var(--border-color-dark) !important;
+}
+
+[data-bs-theme="dark"] .table thead.table-light,
+[data-bs-theme="dark"] .table thead,
+[data-bs-theme="dark"] .table thead th {
+    background-color: var(--table-header-bg) !important; 
+    color: white !important; 
+    border-color: var(--border-color-dark) !important;
+}
+
+[data-bs-theme="dark"] .table tbody,
+[data-bs-theme="dark"] .table tbody tr,
+[data-bs-theme="dark"] .table tbody td {
+    background-color: var(--card-bg) !important; 
+    color: var(--bs-body-color) !important;
+    border-color: var(--border-color-dark) !important;
+}
+
+[data-bs-theme="dark"] .table tbody tr td img {
+    filter: brightness(0.7) contrast(1.1); 
+}
+
+[data-bs-theme="dark"] .badge.bg-light.text-dark {
+    background-color: var(--table-header-bg) !important;
+    color: var(--bs-body-color) !important;
+    border: 1px solid var(--border-color-dark) !important;
+}
+
+[data-bs-theme="dark"] .btn-primary-custom {
+    background-color: var(--primary-purple) !important;
+    border-color: var(--primary-purple) !important;
+    color: white !important;
+}
+
+[data-bs-theme="dark"] .badge-pedido {
+    background-color: var(--card-bg) !important; 
+    border: 1px solid var(--border-color-dark) !important; 
+    border-radius: 50px !important; 
+    color: var(--bs-body-color) !important; 
+}
+
+[data-bs-theme="dark"] .badge-pedido > span {
+    background-color: transparent !important; 
+    color: var(--bs-body-color) !important; 
+    padding: 0 !important; 
+}
+
+[data-bs-theme="dark"] .bg-light,
+[data-bs-theme="dark"] .bg-body-tertiary {
+    background-color: var(--card-bg) !important; 
+}
+
+[data-bs-theme="dark"] .alert-info-custom {
+    background-color: var(--table-header-bg) !important; 
+    color: var(--bs-body-color) !important; 
+    border-color: var(--border-color-dark) !important;
+}
+
+[data-bs-theme="dark"] .row,
+[data-bs-theme="dark"] header.row {
+    background-color: transparent !important; 
+    border: none !important;
+}
+
+[data-bs-theme="dark"] header {
+    background-color: var(--bs-body-bg) !important;
+    border-bottom: none !important; 
+}
+
+[data-bs-theme="dark"] .titulo-card {
+    border: none !important;
+}
