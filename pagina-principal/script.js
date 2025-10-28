@@ -91,9 +91,11 @@ function mostrarProdutos() {
             </div>
             <div class="modal-footer">
               <button class="botao-modal btn btnAddCarrinho"
-                data-cd="${item.cdProduto}"
-                data-nome="${item.nmProduto}"
-                data-valor="${item.vlProduto}"> 
+                data-cd="${p.cdProduto}"
+                data-nome="${p.nmProduto}"
+                data-valor="${p.vlProduto}"
+                data-categoria="${p.categoria}"
+                data-imagem="${p.imagem}">
                 Adicionar ao carrinho
               </button>
             </div>
@@ -154,6 +156,7 @@ function atualizaCarrinho() {
     html += `
       <div class="item-carrinho d-flex justify-content-between align-items-center mb-2">
         <div>
+          <span class="badge badge-secondary mt-2 mb-2" style="background-color:#99A1AF">${item.categoria}</span><br>
           <strong>${item.nmProduto}</strong><br>
           R$ ${Number(item.vlProduto).toFixed(2)} x
           <input type="number" min="1" value="${item.quantidade}"
@@ -166,7 +169,10 @@ function atualizaCarrinho() {
           <button class="btn btn-sm btn-danger" onclick="removeItem(${item.cdProduto})">Remover</button>
         </div>
       </div>
+      
     `;
+
+
   });
 
   html += `
@@ -181,7 +187,7 @@ function atualizaCarrinho() {
   salvarCarrinho();
 }
 
-function adicionarAoCarrinho(cdProduto, nmProduto, vlProduto) {
+function adicionarAoCarrinho(cdProduto, nmProduto, vlProduto, categoria) {
   const existe = carrinho.find((i) => i.cdProduto === cdProduto);
   if (existe) {
     existe.quantidade += 1;
@@ -190,6 +196,7 @@ function adicionarAoCarrinho(cdProduto, nmProduto, vlProduto) {
       cdProduto: cdProduto,
       nmProduto: nmProduto,
       vlProduto: vlProduto,
+      categoria: categoria,
       quantidade: 1,
     });
   }
@@ -217,8 +224,10 @@ document.addEventListener("click", function (e) {
     const cdProduto = parseInt(e.target.dataset.cd, 10);
     const nmProduto = e.target.dataset.nome;
     const vlProduto = parseFloat(String(e.target.dataset.valor).replace(",", "."));
+    const categoria = e.target.dataset.categoria;
 
-    adicionarAoCarrinho(cdProduto, nmProduto, vlProduto);
+
+    adicionarAoCarrinho(cdProduto, nmProduto, vlProduto, categoria);
     fecharModal(e.target);
     abrirOffcanvasCarrinho();
   }
@@ -239,4 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
       atualizaCarrinho();
     });
   }
+
+  
 });
