@@ -155,22 +155,24 @@ function atualizaCarrinho() {
 
         html += `
         <div class="item-carrinho d-flex justify-content-between align-items-center mb-2">
-            <div>
-            <span class="badge badge-secondary mt-2 mb-2" style="background-color:#99A1AF">${item.categoria ?? ""}</span><br>
-            <strong>${item.nmProduto}</strong><br>
-            R$ ${Number(item.vlProduto).toFixed(2)} x
-            <input type="number" min="1" value="${item.quantidade}"
-                    class="form-control form-control-sm d-inline-block"
-                    style="width:70px"
-                    onchange="mudarQuantidade(${item.cdProduto}, this.value)">
-            </div>
-            <div>
-            R$ ${subtotal.toFixed(2)}
-            <button class="btn btn-sm btn-danger" onclick="removeItem(${item.cdProduto})">Remover</button>
+            <div class="d-flex align-items-center" style="gap:.75rem;">
+                <img src="${item.imagem}" alt="${item.nmProduto}" style="width:48px;height:48px;object-fit:cover;border-radius:8px;">
+                <div>   
+                    <span class="badge badge-secondary mt-2 mb-2" style="background-color:#99A1AF">${item.categoria ?? ""}</span><br>
+                    <strong>${item.nmProduto}</strong><br>
+                    R$ ${Number(item.vlProduto).toFixed(2)} x
+                    <input type="number" min="1" value="${item.quantidade}"
+                        class="form-control form-control-sm d-inline-block"
+                        style="width:70px"
+                        onchange="mudarQuantidade(${item.cdProduto}, this.value)">
+                </div>
+                </div>
+                <div>
+                R$ ${subtotal.toFixed(2)}
+                <button class="btn btn-sm btn-danger" onclick="removeItem(${item.cdProduto})">Remover</button>
             </div>
         </div>
-      
-    `;
+`;
 
 
     });
@@ -221,7 +223,7 @@ window.removeItem = function (cdProduto) {
 
 
 document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("btnAddCarrinho")) {
+    document.addEventListener("click", function (e) {
         const btn = e.target.closest(".btnAddCarrinho");
         if (!btn) return;
 
@@ -234,7 +236,7 @@ document.addEventListener("click", function (e) {
         adicionarAoCarrinho(cdProduto, nmProduto, vlProduto, categoria, imagem);
         fecharModal(btn);
         abrirOffcanvasCarrinho();
-    }
+    });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
