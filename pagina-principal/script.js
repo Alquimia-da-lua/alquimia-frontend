@@ -40,9 +40,10 @@ function mostrarProdutos() {
         <div class="card h-100">
           <img src="${p.imagem}" alt="${p.nmProduto}" class="card-img">
           <div class="card-body d-flex flex-column">
+            <span class="badge badge-secondary mt-2 mb-2" style="background-color:#99A1AF">${p.categoria}</span>
             <h5 class="card-title">${p.nmProduto}</h5>
-            <p class="card-text">${p.dsProduto}</p>
-            <p class="fw-bold">R$ ${p.vlProduto}</p>
+            <p class="card-text"></p>
+            <p class="fw-bold" style="color:#C27AFF">R$ ${p.vlProduto}</p>
             <div class="mt-auto">
               <button class="botao-card btn w-100" data-bs-toggle="modal" data-bs-target="#cardModal-${p.cdProduto}">
                 Adicionar ao pedido
