@@ -10,3 +10,15 @@ function verSenha() {
     inputSenha.type = "password";
   }
 }
+
+function toastSucesso() {
+  var toastEl = document.getElementById("toastSucesso");
+  var toast = new bootstrap.Toast(toastEl);
+  toast.show();
+}
+
+function toastErro() {
+  var toastEl = document.getElementById("toastErro");
+  var toast = new bootstrap.Toast(toastEl);
+  toast.show();
+}
