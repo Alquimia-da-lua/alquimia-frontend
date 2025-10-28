@@ -9,13 +9,14 @@ body {
 }
 
 #loginBtn {
-  background-image: linear-gradient(#c084fc, #a855f7);
+  background: #c27aff;
   border: none;
+  transition: all 0.3s ease;
 }
 
 #loginBtn:hover {
-  background-image: linear-gradient(#9d4edd, #9d4edd);
-  transition: all 0.5 ease-in-out;
+  background: #9d4edd;
+  transform: translateY(-2px);
 }
 
 .card-login {
