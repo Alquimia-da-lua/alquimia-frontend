@@ -85,7 +85,7 @@ document
 
             htmlItens += `
             <li class="list-group-item d-flex">
-              <img src="../images/produtos/pele/oleo_corporal_amendoas.png" alt="Produto" class="product-image me-3">
+              <img src="${item.imagem}" alt="${item.nmProduto}" class="me-3" style="width:48px;height:48px;object-fit:cover;border-radius:8px;">
               <div class="product-info">
                 <div class="product-name me-3">${item.nmProduto}</div>
                 <div class="product-qty">Qtd. ${item.quantidade}</div>
