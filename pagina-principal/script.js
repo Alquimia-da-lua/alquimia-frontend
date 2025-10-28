@@ -3,6 +3,8 @@ import { inicializarCatalogo } from "./produtos.js";
 
 
 let termoBusca = "";
+let categoriaAtiva ="inicio";
+
 const buscaInput = document.getElementById("buscaInput");
 if (buscaInput) {
   buscaInput.addEventListener("input", function () {
@@ -12,14 +14,36 @@ if (buscaInput) {
       if (this.value === "") bsCollapse.show(); else bsCollapse.hide();
     }
     termoBusca = this.value;
+    categoriaAtiva = "";
     mostrarProdutos();
   });
 }
 
+export function setCategoriaAtiva(novaCategoria) {
+    categoriaAtiva = novaCategoria;
+    termoBusca = ""; 
+    if (buscaInput) buscaInput.value = "";
+
+    const accordionCollapse = document.querySelector("#collapseOne");
+    if (accordionCollapse && window.bootstrap?.Collapse) {
+        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(accordionCollapse);
+        if (categoriaAtiva === 'inicio') bsCollapse.show(); else bsCollapse.hide();
+    }
+
+    mostrarProdutos();
+}
+
 function filtrarProdutos() {
   const t = termoBusca.toLowerCase();
+  if (t.length > 0) {
+    return produtos.filter((p) =>
+      p.nmProduto.toLowerCase().includes(t) || p.categoria.toLowerCase().includes(t)
+    );
+  }
+
+  const cat = categoriaAtiva.toLowerCase();
   return produtos.filter((p) =>
-    p.nmProduto.toLowerCase().includes(t) || p.categoria.toLowerCase().includes(t)
+    cat === 'inicio' || p.categoria.toLowerCase() === cat
   );
 }
 
@@ -34,18 +58,19 @@ function mostrarProdutos() {
   }
 
   let html = "";
-  itens.forEach((p) => {
+  itens.forEach((item) => { 
+    const precoFormatado = item.vlProduto.toFixed(2);
     html += `
-      <div class="col-md-4 mb-4 roleCard" data-categoria="${p.categoria}">
+      <div class="col-md-4 mb-4 roleCard" data-categoria="${item.categoria.toLowerCase()}">
         <div class="card h-100">
-          <img src="${p.imagem}" alt="${p.nmProduto}" class="card-img">
+          <img src="${item.imagem}" alt="${item.nmProduto}" class="card-img">
           <div class="card-body d-flex flex-column">
-            <span class="badge badge-secondary mt-2 mb-2" style="background-color:#99A1AF">${p.categoria}</span>
-            <h5 class="card-title">${p.nmProduto}</h5>
-            <p class="card-text"></p>
-            <p class="fw-bold" style="color:#C27AFF">R$ ${p.vlProduto}</p>
+            <span class="badge badge-secondary mt-2 mb-2" style="background-color:#99A1AF">${item.categoria}</span>
+            <h5 class="card-title">${item.nmProduto}</h5>
+            
+            <p class="fw-bold" style="color:#C27AFF">R$ ${precoFormatado.replace('.', ',')}</p>
             <div class="mt-auto">
-              <button class="botao-card btn w-100" data-bs-toggle="modal" data-bs-target="#cardModal-${p.cdProduto}">
+              <button class="botao-card btn w-100" data-bs-toggle="modal" data-bs-target="#cardModal-${item.cdProduto}">
                 Adicionar ao pedido
               </button>
             </div>
@@ -53,24 +78,22 @@ function mostrarProdutos() {
         </div>
       </div>
 
-      <div class="modal fade" id="cardModal-${p.cdProduto}" tabindex="-1" aria-labelledby="cardModalLabel-${p.cdProduto}" aria-hidden="true">
+      <div class="modal fade" id="cardModal-${item.cdProduto}" tabindex="-1" aria-labelledby="cardModalLabel-${item.cdProduto}" aria-hidden="true">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="cardModalLabel-${p.cdProduto}">${p.nmProduto}</h5>
+              <h5 class="modal-title" id="cardModalLabel-${item.cdProduto}">${item.nmProduto}</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
             </div>
             <div class="modal-body">
-              <img src="${p.imagem}" class="img-fluid rounded mb-3" alt="Imagem do Produto">
-              <p>${p.dsProduto}</p>
-              <strong>R$ ${p.vlProduto}</strong>
+              <img src="${item.imagem}" class="img-fluid rounded mb-3" alt="Imagem do Produto">
+              <p>${item.dsProduto}</p> <strong>R$ ${precoFormatado.replace('.', ',')}</strong>
             </div>
             <div class="modal-footer">
-              <!-- data-* alinhados com o carrinho -->
               <button class="botao-modal btn btnAddCarrinho"
-                data-cd="${p.cdProduto}"
-                data-nome="${p.nmProduto}"
-                data-valor="${p.vlProduto}">
+                data-cd="${item.cdProduto}"
+                data-nome="${item.nmProduto}"
+                data-valor="${item.vlProduto}"> 
                 Adicionar ao carrinho
               </button>
             </div>
@@ -202,7 +225,7 @@ document.addEventListener("click", function (e) {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  inicializarCatalogo?.();
+  inicializarCatalogo?.(setCategoriaAtiva);
   mostrarProdutos();
 
   carregarCarrinho();
