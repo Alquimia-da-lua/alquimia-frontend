@@ -9,13 +9,25 @@ body {
 }
 
 #criarContaBtn {
-  background: linear-gradient(#c084fc, #a855f7);
+  background: #c27aff;
   border: none;
+  transition: all 0.3s ease;
+}
+
+#criarContaBtn:hover {
+  background: #9d4edd;
+  transform: translateY(-2px);
 }
 
 #login-link {
   text-decoration: none;
   color: #c084fc;
+  transition: all 0.3s ease;
+}
+
+#login-link:hover {
+  color: #9d4edd;
+  font-weight: 600;
 }
 
 .card-register {
