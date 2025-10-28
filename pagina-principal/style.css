@@ -2,8 +2,8 @@
     --cor-principal: #C27AFF;
     --bs-secondary: #99A1AF;
     --dark-purple: #9d4edd;
-    --card-bg: #ffffff;
-    --body-bg: #ffffff;
+    --card-bg: hsl(0, 0%, 100%);
+    --body-bg: #f5f6f8;
 }
 
 *{
@@ -11,6 +11,11 @@
     padding: 0;
     scroll-behavior: smooth;
 }
+
+body{
+    background-color: var(--body-bg) !important;
+}
+
 
 .accordion-button{
     background-color: white !important;
@@ -64,8 +69,7 @@
 .input-buscar{
     margin: 3rem;
 }
-
-
+ 
 /*nav/tab*/
 .nav-custom-color .nav-link.active {
     background-color: white !important;
@@ -117,6 +121,14 @@ footer{
     background-color: #C27AFF;
 }
 
+
+/*badge span card*/
+
+.badge{
+    width: 7rem;
+}
+
+
 /* Tema Escuro */
 [data-bs-theme="dark"] {
     --bs-body-bg: #0d1117; 
@@ -145,7 +157,7 @@ body {
 
 .accordion-button,
 .accordion-button:not(.collapsed) {
-    background-color: white !important; 
+    background-color: var(--body-bg) !important ; 
     color: var(--bs-body-color);
 }
 
