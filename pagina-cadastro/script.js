@@ -263,13 +263,25 @@ form.addEventListener("submit", function (event) {
     })
       .then((response) => {
         if (response.ok) {
-          toastSucesso();
-          form.reset();
           return response.json();
         } else {
           toastErro();
         }
       })
+      .then((data) => {
+        // salva dados do usuário no localStorage
+        localStorage.setItem(
+          "usuario",
+          JSON.stringify({
+            nome: data.nmUsuario,
+            email: data.emailUsuario,
+            telefone: data.nuTelefone,
+          })
+        );
+        toastSucesso();
+        form.reset();
+      })
+
       .catch((error) => {
         console.error(`Erro: ${error.message}`);
         toastErro();
