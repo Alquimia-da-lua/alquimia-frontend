@@ -105,8 +105,8 @@ footer{
     transition: background-color 0.5s !important;
 }
 
-.botao-card :hover{
-    background-color: var(--dark-purple) ;
+.botao-card:hover{
+    background-color: var(--dark-purple) !important;
 }
 
 #input-buscar-produtos{
