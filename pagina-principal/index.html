@@ -12,36 +12,46 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <header class="w-100">
-        <div class="row d-flex div-cabecalho">
-            <section class="col logo-nome-loja d-flex">
-                <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="" class="icon icon-logo"></a>
-                <div>
-                    <h4 class="nome-loja">Alquimia da Lua</h4>
-                    <span class="descricao-loja">Cosméticos Naturais</span>
+    <header class="w-100 header-top border-bottom">
+        <div class="container-fluid">
+            <div class="row align-items-center g-3 py-3">
+                <section
+                    class="col-12 col-md-4 d-flex align-items-center justify-content-center justify-content-md-start gap-2">
+                    <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Logo"
+                            class="icon-48 rounded-2"></a>
+                    <div class="text-center text-md-start">
+                        <h4 class="m-0 nome-loja">Alquimia da Lua</h4>
+                        <small class="text-muted descricao-loja">Cosméticos Naturais</small>
+                    </div>
+                </section>
+
+                <div class="col-8 col-md-4">
+                    <div class="input-group w-100">
+                        <input type="text" class="form-control" placeholder="Buscar..." id="buscaInput">
+                        <button class="input-group-text btn btn-light" id="input-buscar-produtos">
+                            <img src="../images/icon/lupa.png" class="icon-20" alt="">
+                        </button>
+                    </div>
                 </div>
-            </section>
 
-            <div class="col input-buscar input-group mt-3">
-                <input type="text" class="form-control" placeholder="Buscar..." class="input-buscar" id="buscaInput">
-                <span class="input-group-text span-lupinha" id="input-buscar-produtos"><img
-                        src="../images/icon/lupa.png" alt="lupinha" class="img-lupinha"></span>
+                <section
+                    class="col-4 col-md-4 d-flex align-items-center justify-content-end justify-content-md-end gap-3">
+                    <button type="button" class="btn p-0" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasCarrinho">
+                        <img src="../images/icon/shopping-cart-preto.png" class="icon icon-28" alt="Carrinho">
+                    </button>
+                    <button type="button" class="btn p-0" onclick="window.location.href='../pagina-login/index.html';">
+                        <img src="../images/icon/user-preto.png" class="icon icon-28" alt="Login">
+                    </button>
+                    <button type="button" class="btn p-0" id="mudaTema">
+                        <img src="../images/icon/night-mode-dark.png" class="icon icon-28" alt="Tema">
+                    </button>
+                </section>
+
             </div>
-
-            <section class="col icones-pg d-flex w-100">
-                <button type="button" class="botao-icone btn" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasCarrinho" aria-controls="offcanvasCarrinho"
-                    aria-label="Abrir carrinho"><img src="../images/icon/shopping-cart-preto.png" alt="icone carrinho"
-                        class="icon icon-carrinho"></button>
-                <button type="button" class="botao-icone btn"
-                    onclick="window.location.href='../pagina-login/index.html';"><img
-                        src="../images/icon/user-preto.png" alt="icone user" class="icon icon-user"></button>
-                <button type="button" class="botao-icone btn btn-outline-light" id="mudaTema"><img
-                        src="../images/icon/night-mode-dark.png" alt="icone darkmode"
-                        class="icon icon-dark-mode"></button>
-            </section>
         </div>
     </header>
+
     <main class="flex-grow-1">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
