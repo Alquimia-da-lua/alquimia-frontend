@@ -72,34 +72,36 @@ if (uploadArea) {
     this.classList.remove("border-primary");
     this.style.borderColor = "";
     this.style.backgroundColor = "";
-    
+
     const files = e.dataTransfer.files;
     if (files.length > 0) {
       const imageInput = document.getElementById("imageInput");
       imageInput.files = files;
-      
+
       // Exibe o nome do arquivo
       console.log("Imagem carregada via drag and drop:", files[0].name);
-      
+
       // Opcional: mostrar preview da imagem
       showImagePreview(files[0]);
     }
   });
 
   // Evento de mudança no input de arquivo
-  document.getElementById("imageInput").addEventListener("change", function(e) {
-    if (this.files.length > 0) {
-      console.log("Imagem selecionada:", this.files[0].name);
-      showImagePreview(this.files[0]);
-    }
-  });
+  document
+    .getElementById("imageInput")
+    .addEventListener("change", function (e) {
+      if (this.files.length > 0) {
+        console.log("Imagem selecionada:", this.files[0].name);
+        showImagePreview(this.files[0]);
+      }
+    });
 }
 
 // Função para mostrar preview da imagem (opcional)
 function showImagePreview(file) {
-  if (file && file.type.startsWith('image/')) {
+  if (file && file.type.startsWith("image/")) {
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
       const uploadArea = document.querySelector(".upload-area");
       // Atualiza o conteúdo da área de upload com preview
       uploadArea.innerHTML = `

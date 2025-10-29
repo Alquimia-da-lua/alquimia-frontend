@@ -5,15 +5,15 @@ function selecionarPagamento(type) {
   event.currentTarget.classList.add("active");
 
   document.getElementById(type).checked = true;
-  
+
   const cardDetails = document.getElementById("cardDetails");
   const pixDetails = document.getElementById("pixDetails");
   if (type === "pix") {
     cardDetails.style.display = "none";
-    pixDetails.style.display = "block"
+    pixDetails.style.display = "block";
   } else {
     cardDetails.style.display = "block";
-     pixDetails.style.display = "none"
+    pixDetails.style.display = "none";
   }
 }
 
@@ -57,33 +57,32 @@ document
     e.target.value = value;
   });
 
-  //finalizar compras itens carrinho
+//finalizar compras itens carrinho
 
-  document.addEventListener("DOMContentLoaded", () =>{
-    const keycarrinho = 'carrinho';
-    let itensCarrinho = [];
+document.addEventListener("DOMContentLoaded", () => {
+  const keycarrinho = "carrinho";
+  let itensCarrinho = [];
 
-    const carrinhoListaLocalStorage = localStorage.getItem(keycarrinho);
+  const carrinhoListaLocalStorage = localStorage.getItem(keycarrinho);
 
-    if(carrinhoListaLocalStorage){
-      try{
-        itensCarrinho = JSON.parse(carrinhoListaLocalStorage);
+  if (carrinhoListaLocalStorage) {
+    try {
+      itensCarrinho = JSON.parse(carrinhoListaLocalStorage);
 
-        if(itensCarrinho && itensCarrinho.length > 0){
-          const containerItens = document.getElementById("product-item")
+      if (itensCarrinho && itensCarrinho.length > 0) {
+        const containerItens = document.getElementById("product-item");
 
-          let htmlItens = '';
-          let totalPedido = 0;
-          let subtotal = 0;
-          const freteUnico = 15;
+        let htmlItens = "";
+        let totalPedido = 0;
+        let subtotal = 0;
+        const freteUnico = 15;
 
-          itensCarrinho.forEach(item => {
+        itensCarrinho.forEach((item) => {
+          totalItem = item.vlProduto * item.quantidade;
+          subtotal += totalItem;
+          totalPedido = totalPedido + totalItem + freteUnico;
 
-            totalItem = item.vlProduto * item.quantidade
-            subtotal += totalItem;          
-            totalPedido = totalPedido + totalItem + freteUnico;
-
-            htmlItens += `
+          htmlItens += `
             <li class="list-group-item d-flex">
               <img src="${item.imagem}" alt="${item.nmProduto}" class="me-3" style="width:48px;height:48px;object-fit:cover;border-radius:8px;">
               <div class="product-info">
@@ -93,12 +92,11 @@ document
               <div class="product-price">R$ ${totalItem}</div>
             </li>
             `;
+        });
 
-          })
+        const containetTotal = document.getElementById("resumo-final");
 
-          const containetTotal = document.getElementById("resumo-final");
-
-          containetTotal.innerHTML = `
+        containetTotal.innerHTML = `
           <div class="summary-line">
             <span>Subtotal:</span>
             <span>R$ ${subtotal}</span>
@@ -112,23 +110,20 @@ document
             <span>Total:</span>
             <span class="price">R$ ${totalPedido}</span>
           </div>
-          `
+          `;
 
-
-          if(containerItens){
-            containerItens.innerHTML = htmlItens;
-          }else{
-            console.error("container nao encontrado")
-          }
-        }else{
-          console.error("carrinho vazio")
+        if (containerItens) {
+          containerItens.innerHTML = htmlItens;
+        } else {
+          console.error("container nao encontrado");
         }
-      }catch(e){
-        console.error("erro no parse do json")
+      } else {
+        console.error("carrinho vazio");
       }
-    }else{
-      console.log('nenhum dado de carrinho encontrado no localstorage')
+    } catch (e) {
+      console.error("erro no parse do json");
     }
-
-  });
-
+  } else {
+    console.log("nenhum dado de carrinho encontrado no localstorage");
+  }
+});

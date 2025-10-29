@@ -1,101 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alquimia da lua</title>
-    <link rel="stylesheet" href="./style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<body>
+  <body>
     <header class="w-100 header-top border-bottom">
-        <div class="container-fluid">
-            <div class="row align-items-center g-3 py-3">
-                <section
-                    class="col-12 col-md-4 d-flex align-items-center justify-content-center justify-content-md-start gap-2">
-                    <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Logo"
-                            class="icon-48 rounded-2"></a>
-                    <div class="text-center text-md-start">
-                        <h4 class="m-0 nome-loja">Alquimia da Lua</h4>
-                        <small class="text-muted descricao-loja">Cosméticos Naturais</small>
-                    </div>
-                </section>
-
-                <div class="col-8 col-md-4">
-                    <div class="input-group w-100">
-                        <input type="text" class="form-control" placeholder="Buscar..." id="buscaInput">
-                        <button class="input-group-text btn btn-light" id="input-buscar-produtos">
-                            <img src="../images/icon/lupa.png" class="icon-20" alt="">
-                        </button>
-                    </div>
-                </div>
-                <section
-                    class="col-4 col-md-4 d-flex align-items-center justify-content-end justify-content-md-end gap-3">
-                    <button type="button" class="btn p-0" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasCarrinho">
-                        <img src="../images/icon/shopping-cart-preto.png" class="icon-28" alt="Carrinho">
-                    </button>
-                    <button type="button" class="btn p-0" onclick="window.location.href='../pagina-login/index.html';">
-                        <img src="../images/icon/user-preto.png" class="icon-28" alt="Login">
-                    </button>
-                    <button type="button" class="btn p-0" id="mudaTema">
-                        <img src="../images/icon/night-mode-dark.png" class="icon-28" alt="Tema">
-                    </button>
-                </section>
-
+      <div class="container-fluid">
+        <div class="row align-items-center g-3 py-3">
+          <section
+            class="col-12 col-md-4 d-flex align-items-center justify-content-center justify-content-md-start gap-2"
+          >
+            <a href="./index.html"
+              ><img
+                src="../images/icon/logo-alquimia.png"
+                alt="Logo"
+                class="icon-48 rounded-2"
+            /></a>
+            <div class="text-center text-md-start">
+              <h4 class="m-0 nome-loja">Alquimia da Lua</h4>
+              <small class="text-muted descricao-loja"
+                >Cosméticos Naturais</small
+              >
             </div>
+          </section>
+
+          <div class="col-8 col-md-4">
+            <div class="input-group w-100">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Buscar..."
+                id="buscaInput"
+              />
+              <button
+                class="input-group-text btn btn-light"
+                id="input-buscar-produtos"
+              >
+                <img src="../images/icon/lupa.png" class="icon-20" alt="" />
+              </button>
+            </div>
+          </div>
+          <section
+            class="col-4 col-md-4 d-flex align-items-center justify-content-end justify-content-md-end gap-3"
+          >
+            <button
+              type="button"
+              class="btn p-0"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasCarrinho"
+            >
+              <img
+                src="../images/icon/shopping-cart-preto.png"
+                class="icon-28"
+                alt="Carrinho"
+              />
+            </button>
+            <button
+              type="button"
+              class="btn p-0"
+              onclick="window.location.href='../pagina-login/index.html';"
+            >
+              <img
+                src="../images/icon/user-preto.png"
+                class="icon-28"
+                alt="Login"
+              />
+            </button>
+            <button type="button" class="btn p-0" id="mudaTema">
+              <img
+                src="../images/icon/night-mode-dark.png"
+                class="icon-28"
+                alt="Tema"
+              />
+            </button>
+          </section>
         </div>
+      </div>
     </header>
 
     <main>
-        <h1 class="text-center">SITE EM REFORMULAÇÃO MÁGICA</h1>
-        <img class="align-items-center justify-content-center" src="../images/diversos/pg-em-manutencao.png" alt="Caldeirão com tubos de ensaio e robo de madeira">
+      <h1 class="text-center">SITE EM REFORMULAÇÃO MÁGICA</h1>
+      <img
+        class="align-items-center justify-content-center"
+        src="../images/diversos/pg-em-manutencao.png"
+        alt="Caldeirão com tubos de ensaio e robo de madeira"
+      />
     </main>
 
     <footer class="mb-5">
-            <div class="row mb-3">
-                <div class="col">
-                    <section class="col logo-nome-loja d-flex">
-                        <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Imagem de Lua com folhas" class="icon icon-logo mt-3 text-start"></a>
-                        <div>
-                            <h4 class="nome-loja text-nowrap mt-3 text-start">Alquimia da Lua</h4>
-                            <p class="descricao-loja mt-3">Cosméticos Naturais</p>
-                        </div>
-                    </section>
-                    <h6 class="ms-4">Sua loja de cosméticos naturais e artesanais de confiança.</h6>
-                </div>
-                <div class="col mt-3">
-                    <h6 class="text-white">Categorias</h6>
-                    <a href="../pagina-principal/index.html" class="footer-a">Pele</a><br>
-                    <a href="../pagina-principal/index.html" class="footer-a">Cabelo</a><br>
-                    <a href="../pagina-principal/index.html" class="footer-a">Aromatizante</a>
-                </div>
-                <div class="col mt-3">
-                    <h6 class="text-white">Atendimento</h6>
-                    <a href="./manutencao.html" class="footer-a">Central de Ajuda</a><br>
-                    <a href="./manutencao.html" class="footer-a">Troca e Devoluções</a><br>
-                    <a href="./manutencao.html" class="footer-a">Política de Privacidade</a><br>
-                    <a href="./manutencao.html" class="footer-a">Termos de Uso</a><br>
-                </div>
-                <div class="col mt-3">
-                    <h6 class="text-white">Contato</h6>
-                    <span>WhatsApp: (48)99244-7559</span><br>
-                    <span>Email: contato@alquimiadalua.com.br</span><br>
-                    <span>Seg-Sex: 9h às 18h</span>
-                </div>
+      <div class="row mb-3">
+        <div class="col">
+          <section class="col logo-nome-loja d-flex">
+            <a href="./index.html"
+              ><img
+                src="../images/icon/logo-alquimia.png"
+                alt="Imagem de Lua com folhas"
+                class="icon icon-logo mt-3 text-start"
+            /></a>
+            <div>
+              <h4 class="nome-loja text-nowrap mt-3 text-start">
+                Alquimia da Lua
+              </h4>
+              <p class="descricao-loja mt-3">Cosméticos Naturais</p>
             </div>
-            <div class="row border-top border-secondary">
-                <p class="text-center mt-3">&copy;2025 Alquimia da lua. Todos os direitos reservados.</p>
-            </div>
+          </section>
+          <h6 class="ms-4">
+            Sua loja de cosméticos naturais e artesanais de confiança.
+          </h6>
+        </div>
+        <div class="col mt-3">
+          <h6 class="text-white">Categorias</h6>
+          <a href="../pagina-principal/index.html" class="footer-a">Pele</a
+          ><br />
+          <a href="../pagina-principal/index.html" class="footer-a">Cabelo</a
+          ><br />
+          <a href="../pagina-principal/index.html" class="footer-a"
+            >Aromatizante</a
+          >
+        </div>
+        <div class="col mt-3">
+          <h6 class="text-white">Atendimento</h6>
+          <a href="./manutencao.html" class="footer-a">Central de Ajuda</a
+          ><br />
+          <a href="./manutencao.html" class="footer-a">Troca e Devoluções</a
+          ><br />
+          <a href="./manutencao.html" class="footer-a"
+            >Política de Privacidade</a
+          ><br />
+          <a href="./manutencao.html" class="footer-a">Termos de Uso</a><br />
+        </div>
+        <div class="col mt-3">
+          <h6 class="text-white">Contato</h6>
+          <span>WhatsApp: (48)99244-7559</span><br />
+          <span>Email: contato@alquimiadalua.com.br</span><br />
+          <span>Seg-Sex: 9h às 18h</span>
+        </div>
+      </div>
+      <div class="row border-top border-secondary">
+        <p class="text-center mt-3">
+          &copy;2025 Alquimia da lua. Todos os direitos reservados.
+        </p>
+      </div>
     </footer>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

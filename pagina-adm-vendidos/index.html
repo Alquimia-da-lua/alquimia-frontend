@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="../modo-dark/tema.css">
+    <link rel="stylesheet" href="../modo-dark/tema.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
@@ -20,7 +20,9 @@
     <header class="border-bottom bg-white py-3">
       <div class="container-fluid px-4">
         <div class="d-flex align-items-center gap-3">
-          <div class="logo-container rounded-3 d-flex align-items-center justify-content-center">
+          <div
+            class="logo-container rounded-3 d-flex align-items-center justify-content-center"
+          >
             <img
               class="logo-img"
               src="../images/icon/icon-logo-branco.png"
@@ -28,7 +30,9 @@
             />
           </div>
           <div>
-            <h1 class="h5 fw-semibold text-primary-purple mb-0">Alquimia da Lua</h1>
+            <h1 class="h5 fw-semibold text-primary-purple mb-0">
+              Alquimia da Lua
+            </h1>
             <p class="small text-muted mb-0">Cosméticos Naturais</p>
           </div>
         </div>
@@ -60,14 +64,19 @@
               <h2 class="h2 fw-semibold mb-1">Gerenciar Produtos</h2>
               <p class="text-muted small mb-0">6 produtos cadastrados</p>
             </div>
-            <button class="btn btn-primary-custom d-flex align-items-center gap-2" onclick="openModalNovoProduto()">
+            <button
+              class="btn btn-primary-custom d-flex align-items-center gap-2"
+              onclick="openModalNovoProduto()"
+            >
               <i class="fas fa-plus"></i>
               Novo Produto
             </button>
           </div>
 
           <div class="table-responsive">
-            <table class="table table-hover align-middle bg-white border rounded overflow-hidden">
+            <table
+              class="table table-hover align-middle bg-white border rounded overflow-hidden"
+            >
               <thead class="table-light">
                 <tr>
                   <th class="fw-semibold">Imagem</th>
@@ -84,28 +93,51 @@
                       src="../images/produtos/cabelo/shampoo_amendoas.png"
                       alt="Shampoo"
                       class="rounded"
-                      style="width: 80px; height: 80px; object-fit: cover;"
+                      style="width: 80px; height: 80px; object-fit: cover"
                     />
                   </td>
                   <td>
                     <div class="d-flex flex-column gap-1">
-                      <span class="fw-semibold">Shampoo natural de Amendoas 250ml</span>
-                      <span class="text-muted small">Shampoo natural à base de Amendoas, ideal para cabelos danificados</span>
+                      <span class="fw-semibold"
+                        >Shampoo natural de Amendoas 250ml</span
+                      >
+                      <span class="text-muted small"
+                        >Shampoo natural à base de Amendoas, ideal para cabelos
+                        danificados</span
+                      >
                     </div>
                   </td>
                   <td>
-                    <span class="badge bg-light text-dark rounded-2 px-3 py-2">Cabelo</span>
+                    <span class="badge bg-light text-dark rounded-2 px-3 py-2"
+                      >Cabelo</span
+                    >
                   </td>
                   <td>
-                    <span class="fw-semibold text-primary-purple">R$ 149,90</span>
+                    <span class="fw-semibold text-primary-purple"
+                      >R$ 149,90</span
+                    >
                   </td>
                   <td>
                     <div class="d-flex gap-2">
-                      <button class="btn btn-outline-secondary btn-sm action-btn edit p-2" title="Editar">
-                        <img src="../images/icon/pincel.png" alt="Editar" style="width: 1.5rem;" />
+                      <button
+                        class="btn btn-outline-secondary btn-sm action-btn edit p-2"
+                        title="Editar"
+                      >
+                        <img
+                          src="../images/icon/pincel.png"
+                          alt="Editar"
+                          style="width: 1.5rem"
+                        />
                       </button>
-                      <button class="btn btn-outline-danger btn-sm action-btn delete p-2" title="Deletar">
-                        <img src="../images/icon/lixo.png" alt="Deletar" style="width: 1.5rem;" />
+                      <button
+                        class="btn btn-outline-danger btn-sm action-btn delete p-2"
+                        title="Deletar"
+                      >
+                        <img
+                          src="../images/icon/lixo.png"
+                          alt="Deletar"
+                          style="width: 1.5rem"
+                        />
                       </button>
                     </div>
                   </td>
@@ -119,19 +151,23 @@
         <div id="cadastro" class="tab-content" style="display: none">
           <div class="text-center mb-4">
             <h2 class="h2 fw-semibold mb-2">Cadastro de Produto</h2>
-            <p class="text-muted">Adicione um novo produto ao catálogo da Alquimia da Lua</p>
+            <p class="text-muted">
+              Adicione um novo produto ao catálogo da Alquimia da Lua
+            </p>
           </div>
 
-          <div class="card border shadow-sm mx-auto" style="max-width: 700px;">
+          <div class="card border shadow-sm mx-auto" style="max-width: 700px">
             <div class="card-body p-4">
               <form id="productForm">
                 <!-- Nome do Produto -->
                 <div class="mb-3">
-                  <label for="productName" class="form-label fw-semibold">Nome do Produto</label>
-                  <input 
-                    type="text" 
-                    class="form-control bg-light" 
-                    id="productName" 
+                  <label for="productName" class="form-label fw-semibold"
+                    >Nome do Produto</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control bg-light"
+                    id="productName"
                     placeholder="Ex: Shampoo natural de romã 250ml"
                   />
                 </div>
@@ -139,7 +175,9 @@
                 <!-- Categoria e Preço -->
                 <div class="row g-3 mb-3">
                   <div class="col-md-6">
-                    <label for="productCategory" class="form-label fw-semibold ">Categoria</label>
+                    <label for="productCategory" class="form-label fw-semibold"
+                      >Categoria</label
+                    >
                     <select class="form-select bg-light" id="productCategory">
                       <option value="">Selecione uma categoria</option>
                       <option value="Cabelo">Cabelo</option>
@@ -148,13 +186,15 @@
                     </select>
                   </div>
                   <div class="col-md-6">
-                    <label for="productPrice" class="form-label fw-semibold">Preço (R$)</label>
-                    <input 
-                      type="number" 
-                      class="form-control bg-light" 
-                      id="productPrice" 
-                      placeholder="0,00" 
-                      step="0.01" 
+                    <label for="productPrice" class="form-label fw-semibold"
+                      >Preço (R$)</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control bg-light"
+                      id="productPrice"
+                      placeholder="0,00"
+                      step="0.01"
                       min="0"
                     />
                   </div>
@@ -162,10 +202,12 @@
 
                 <!-- Descrição -->
                 <div class="mb-3">
-                  <label for="productDescription" class="form-label fw-semibold ">Descrição</label>
-                  <textarea 
-                    class="form-control text-muted bg-light" 
-                    id="productDescription" 
+                  <label for="productDescription" class="form-label fw-semibold"
+                    >Descrição</label
+                  >
+                  <textarea
+                    class="form-control text-muted bg-light"
+                    id="productDescription"
                     rows="4"
                     placeholder="Descreva as características e benefícios do produto..."
                   ></textarea>
@@ -173,29 +215,48 @@
 
                 <!-- Upload de Imagem -->
                 <div class="mb-4">
-                  <label class="form-label fw-semibold">Imagem do Produto</label>
-                  <div 
+                  <label class="form-label fw-semibold"
+                    >Imagem do Produto</label
+                  >
+                  <div
                     class="upload-area border border-2 border-dashed rounded text-center p-5 bg-light cursor-pointer"
                     onclick="document.getElementById('imageInput').click()"
                   >
-                    <i class="fas fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
-                    <div class="fw-semibold text-primary-purple mb-1">Clique para fazer upload</div>
+                    <i
+                      class="fas fa-cloud-upload-alt fa-3x text-muted mb-3"
+                    ></i>
+                    <div class="fw-semibold text-primary-purple mb-1">
+                      Clique para fazer upload
+                    </div>
                     <div class="text-muted small">ou arraste a imagem</div>
-                    <div class="text-muted small">PNG, JPG ou WEBP (MÁX. 5MB)</div>
-                    <input type="file" id="imageInput" accept="image/*" class="d-none" />
+                    <div class="text-muted small">
+                      PNG, JPG ou WEBP (MÁX. 5MB)
+                    </div>
+                    <input
+                      type="file"
+                      id="imageInput"
+                      accept="image/*"
+                      class="d-none"
+                    />
                   </div>
                 </div>
 
                 <!-- Botões -->
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <button type="submit" class="btn btn-primary-custom w-100 d-flex align-items-center justify-content-center gap-2">
+                    <button
+                      type="submit"
+                      class="btn btn-primary-custom w-100 d-flex align-items-center justify-content-center gap-2"
+                    >
                       <i class="fas fa-save"></i>
                       Cadastrar Produto
                     </button>
                   </div>
                   <div class="col-md-6">
-                    <button type="reset" class="btn btn-outline-primary-custom w-100">
+                    <button
+                      type="reset"
+                      class="btn btn-outline-primary-custom w-100"
+                    >
                       Cancelar
                     </button>
                   </div>
@@ -213,7 +274,9 @@
           </div>
 
           <div class="table-responsive">
-            <table class="table table-hover align-middle bg-white border rounded overflow-hidden">
+            <table
+              class="table table-hover align-middle bg-white border rounded overflow-hidden"
+            >
               <thead class="table-light">
                 <tr>
                   <th class="fw-semibold col-2">Pedido</th>
@@ -229,15 +292,22 @@
                   <td>
                     <div class="d-flex flex-column gap-1">
                       <span class="fw-semibold">Eliane Nina Tânia Sales</span>
-                      <span class="text-muted small">Shampoo natural à base de Amendoas, ideal para cabelos danificados</span>
+                      <span class="text-muted small"
+                        >Shampoo natural à base de Amendoas, ideal para cabelos
+                        danificados</span
+                      >
                     </div>
                   </td>
                   <td>
-                    <div class="d-flex align-items-center gap-2 bg-light-gray rounded-pill p-2 badge-pedido">
-                      <span class="fs-6 display-5 flex-grow-1 text-center py-2">Em análise</span>
-                      <button 
+                    <div
+                      class="d-flex align-items-center gap-2 bg-light-gray rounded-pill p-2 badge-pedido"
+                    >
+                      <span class="fs-6 display-5 flex-grow-1 text-center py-2"
+                        >Em análise</span
+                      >
+                      <button
                         class="btn btn-primary-custom btn-sm rounded-pill px-3 btn-pedido"
-                        data-bs-toggle="modal" 
+                        data-bs-toggle="modal"
                         data-bs-target="#modalPedido"
                       >
                         Visualizar pedido
@@ -250,7 +320,9 @@
           </div>
 
           <!-- Alert de pedidos não feitos -->
-          <div class="alert alert-info-custom d-flex align-items-center gap-2 mb-0">
+          <div
+            class="alert alert-info-custom d-flex align-items-center gap-2 mb-0"
+          >
             <i class="fas fa-info-circle"></i>
             <span>Nenhum pedido registrado ainda.</span>
           </div>
@@ -259,21 +331,36 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="modalPedido" tabindex="-1" aria-labelledby="modalPedidoLabel" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="modalPedido"
+      tabindex="-1"
+      aria-labelledby="modalPedidoLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title fw-semibold" id="modalPedidoLabel">Pedido #0134</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title fw-semibold" id="modalPedidoLabel">
+              Pedido #0134
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div class="modal-body">
             <h5 class="mb-3">Eliane Nina Tânia Sales</h5>
             <h6 class="mb-2">Produtos:</h6>
             <ol class="list-group list-group-numbered">
-              <li class="list-group-item d-flex justify-content-between align-items-start">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-start"
+              >
                 <div class="ms-2 me-auto">
                   <div class="fw-bold">Shampoo de amendoas</div>
-                  Ideal para todo tipo de cabelo - 
+                  Ideal para todo tipo de cabelo -
                   <span class="text-primary-purple fw-semibold">R$ 149,90</span>
                 </div>
                 <span class="badge bg-primary-purple rounded-pill">2</span>
@@ -281,7 +368,11 @@
             </ol>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary-custom" data-bs-dismiss="modal">
+            <button
+              type="button"
+              class="btn btn-primary-custom"
+              data-bs-dismiss="modal"
+            >
               Fechar
             </button>
           </div>
