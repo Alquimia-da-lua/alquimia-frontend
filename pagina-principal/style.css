@@ -130,6 +130,11 @@ footer{
     text-align: center;
 }
 
+/**/
+.accordion-button:not(.collapsed), .accordion-button {
+    background-color: var(--body-bg) !important;
+}
+
 
 /*nav categorias celular*/
 @media (max-width: 576px) {
