@@ -1,17 +1,18 @@
 import { produtos } from "./produtos.js";
-import { inicializarCatalogo } from "./produtos.js";
 
 
 let termoBusca = "";
 let categoriaAtiva = "inicio";
 
-const buscaInput = document.getElementById("buscaInput");
+const linksCategoria = document.querySelectorAll('.nav-custom-color a.nav-item');
+const buscaInput = document.getElementById("buscaInput")
+
 if (buscaInput) {
     buscaInput.addEventListener("input", function () {
         const accordionCollapse = document.querySelector("#collapseOne");
         if (accordionCollapse && window.bootstrap?.Collapse) {
             const bsCollapse = bootstrap.Collapse.getOrCreateInstance(accordionCollapse);
-            if (this.value === "") bsCollapse.show(); else bsCollapse.hide();
+           if (this.value === "") bsCollapse.show(); else bsCollapse.hide();
         }
         termoBusca = this.value;
         categoriaAtiva = "";
@@ -24,27 +25,31 @@ export function setCategoriaAtiva(novaCategoria) {
     termoBusca = "";
     if (buscaInput) buscaInput.value = "";
 
-    const accordionCollapse = document.querySelector("#collapseOne");
-    if (accordionCollapse && window.bootstrap?.Collapse) {
-        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(accordionCollapse);
-        if (categoriaAtiva === 'inicio') bsCollapse.show(); else bsCollapse.hide();
-    }
-
     mostrarProdutos();
 }
 
+function atualizarEstiloAtivo(linkClicado) {
+    linksCategoria.forEach(l => l.classList.remove('active'));
+    linkClicado.classList.add('active');
+}
+
 function filtrarProdutos() {
-    const t = termoBusca.toLowerCase();
+    const termo = termoBusca.toLowerCase();
     const cat = categoriaAtiva.toLowerCase();
-    const produtosLista = produtos;
 
     return produtos.filter((produto) => {
-            const matchBusca = 
-            produto.nmProduto.toLowerCase().includes(termoBusca.toLowerCase()) ||
-            produto.categoria.toLowerCase().includes(termoBusca.toLowerCase())
-        return matchBusca;
+        const categoriaProduto = produto.categoria.toLowerCase();
         
-        
+        const matchBusca = 
+            termo === "" || 
+            produto.nmProduto.toLowerCase().includes(termo) ||
+            categoriaProduto.includes(termo); 
+
+        const matchCategoria = 
+            cat === '' || 
+            cat === 'inicio' || 
+            categoriaProduto === cat;
+        return matchBusca && matchCategoria;
     });
 }
 
@@ -54,7 +59,7 @@ function mostrarProdutos() {
 
     const itens = filtrarProdutos();
     if (itens.length === 0) {
-        container.innerHTML = "";
+        container.innerHTML = `<div class="col-12"><p class="text-center text-muted">Nenhum produto encontrado para o filtro e/ou categoria atual.</p></div>`;
         return;
     }
 
@@ -107,6 +112,28 @@ function mostrarProdutos() {
     });
 
     container.innerHTML = html;
+}
+
+export function inicializarCatalogo() {
+    mostrarProdutos();
+
+    linksCategoria.forEach(link => {
+        if (link.textContent.trim() === 'Inicio' && !link.dataset.categoria) {
+            link.dataset.categoria = 'inicio';
+        }
+
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const categoriaSel = link.dataset.categoria; 
+
+            atualizarEstiloAtivo(link);
+            setCategoriaAtiva(categoriaSel); 
+        });
+    });
+    
+    const linkInicio = document.querySelector('[data-categoria="inicio"]');
+    if (linkInicio) atualizarEstiloAtivo(linkInicio);
 }
 
 //carrinho
