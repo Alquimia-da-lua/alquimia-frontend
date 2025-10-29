@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastrar</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="../modo-dark/tema.css">
+    <link rel="stylesheet" href="../modo-dark/tema.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -210,19 +210,43 @@
       </div>
     </div>
 
-    <!-- toast cadastro com erro -->
+    <!-- toast cadastro com erro email -->
     <div class="toast-container position-fixed top-0 end-0 p-3">
       <div
         class="toast align-items-center text-bg-danger border-0"
         role="alert"
         aria-live="assertive"
         aria-atomic="true"
-        id="toastErro"
+        id="toastErroEmail"
       >
         <div class="d-flex">
           <div class="toast-body">
             <i class="bi bi-x-circle-fill me-2"></i>
-            Email ou CPF já cadastrado!
+            E-mail já cadastrado!
+          </div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- toast cadastro com erro cpf -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div
+        class="toast align-items-center text-bg-danger border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        id="toastErroCpf"
+      >
+        <div class="d-flex">
+          <div class="toast-body">
+            <i class="bi bi-x-circle-fill me-2"></i>
+            CPF já cadastrado!
           </div>
           <button
             type="button"
@@ -235,7 +259,6 @@
     </div>
 
     <script src="script.js"></script>
-
     <script src="../modo-dark/tema.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

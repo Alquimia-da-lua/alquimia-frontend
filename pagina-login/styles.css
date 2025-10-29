@@ -68,10 +68,12 @@ img {
 #register-link {
   text-decoration: none;
   color: #c084fc;
+  transition: all 0.3s ease;
 }
 
 #register-link:hover {
   color: #9d4edd;
+  font-weight: 600;
 }
 
 @media screen and (max-width: 600px) {

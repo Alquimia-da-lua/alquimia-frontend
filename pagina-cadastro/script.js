@@ -219,8 +219,14 @@ function toastSucesso() {
   toast.show();
 }
 
-function toastErro() {
-  var toastEl = document.getElementById("toastErro");
+function toastErroEmail() {
+  var toastEl = document.getElementById("toastErroEmail");
+  var toast = new bootstrap.Toast(toastEl);
+  toast.show();
+}
+
+function toastErroCpf() {
+  var toastEl = document.getElementById("toastErroCpf");
   var toast = new bootstrap.Toast(toastEl);
   toast.show();
 }
@@ -261,30 +267,25 @@ form.addEventListener("submit", function (event) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     })
-      .then((response) => {
+      .then(async (response) => {
+        const resposta = await response.json();
+
         if (response.ok) {
-          return response.json();
+          toastSucesso();
+          form.reset();
+          return resposta;
         } else {
-          toastErro();
+          const mensagemErro = resposta.message;
+
+          if (mensagemErro.includes("Email")) {
+            toastErroEmail();
+          } else if (mensagemErro.includes("CPF")) {
+            toastErroCpf();
+          }
         }
       })
-      .then((data) => {
-        // salva dados do usuário no localStorage
-        localStorage.setItem(
-          "usuario",
-          JSON.stringify({
-            nome: data.nmUsuario,
-            email: data.emailUsuario,
-            telefone: data.nuTelefone,
-          })
-        );
-        toastSucesso();
-        form.reset();
-      })
-
       .catch((error) => {
         console.error(`Erro: ${error.message}`);
-        toastErro();
       });
   }
 });
