@@ -6,39 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alquimia da lua</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../modo-dark/tema.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <header class="w-100">
-        <div class="row d-flex div-cabecalho">
-            <section class="col logo-nome-loja d-flex">
-                <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="" class="icon icon-logo"></a>
-                <div>
-                    <h4 class="nome-loja">Alquimia da Lua</h4>
-                    <span class="descricao-loja">Cosméticos Naturais</span>
+    <header class="w-100 header-top border-bottom">
+        <div class="container-fluid">
+            <div class="row align-items-center g-3 py-3">
+                <section
+                    class="col-12 col-md-4 d-flex align-items-center justify-content-center justify-content-md-start gap-2">
+                    <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Logo"
+                            class="icon-48 rounded-2"></a>
+                    <div class="text-center text-md-start">
+                        <h4 class="m-0 nome-loja">Alquimia da Lua</h4>
+                        <small class="text-muted descricao-loja">Cosméticos Naturais</small>
+                    </div>
+                </section>
+
+                <div class="col-8 col-md-4">
+                    <div class="input-group w-100">
+                        <input type="text" class="form-control" placeholder="Buscar..." id="buscaInput">
+                        <button class="input-group-text btn btn-light" id="input-buscar-produtos">
+                            <img src="../images/icon/lupa.png" class="icon-20" alt="">
+                        </button>
+                    </div>
                 </div>
-            </section>
 
-            <div class="col input-buscar input-group mt-3">
-                <input type="text" class="form-control" placeholder="Buscar..." class="input-buscar" id="buscaInput">
-                <span class="input-group-text span-lupinha" id="input-buscar-produtos"><img
-                        src="../images/icon/lupa.png" alt="lupinha" class="img-lupinha"></span>
+                <section
+                    class="col-4 col-md-4 d-flex align-items-center justify-content-end justify-content-md-end gap-3">
+                    <button type="button" class="btn p-0" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasCarrinho">
+                        <img src="../images/icon/shopping-cart-preto.png" class="icon icon-28" alt="Carrinho">
+                    </button>
+                    <button type="button" class="btn p-0" onclick="window.location.href='../pagina-login/index.html';">
+                        <img src="../images/icon/user-preto.png" class="icon icon-28" alt="Login">
+                    </button>
+                    <button type="button" class="btn p-0" id="mudaTema">
+                        <img src="../images/icon/night-mode-dark.png" class="icon icon-28" alt="Tema">
+                    </button>
+                </section>
+
             </div>
-
-            <section class="col icones-pg d-flex w-100">
-                <button type="button" class="botao-icone btn" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasCarrinho" aria-controls="offcanvasCarrinho"
-                    aria-label="Abrir carrinho"><img src="../images/icon/shopping-cart-preto.png" alt="icone carrinho"
-                        class="icon icon-carrinho"></button>
-                <button type="button" class="botao-icone btn"><img src="../images/icon/user-preto.png" alt="icone user"
-                        class="icon icon-user"></button>
-                <button type="button" class="botao-icone btn btn-outline-light" id="mudaTema"><img src="../images/icon/night-mode-dark.png"
-                        alt="icone darkmode" class="icon icon-dark-mode"></button>
-            </section>
         </div>
     </header>
+
     <main class="flex-grow-1">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -77,54 +90,58 @@
             </div>
         </div>
 
-        <section>
-            <nav class="nav nav-pills nav-fill nav-custom-color">
-                <a class="nav-item nav-link active" href="#" id="">Inicio</a>
-                <a class="nav-item nav-link" href="#" data-categoria="pele">Pele</a>
-                <a class="nav-item nav-link" href="#" data-categoria="cabelo">Cabelo</a>
-                <a class="nav-item nav-link" href="#" data-categoria="aromatizante">Aromatizante</a>
-            </nav>
-        </section>
+        <div class="container">
+            <section>
+                <nav class="nav nav-pills nav-fill nav-custom-color">
+                    <a class="nav-item nav-link active" href="#" id="">Inicio</a>
+                    <a class="nav-item nav-link" href="#" data-categoria="pele">Pele</a>
+                    <a class="nav-item nav-link" href="#" data-categoria="cabelo">Cabelo</a>
+                    <a class="nav-item nav-link" href="#" data-categoria="aromatizante">Aromatizante</a>
+                </nav>
+            </section>
 
-        <h3 class="text-center mb-3 mt-3">APRECIE OS PRODUTOS</h3>
-        <div class="container-fluid">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5" id="produtos-catalogo">
-                <!--PRODUTOS AQUI-->
+            <h3 class="text-center mb-3 mt-3">APRECIE OS PRODUTOS</h3>
+            <div class="container-fluid">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5" id="produtos-catalogo">
+                    <!--PRODUTOS AQUI-->
+                </div>
             </div>
         </div>
+
     </main>
 
     <footer>
-            <div class="row mb-3">
-                <div class="col">
-                    <section class="col logo-nome-loja d-flex">
-                        <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Imagem de Lua com folhas" class="icon icon-logo mt-3 text-start"></a>
-                        <div>
-                            <h4 class="nome-loja text-nowrap mt-3 text-start">Alquimia da Lua</h4>
-                            <p class="descricao-loja mt-3">Cosméticos Naturais</p>
-                        </div>
-                    </section>
-                    <h6 class="ms-4">Sua loja de cosméticos naturais e artesanais de confiança.</h6>
-                </div>
-                <div class="col mt-3">
-                    <h6 class="text-white">Categorias</h6>
-                    <a href="./pele" class="footer-a">Pele</a><br>
-                    <a href="./cabelo" class="footer-a">Cabelo</a><br>
-                    <a href="./aromatizante" class="footer-a">Aromatizante</a>
-                </div>
-                <div class="col mt-3">
-                    <h6 class="text-white">Atendimento</h6>
-                    <a href="./manutencao.html" class="footer-a">Central de Ajuda</a><br>
-                    <a href="./manutencao.html" class="footer-a">Troca e Devoluções</a><br>
-                    <a href="./manutencao.html" class="footer-a">Política de Privacidade</a><br>
-                    <a href="./manutencao.html" class="footer-a">Termos de Uso</a><br>
-                </div>
-                <div class="col mt-3">
-                    <h6 class="text-white">Contato</h6>
-                    <span>WhatsApp: (48)99244-7559</span><br>
-                    <span>Email: contato@alquimiadalua.com.br</span><br>
-                    <span>Seg-Sex: 9h às 18h</span>
-                </div>
+        <div class="row mb-3">
+            <div class="col">
+                <section class="col logo-nome-loja d-flex">
+                    <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Imagem de Lua com folhas"
+                            class="icon icon-logo mt-3 text-start"></a>
+                    <div>
+                        <h4 class="nome-loja text-nowrap mt-3 text-start">Alquimia da Lua</h4>
+                        <p class="descricao-loja mt-3">Cosméticos Naturais</p>
+                    </div>
+                </section>
+                <h6 class="ms-4">Sua loja de cosméticos naturais e artesanais de confiança.</h6>
+            </div>
+            <div class="col mt-3">
+                <h6 class="text-white">Categorias</h6>
+                <a href="../pagina-principal/index.html" class="footer-a">Pele</a><br>
+                <a href="../pagina-principal/index.html" class="footer-a">Cabelo</a><br>
+                <a href="../pagina-principal/index.html" class="footer-a">Aromatizante</a>
+            </div>
+            <div class="col mt-3">
+                <h6 class="text-white">Atendimento</h6>
+                <a href="./manutencao.html" class="footer-a">Central de Ajuda</a><br>
+                <a href="./manutencao.html" class="footer-a">Troca e Devoluções</a><br>
+                <a href="./manutencao.html" class="footer-a">Política de Privacidade</a><br>
+                <a href="./manutencao.html" class="footer-a">Termos de Uso</a><br>
+            </div>
+            <div class="col mt-3">
+                <h6 class="text-white">Contato</h6>
+                <span>WhatsApp: (48)99244-7559</span><br>
+                <span>Email: contato@alquimiadalua.com.br</span><br>
+                <span>Seg-Sex: 9h às 18h</span>
+            </div>
         </div>
         </div>
         <div class="row border-top border-secondary">
@@ -149,21 +166,8 @@
         <div class="border-top pt-3">
             <div class="d-flex justify-content-around mt-3 mb-5">
                 <button class="botao-carrinho btn btn-dark" id="btLimpar">Limpar carrinho</button>
-                <button class="botao-carrinho btn btn-dark" id="btFinalizar">Finalizar compra</button>
-            </div>
-        </div>
-    </div>
-
-    <!--toast carrinho-->
-    <div class="position-fixed top-0 end-0" style="z-index: 11">
-        <div id="toastCarrinho" class="toast align-items-center text-bg-success border-0 hide" role="alert"
-            aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    Item adicionado ao carrinho!
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                    aria-label="Close"></button>
+                <button class="botao-carrinho btn btn-dark" id="btFinalizar"
+                    onclick="window.location.href='../pagina-final/index.html';">Finalizar compra</button>
             </div>
         </div>
     </div>
@@ -174,6 +178,7 @@
         crossorigin="anonymous"></script>
     <script type="module" src="./script.js"></script>
     <script src="./produtos.js"></script>
+    <script src="../modo-dark/tema.js"></script>
 </body>
 
 </html>
