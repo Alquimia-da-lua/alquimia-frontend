@@ -18,7 +18,7 @@ if (buscaInput) {
       else bsCollapse.hide();
     }
     termoBusca = this.value;
-    categoriaAtiva = "";
+    // categoriaAtiva = ""; 
     mostrarProdutos();
   });
 }
@@ -42,15 +42,21 @@ function filtrarProdutos() {
 
   return produtos.filter((produto) => {
     const categoriaProduto = produto.categoria.toLowerCase();
+    const nomeProduto = produto.nmProduto.toLowerCase();
 
-    const matchBusca =
-      termo === "" ||
-      produto.nmProduto.toLowerCase().includes(termo) ||
-      categoriaProduto.includes(termo);
+    if(termo !==""){
+      return nomeProduto.includes(termo) || categoriaProduto.includes(termo);
+    }
 
-    const matchCategoria =
-      cat === "" || cat === "inicio" || categoriaProduto === cat;
-    return matchBusca && matchCategoria;
+    return cat === "" || cat === "inicio" || categoriaProduto === cat;
+    // const matchBusca =
+    //   termo === "" ||
+    //   produto.nmProduto.toLowerCase().includes(termo) ||
+    //   categoriaProduto.includes(termo);
+
+    // const matchCategoria =
+    //   cat === "" || cat === "inicio" || categoriaProduto === cat;
+    // return matchBusca && matchCategoria;
   });
 }
 
