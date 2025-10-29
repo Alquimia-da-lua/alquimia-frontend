@@ -35,16 +35,17 @@ export function setCategoriaAtiva(novaCategoria) {
 
 function filtrarProdutos() {
     const t = termoBusca.toLowerCase();
-    if (t.length > 0) {
-        return produtos.filter((p) =>
-            p.nmProduto.toLowerCase().includes(t) || p.categoria.toLowerCase().includes(t)
-        );
-    }
-
     const cat = categoriaAtiva.toLowerCase();
-    return produtos.filter((p) =>
-        cat === 'inicio' || p.categoria.toLowerCase() === cat
-    );
+    const produtosLista = produtos;
+
+    return produtos.filter((produto) => {
+            const matchBusca = 
+            produto.nmProduto.toLowerCase().includes(termoBusca.toLowerCase()) ||
+            produto.categoria.toLowerCase().includes(termoBusca.toLowerCase())
+        return matchBusca;
+        
+        
+    });
 }
 
 function mostrarProdutos() {
