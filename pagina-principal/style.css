@@ -125,3 +125,34 @@ footer{
 .descricao-loja { font-size: 0.85rem; }
 
 
+/*nav categorias celular*/
+@media (max-width: 576px) {
+  .nav-categorias { 
+    display: block;              
+  }
+  .nav-categorias .nav-link {
+    display: block;              
+    width: 100%;
+    margin: 0.25rem 0;
+    padding: 0.35rem 0.6rem;       
+    text-align: center;
+  }
+  .nav-categorias .nav-link:first-child { margin-top: 0; }
+  .nav-categorias .nav-link:last-child  { margin-bottom: 0; }
+}
+
+/* nav categorias desktop em linha*/
+@media (min-width: 577px) {
+  .nav-categorias {
+    display: flex;               
+    gap: 0.5rem;                  
+  }
+  .nav-categorias .nav-link {
+    display: inline-flex;
+    width: auto;
+    margin: 0;     
+    padding: 0.5rem 0.75rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
