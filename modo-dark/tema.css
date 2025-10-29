@@ -19,6 +19,11 @@
     color: var(--bs-body-color) !important; 
 }
 
+[data-bs-theme="dark"] .accordion-button:not(.collapsed), .accordion-button {
+    background-color: var(--bs-body-bg) !important;
+}
+
+
 [data-bs-theme="dark"] header,
 [data-bs-theme="dark"] .div-cabecalho {
     background-color: var(--card-bg) !important;
@@ -91,8 +96,8 @@
 
 [data-bs-theme="dark"] .nav-custom-color .nav-link.active {
     background-color: var(--table-header-bg) !important; 
-    color: var(--bs-body-color) !important; 
-    border-color: var(--table-header-bg) !important;
+    color: var(--custom-purple) !important; 
+    border-color: var(--custom-purple) !important;
 }
 
 [data-bs-theme="dark"] .bg-light-gray {

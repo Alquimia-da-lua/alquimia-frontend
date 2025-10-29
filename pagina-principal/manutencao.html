@@ -11,41 +11,48 @@
 </head>
 
 <body>
-    <header class="w-100">
-        <div class="row d-flex div-cabecalho">
-            <section class="col logo-nome-loja d-flex">
-                <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Imagem de Lua com folhas" class="icon icon-logo"></a>
-                <div>
-                    <h4 class="nome-loja">Alquimia da Lua</h4>
-                    <p class="descricao-loja">Cosméticos Naturais</p>
+    <header class="w-100 header-top border-bottom">
+        <div class="container-fluid">
+            <div class="row align-items-center g-3 py-3">
+                <section
+                    class="col-12 col-md-4 d-flex align-items-center justify-content-center justify-content-md-start gap-2">
+                    <a href="./index.html"><img src="../images/icon/logo-alquimia.png" alt="Logo"
+                            class="icon-48 rounded-2"></a>
+                    <div class="text-center text-md-start">
+                        <h4 class="m-0 nome-loja">Alquimia da Lua</h4>
+                        <small class="text-muted descricao-loja">Cosméticos Naturais</small>
+                    </div>
+                </section>
+
+                <div class="col-8 col-md-4">
+                    <div class="input-group w-100">
+                        <input type="text" class="form-control" placeholder="Buscar..." id="buscaInput">
+                        <button class="input-group-text btn btn-light" id="input-buscar-produtos">
+                            <img src="../images/icon/lupa.png" class="icon-20" alt="">
+                        </button>
+                    </div>
                 </div>
-            </section>
+                <section
+                    class="col-4 col-md-4 d-flex align-items-center justify-content-end justify-content-md-end gap-3">
+                    <button type="button" class="btn p-0" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasCarrinho">
+                        <img src="../images/icon/shopping-cart-preto.png" class="icon-28" alt="Carrinho">
+                    </button>
+                    <button type="button" class="btn p-0" onclick="window.location.href='../pagina-login/index.html';">
+                        <img src="../images/icon/user-preto.png" class="icon-28" alt="Login">
+                    </button>
+                    <button type="button" class="btn p-0" id="mudaTema">
+                        <img src="../images/icon/night-mode-dark.png" class="icon-28" alt="Tema">
+                    </button>
+                </section>
 
-            <div class="col input-buscar input-group mt-3">
-                <input type="text" class="form-control" placeholder="Buscar..." class="input-buscar">
-                <span class="input-group-text span-lupinha" id="input-buscar-produtos"><img src="../images/icon/lupa.png"
-                        alt="lupinha" class="img-lupinha"></span>
             </div>
-
-            <section class="col icones-pg d-flex w-100">
-                <button type="button" class="botao-icone btn" 
-                    data-bs-toggle="offcanvas" 
-                    data-bs-target="#offcanvasCarrinho"
-                    aria-controls="offcanvasCarrinho" 
-                    aria-label="Abrir carrinho"><img
-                        src="../images/icon/shopping-cart-preto.png" alt="icone carrinho"
-                        class="icon icon-carrinho"></button>
-                <button type="button" class="botao-icone btn"><img src="../images/icon/user-preto.png" alt="icone user"
-                        class="icon icon-user"></button>
-                <button type="button" class="botao-icone btn"><img src="../images/icon/night-mode-dark.png" alt="icone darkmode"
-                        class="icon icon-dark-mode"></button>
-            </section>
         </div>
     </header>
 
     <main>
-        <h1>SITE EM REFORMULAÇÂO MÁGICA</h1>
-        <img src="../images/diversos/pg-em-manutencao.png" alt="Caldeirão com tubos de ensaio e robo de madeira">
+        <h1 class="text-center">SITE EM REFORMULAÇÃO MÁGICA</h1>
+        <img class="align-items-center justify-content-center" src="../images/diversos/pg-em-manutencao.png" alt="Caldeirão com tubos de ensaio e robo de madeira">
     </main>
 
     <footer class="mb-5">
