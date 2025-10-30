@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../modo-dark/tema.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -143,23 +147,37 @@
 
     <!--carrinho-->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrinho" aria-labelledby="offcanvasCarrinhoLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Meu carrinho</h5>
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title d-flex align-items-center gap-2">
+            <img src="../images/icon/sacola-preta.png" width="30px">
+            <span>Meu Carrinho</span>
+        </h5>
+            
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
         </div>
+        <div class="p-3 border-bottom">
+            <p class="text-muted mb-0 small">1 item no carrinho</p>
+        </div>
 
-        <div class="offcanvas-body d-flex flex-column justify-content-between">
-            <div class="overflow-auto" id="itensCarrinho">
+        <div class="offcanvas-body d-flex flex-column p-0">
+            <div class="flex-grow-1 overflow-auto p-3" id="itensCarrinho">
 
                 <p class="text-muted">Seu carrinho está vazio</p>
             </div>
         </div>
 
-        <div class="border-top pt-3">
-            <div class="d-flex justify-content-around mt-3 mb-5">
-                <button class="botao-carrinho btn btn-dark" id="btLimpar">Limpar carrinho</button>
-                <button class="botao-carrinho btn btn-dark" id="btFinalizar"
+        <div class="border-top p-3 ">
+            <div class="d-flex justify-content-between mb-2">
+                 <span>Subtotal:</span>
+                <span>R$ 91.80</span>
+            </div>
+            <div>
+                <div class="d-flex flex-column">
+                    <button class="botao-carrinho btn btn-dark" id="btLimpar">Limpar carrinho</button>
+                <button class="botao-carrinho btn btn-dark mt-2" id="btFinalizar"
                     onclick="window.location.href='../pagina-final/index.html';">Finalizar compra</button>
+                </div>
+                
             </div>
         </div>
     </div>

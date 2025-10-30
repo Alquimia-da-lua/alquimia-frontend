@@ -1,4 +1,4 @@
-//import { produtos } from "./produtos.js";
+import { produtos } from "./produtos.js";
 
 //função do fetch
 const url = "http://localhost:8084/api/produto/listar"
