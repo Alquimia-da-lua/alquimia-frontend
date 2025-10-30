@@ -187,3 +187,7 @@ body {
 .parcela-option input[type="radio"] {
   accent-color: var(--dark-purple);
 }
+
+.h1-pix{
+  color: var(--primary-purple) !important;
+}

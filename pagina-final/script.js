@@ -9,11 +9,12 @@ function selecionarPagamento(type) {
   const cardDetails = document.getElementById("cardDetails");
   const pixDetails = document.getElementById("pixDetails");
   if (type === "pix") {
+  
     cardDetails.style.display = "none";
-    pixDetails.style.display = "block";
+    pixDetails.classList.remove("d-none");
   } else {
     cardDetails.style.display = "block";
-    pixDetails.style.display = "none";
+    pixDetails.classList.add("d-none");
   }
 }
 
