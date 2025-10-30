@@ -1,4 +1,22 @@
-import { produtos } from "./produtos.js";
+//import { produtos } from "./produtos.js";
+
+//função do fetch
+const url = "http://localhost:8084/api/produto/listar"
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Erro na rede: status ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    // você pode lançar o erro ou retornar algo padrão
+    throw error;
+  }
+}
+
+
 
 let termoBusca = "";
 let categoriaAtiva = "inicio";
@@ -18,7 +36,7 @@ if (buscaInput) {
       else bsCollapse.hide();
     }
     termoBusca = this.value;
-    // categoriaAtiva = ""; 
+    // categoriaAtiva = "";
     mostrarProdutos();
   });
 }
@@ -44,7 +62,7 @@ function filtrarProdutos() {
     const categoriaProduto = produto.categoria.toLowerCase();
     const nomeProduto = produto.nmProduto.toLowerCase();
 
-    if(termo !==""){
+    if (termo !== "") {
       return nomeProduto.includes(termo) || categoriaProduto.includes(termo);
     }
 
@@ -316,5 +334,19 @@ document.addEventListener("DOMContentLoaded", () => {
       salvarCarrinho();
       atualizaCarrinho();
     });
+  }
+});
+
+///async do lista 
+document.addEventListener("DOMContentLoaded", async () => {
+ 
+  try {
+    
+  const dados = await fetchData(url);
+  console.log("Olha aqui Jude:", dados);
+    
+  } catch (err) {
+    console.error("Erro ao buscar dados:", err);
+   
   }
 });
