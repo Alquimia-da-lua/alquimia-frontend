@@ -18,7 +18,6 @@ if (buscaInput) {
       else bsCollapse.hide();
     }
     termoBusca = this.value;
-    // categoriaAtiva = ""; 
     mostrarProdutos();
   });
 }
@@ -49,14 +48,6 @@ function filtrarProdutos() {
     }
 
     return cat === "" || cat === "inicio" || categoriaProduto === cat;
-    // const matchBusca =
-    //   termo === "" ||
-    //   produto.nmProduto.toLowerCase().includes(termo) ||
-    //   categoriaProduto.includes(termo);
-
-    // const matchCategoria =
-    //   cat === "" || cat === "inicio" || categoriaProduto === cat;
-    // return matchBusca && matchCategoria;
   });
 }
 
