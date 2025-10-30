@@ -286,21 +286,20 @@ window.removeItem = function (cdProduto) {
 };
 
 document.addEventListener("click", function (e) {
-  document.addEventListener("click", function (e) {
-    const btn = e.target.closest(".btnAddCarrinho");
-    if (!btn) return;
+  const btn = e.target.closest(".btnAddCarrinho");
+  if (!btn) return;
 
-    const cdProduto = parseInt(btn.dataset.cd, 10);
-    const nmProduto = btn.dataset.nome;
-    const vlProduto = parseFloat(String(btn.dataset.valor).replace(",", "."));
-    const categoria = btn.dataset.categoria;
-    const imagem = btn.dataset.imagem;
+  const cdProduto = parseInt(btn.dataset.cd, 10);
+  const nmProduto = btn.dataset.nome;
+  const vlProduto = parseFloat(String(btn.dataset.valor).replace(",", "."));
+  const categoria = btn.dataset.categoria;
+  const imagem = btn.dataset.imagem;
 
-    adicionarAoCarrinho(cdProduto, nmProduto, vlProduto, categoria, imagem);
-    fecharModal(btn);
-    abrirOffcanvasCarrinho();
-  });
+  adicionarAoCarrinho(cdProduto, nmProduto, vlProduto, categoria, imagem);
+  fecharModal(btn);
+  abrirOffcanvasCarrinho();
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
   inicializarCatalogo?.(setCategoriaAtiva);
