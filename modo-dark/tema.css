@@ -36,6 +36,7 @@
 [data-bs-theme="dark"] .section-card,
 [data-bs-theme="dark"] .order-summary,
 [data-bs-theme="dark"] .modal-content,
+[data-bs-theme="dark"] .payment-option,
 [data-bs-theme="dark"] .offcanvas {
   background-color: var(--card-bg) !important;
   color: var(--bs-body-color) !important;

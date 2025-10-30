@@ -2,6 +2,7 @@ const botaoTema = document.getElementById("mudaTema");
 const iconeTema = botaoTema ? botaoTema.querySelector(".icon-dark-mode") : null;
 const iconeUser = document.querySelector(".icon-user");
 const iconeCart = document.querySelector(".icon-carrinho");
+const imgManutencao = document.querySelector(".img-manutencao");
 const htmlElement = document.documentElement;
 
 let temaEscuro = false;
@@ -12,7 +13,8 @@ const USER_BRANCO = "../images/icon/user-branco.png";
 const USER_PRETO = "../images/icon/user-preto.png";
 const CART_BRANCO = "../images/icon/shopping-cart-branco.png";
 const CART_PRETO = "../images/icon/shopping-cart-preto.png";
-
+const MANUTENCAO_PRETO = "../images/diversos/pg-em-manutencao.png";
+const MANUTENCAO_BRANCO = "../images/diversos/pg-em-manutencao-dark.png";
 function aplicarTema() {
   if (!htmlElement) return;
 
@@ -25,6 +27,8 @@ function aplicarTema() {
       iconeUser.alt = "icone user claro";
       iconeCart.src = CART_BRANCO;
       iconeCart.alt = "icone carrinho claro";
+      imgManutencao.src = MANUTENCAO_BRANCO;
+      imgManutencao.alt = "Caldeirão com tubos de ensaio e robo de madeira tema claro";
     }
   } else {
     htmlElement.setAttribute("data-bs-theme", "light");
@@ -35,6 +39,8 @@ function aplicarTema() {
       iconeUser.alt = "icone user preto";
       iconeCart.src = CART_PRETO;
       iconeCart.alt = "icone carrinho preto";
+      imgManutencao.src = MANUTENCAO_PRETO;
+      imgManutencao.alt = "Caldeirão com tubos de ensaio e robo de madeira tema escuro";
     }
   }
 }
