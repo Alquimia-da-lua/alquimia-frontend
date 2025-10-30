@@ -1,7 +1,7 @@
 import { produtos } from "./produtos.js";
 
 //função do fetch
-const url = "http://localhost:8084/api/produto/listar"
+const url = "http://localhost:8084/api/produto/listar";
 async function fetchData(url) {
   try {
     const response = await fetch(url);
@@ -15,8 +15,6 @@ async function fetchData(url) {
     throw error;
   }
 }
-
-
 
 let termoBusca = "";
 let categoriaAtiva = "inicio";
@@ -199,60 +197,69 @@ function fecharModal(botao) {
 
 function atualizaCarrinho() {
   const container = document.getElementById("itensCarrinho");
+  const contadorItens = document.getElementById("contadorItens");
   if (!container) return;
 
   if (carrinho.length === 0) {
     container.innerHTML = `<p class="text-muted">Seu carrinho está vazio</p>`;
+    contadorItens.textContent = `0 itens no carrinho`;
     salvarCarrinho();
     return;
   }
 
   let total = 0;
+  let contador = 0;
+  const subtotalSpan = document.getElementById("subtotal");
+
   let html = "";
 
   carrinho.forEach((item) => {
     const subtotal = Number(item.vlProduto) * Number(item.quantidade);
+    contador += Number(item.quantidade);
     total += subtotal;
 
     html += `
-        <div class="item-carrinho d-flex justify-content-between align-items-center mb-2">
-            <div class="d-flex align-items-center" style="gap:.75rem;">
-                <img src="${item.imagem}" alt="${
-      item.nmProduto
-    }" style="width:48px;height:48px;object-fit:cover;border-radius:8px;">
-                <div>   
-                    <span class="badge badge-secondary mt-2 mb-2" style="background-color:#99A1AF">${
-                      item.categoria ?? ""
-                    }</span><br>
-                    <strong>${item.nmProduto}</strong><br>
-                    R$ ${Number(item.vlProduto).toFixed(2)} x
-                    <input type="number" min="1" value="${item.quantidade}"
-                        class="form-control form-control-sm d-inline-block"
-                        style="width:70px"
-                        onchange="mudarQuantidade(${
-                          item.cdProduto
-                        }, this.value)">
-                </div>
-                </div>
-                <div>
-                R$ ${subtotal.toFixed(2)}
-                <button class="btn btn-sm btn-danger" onclick="removeItem(${
+    <div class="card mb-3 border">
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-2" onclick="removeItem(${
                   item.cdProduto
-                })">Remover</button>
+                })" aria-label="Remover item"></button>
+                <div class="card-body">
+                    <div class="d-flex gap-3">
+                        <img src="${item.imagem}" alt="${
+      item.nmProduto
+    }" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                        <div class="flex-grow-1">
+                            <h6 class="mb-1">${item.nmProduto}</h6>
+                            <p class="text-muted small mb-2 badge badge-secondary" style="background-color:#99A1AF">${
+                              item.categoria ?? ""
+                            }</p>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="btn-group btn-group-sm" role="group">
+    <button type="button" class="btn btn-outline-secondary" onclick="decrementar(${
+      item.cdProduto
+    })">−</button>
+    <input type="text" class="form-control text-center" min="1" value="${
+      item.quantidade
+    }" style="max-width: 50px;" readonly>
+    <button type="button" class="btn btn-outline-secondary" onclick="incrementar(${
+      item.cdProduto
+    })">+</button>
+</div>
+                                <span class="fw-bold" style="color: #9b59b6;">R$ ${Number(
+                                  item.vlProduto
+                                ).toFixed(2)}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-`;
+    `;
   });
 
-  html += `
-    <hr>
-    <div class="total d-flex justify-content-between fw-bold">
-      <span>Total:</span>
-      <span>R$ ${total.toFixed(2)}</span>
-    </div>
-  `;
-
   container.innerHTML = html;
+  subtotalSpan.textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
+  contadorItens.textContent = ` ${contador} itens no carrinho`;
+
   salvarCarrinho();
 }
 
@@ -278,6 +285,29 @@ function adicionarAoCarrinho(
   }
   atualizaCarrinho();
 }
+
+// Função para decrementar quantidade
+window.decrementar = function (cdProduto) {
+  const item = carrinho.find((i) => i.cdProduto === cdProduto);
+  if (!item) return;
+  if (item.quantidade > 1) {
+    item.quantidade -= 1;
+  }
+ 
+  atualizaCarrinho();
+  salvarCarrinho();
+};
+
+// Função para incrementar quantidade
+window.incrementar = function (cdProduto) {
+  const item = carrinho.find((i) => i.cdProduto === cdProduto);
+  if (!item) return;
+
+  item.quantidade += 1;
+
+  atualizaCarrinho();
+  salvarCarrinho();
+};
 
 window.mudarQuantidade = function (cdProduto, novaQuantidade) {
   const item = carrinho.find((i) => i.cdProduto === cdProduto);
@@ -309,7 +339,6 @@ document.addEventListener("click", function (e) {
   abrirOffcanvasCarrinho();
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
   inicializarCatalogo?.(setCategoriaAtiva);
   mostrarProdutos();
@@ -327,16 +356,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-///async do lista 
+///async do lista
 document.addEventListener("DOMContentLoaded", async () => {
- 
   try {
-    
-  const dados = await fetchData(url);
-  console.log("Olha aqui Jude:", dados);
-    
+    const dados = await fetchData(url);
+    console.log("Olha aqui Jude:", dados);
   } catch (err) {
     console.error("Erro ao buscar dados:", err);
-   
   }
 });
