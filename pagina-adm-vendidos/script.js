@@ -1,3 +1,22 @@
+// //função do fetch
+// const url = "http://localhost:8084/api/produto/listar";
+// let listaPedidos = [];
+
+// async function fetchData(url) {
+//   try {
+//     const response = await fetch(url);
+//     if (!response.ok) {
+//       throw new Error(`Erro na rede: status ${response.status}`);
+//     }
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
+
+
+
 function switchTab(element, tabName) {
   // Remove o ativo de todos os botões de tab
   document.querySelectorAll(".btn-tab").forEach((tab) => {
@@ -21,12 +40,60 @@ function openModalNovoProduto() {
   document.querySelectorAll(".btn-tab")[1].click();
 }
 
-// Controla o cadastro de produto
-document.getElementById("productForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  alert("Produto cadastrado com sucesso!");
-  this.reset();
+// // Controla o cadastro de produto
+// document.getElementById("productForm").addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   alert("Produto cadastrado com sucesso!");
+//   this.reset();
+// });
+
+
+// Cadastro de Produto
+const apiUrlProduto = "http://localhost:8084/api/produto";
+
+document.getElementById("productForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const nmProduto = document.getElementById("productName").value.trim();
+  const categoria = document.getElementById("productCategory").value.toUpperCase();
+  const preco = document.getElementById("productPrice").value;
+  const descricao = document.getElementById("productDescription").value.trim();
+
+  if (nmProduto && categoria && preco && descricao) {
+    const payload = {
+      nmProduto: nmProduto,
+      categoria: categoria,
+      vlProduto: parseFloat(preco),
+      dsProduto: descricao,
+      cdUsuario:1
+    };
+  
+
+    fetch(apiUrlProduto, {
+      
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then(async (response) => {
+   
+        const resposta = await response.json();
+
+        if (response.ok) {
+          alert("Produto cadastrado com sucesso!");
+          document.getElementById("productForm").reset();
+          return resposta;
+        } else {
+          const mensagemErro = resposta.message;
+          alert(`Erro: ${mensagemErro}`);
+        }
+      })
+      .catch((error) => {
+        console.error(`Erro: ${error.message}`);
+      });
+  }
 });
+
 
 // Controla o botão de editar
 document.querySelectorAll(".action-btn.edit").forEach((btn) => {
@@ -113,3 +180,4 @@ function showImagePreview(file) {
     reader.readAsDataURL(file);
   }
 }
+
