@@ -236,18 +236,21 @@ function fecharModal(botao) {
 function atualizaCarrinho() {
   const container = document.getElementById("itensCarrinho");
   const contadorItens = document.getElementById("contadorItens");
+  const subtotalSpan = document.getElementById("subtotal");
+  
   if (!container) return;
+
+  let total = 0;
+  let contador = 0;
 
   if (carrinho.length === 0) {
     container.innerHTML = `<p class="text-muted">Seu carrinho está vazio</p>`;
     contadorItens.textContent = `0 itens no carrinho`;
+    subtotalSpan.textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
     salvarCarrinho();
     return;
   }
 
-  let total = 0;
-  let contador = 0;
-  const subtotalSpan = document.getElementById("subtotal");
 
   let html = "";
 
