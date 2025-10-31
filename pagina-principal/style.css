@@ -92,6 +92,11 @@ footer {
   background-color: var(--cor-principal) !important;
 }
 
+.botao-carrinho-outline{
+   border-color: var(--cor-principal) !important;
+   color: var(--cor-principal) !important;
+}
+
 /*card*/
 .botao-card,
 .botao-modal {
@@ -101,8 +106,13 @@ footer {
   transition: background-color 0.5s !important;
 }
 
-.botao-card:hover {
+.botao-card:hover,
+.botao-cart:hover,
+.botao-carrinho-outline:hover {
   background-color: var(--dark-purple) !important;
+}
+.botao-carrinho-outline:hover {
+  color: white !important;
 }
 
 #input-buscar-produtos {

@@ -89,6 +89,11 @@ function mostrarProdutos() {
               item.categoria
             }</span>
             <h5 class="card-title">${item.nmProduto}</h5>
+            <!-- Avaliação -->
+            <div class="mb-3">
+              <span class="text-warning">★★★★☆</span>
+              <small class="text-muted ms-2">4.8 (127 avaliações)</small>
+            </div>
             
             <p class="fw-bold" style="color:#C27AFF">R$ ${precoFormatado.replace(
               ".",
@@ -105,41 +110,74 @@ function mostrarProdutos() {
         </div>
       </div>
 
-      <div class="modal fade" id="cardModal-${
-        item.cdProduto
-      }" tabindex="-1" aria-labelledby="cardModalLabel-${
+<div class="modal fade" id="cardModal-${
+      item.cdProduto
+    }" tabindex="-1" aria-labelledby="cardModalLabel-${
       item.cdProduto
     }" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="cardModalLabel-${item.cdProduto}">${
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header border-0 pb-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <div class="modal-body px-4 pt-0">
+        <div class="row">
+          <!-- Imagem do Produto -->
+          <div class="col-3 mb-3">
+            <img src="${item.imagem}" class="img-fluid rounded" alt="${
       item.nmProduto
-    }</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+    }" style="max-height: 100px; object-fit: cover;">
+          </div>
+
+          <div class="col mb-3">
+                  <h5 class="fw-bold mb-2">${item.nmProduto}</h5>
+                    <!-- Tag de categoria/tipo -->
+                   ${
+                     item.categoria
+                       ? `<span class="badge rounded-pill badge-secondary " style="background-color:#99A1AF">${item.categoria}</span>`
+                       : ""
+                   }
+          </div>
+          
+          <!-- Informações do Produto -->
+          <div class="col-md-7">  
+            <!-- Preço -->
+            <div class="mb-3">
+              <h3 class="fw-bold mb-0 price" style="color:#C27AFF">R$ ${precoFormatado.replace(
+                ".",
+                ","
+              )}</h3>
             </div>
-            <div class="modal-body">
-              <img src="${
-                item.imagem
-              }" class="img-fluid rounded mb-3" alt="Imagem do Produto">
-              <p>${item.dsProduto}</p> <strong>R$ ${precoFormatado.replace(
-      ".",
-      ","
-    )}</strong>
+            
+            <!-- Avaliação -->
+            <div class="mb-3">
+              <span class="text-warning">★★★★☆</span>
+              <small class="text-muted ms-2">4.8 (127 avaliações)</small>
             </div>
-            <div class="modal-footer">
-              <button class="botao-modal btn btnAddCarrinho"
-                data-cd="${item.cdProduto}"
-                data-nome="${item.nmProduto}"
-                data-valor="${item.vlProduto}"
-                data-categoria="${item.categoria}"
-                data-imagem="${item.imagem}">
-                Adicionar ao carrinho
-              </button>
-            </div>
+            
+            <!-- Título da descrição -->
+            <h6 class="fw-bold mb-2">Descrição</h6>
+            <p class="text-muted small mb-4">${item.dsProduto}</p>
+            
           </div>
         </div>
       </div>
+      
+      <!-- Rodapé com botão -->
+      <div class="modal-footer border-0 pt-0 px-4 pb-4">
+        <button class="botao-modal btn w-100 py-3 fw-bold btnAddCarrinho"
+          data-cd="${item.cdProduto}"
+          data-nome="${item.nmProduto}"
+          data-valor="${item.vlProduto}"
+          data-categoria="${item.categoria}"
+          data-imagem="${item.imagem}">
+          Adicionar ao Carrinho
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+    
     `;
   });
 
@@ -293,7 +331,7 @@ window.decrementar = function (cdProduto) {
   if (item.quantidade > 1) {
     item.quantidade -= 1;
   }
- 
+
   atualizaCarrinho();
   salvarCarrinho();
 };
