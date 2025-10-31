@@ -1,7 +1,8 @@
-import { produtos } from "./produtos.js";
 
 //função do fetch
 const url = "http://localhost:8084/api/produto/listar";
+let listaProdutosBancoDeDados = [];
+
 async function fetchData(url) {
   try {
     const response = await fetch(url);
@@ -11,11 +12,12 @@ async function fetchData(url) {
     const data = await response.json();
     return data;
   } catch (error) {
-    // você pode lançar o erro ou retornar algo padrão
     throw error;
   }
 }
 
+
+//input busca e nav categorias
 let termoBusca = "";
 let categoriaAtiva = "inicio";
 
@@ -51,11 +53,13 @@ function atualizarEstiloAtivo(linkClicado) {
   linkClicado.classList.add("active");
 }
 
+//filtrar produtos
+
 function filtrarProdutos() {
   const termo = termoBusca.toLowerCase();
   const cat = categoriaAtiva.toLowerCase();
 
-  return produtos.filter((produto) => {
+  return listaProdutosBancoDeDados.filter((produto) => {
     const categoriaProduto = produto.categoria.toLowerCase();
     const nomeProduto = produto.nmProduto.toLowerCase();
 
@@ -67,6 +71,7 @@ function filtrarProdutos() {
   });
 }
 
+//mostrar prodtos pos filtro
 function mostrarProdutos() {
   const container = document.getElementById("produtos-catalogo");
   if (!container) return;
@@ -85,9 +90,8 @@ function mostrarProdutos() {
         <div class="card h-100">
           <img src="${item.imagem}" alt="${item.nmProduto}" class="card-img">
           <div class="card-body d-flex flex-column">
-            <span class="badge badge-secondary mt-2 mb-2" style="background-color:#99A1AF">${
-              item.categoria
-            }</span>
+            <span class="badge badge-secondary mt-2 mb-2" style="background-color:#99A1AF">${item.categoria
+      }</span>
             <h5 class="card-title">${item.nmProduto}</h5>
             <!-- Avaliação -->
             <div class="mb-3">
@@ -96,13 +100,12 @@ function mostrarProdutos() {
             </div>
             
             <p class="fw-bold" style="color:#C27AFF">R$ ${precoFormatado.replace(
-              ".",
-              ","
-            )}</p>
+        ".",
+        ","
+      )}</p>
             <div class="mt-auto">
-              <button class="botao-card btn w-100" data-bs-toggle="modal" data-bs-target="#cardModal-${
-                item.cdProduto
-              }">
+              <button class="botao-card btn w-100" data-bs-toggle="modal" data-bs-target="#cardModal-${item.cdProduto
+      }">
                 Adicionar ao pedido
               </button>
             </div>
@@ -110,11 +113,9 @@ function mostrarProdutos() {
         </div>
       </div>
 
-<div class="modal fade" id="cardModal-${
-      item.cdProduto
-    }" tabindex="-1" aria-labelledby="cardModalLabel-${
-      item.cdProduto
-    }" aria-hidden="true">
+<div class="modal fade" id="cardModal-${item.cdProduto
+      }" tabindex="-1" aria-labelledby="cardModalLabel-${item.cdProduto
+      }" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 shadow-lg">
       <div class="modal-header border-0 pb-0">
@@ -124,19 +125,17 @@ function mostrarProdutos() {
         <div class="row">
           <!-- Imagem do Produto -->
           <div class="col-3 mb-3">
-            <img src="${item.imagem}" class="img-fluid rounded" alt="${
-      item.nmProduto
-    }" style="max-height: 100px; object-fit: cover;">
+            <img src="${item.imagem}" class="img-fluid rounded" alt="${item.nmProduto
+      }" style="max-height: 100px; object-fit: cover;">
           </div>
 
           <div class="col mb-3">
                   <h5 class="fw-bold mb-2">${item.nmProduto}</h5>
                     <!-- Tag de categoria/tipo -->
-                   ${
-                     item.categoria
-                       ? `<span class="badge rounded-pill badge-secondary " style="background-color:#99A1AF">${item.categoria}</span>`
-                       : ""
-                   }
+                   ${item.categoria
+        ? `<span class="badge rounded-pill badge-secondary " style="background-color:#99A1AF">${item.categoria}</span>`
+        : ""
+      }
           </div>
           
           <!-- Informações do Produto -->
@@ -144,9 +143,9 @@ function mostrarProdutos() {
             <!-- Preço -->
             <div class="mb-3">
               <h3 class="fw-bold mb-0 price" style="color:#C27AFF">R$ ${precoFormatado.replace(
-                ".",
-                ","
-              )}</h3>
+        ".",
+        ","
+      )}</h3>
             </div>
             
             <!-- Avaliação -->
@@ -184,7 +183,25 @@ function mostrarProdutos() {
   container.innerHTML = html;
 }
 
-export function inicializarCatalogo() {
+//fetch aqui
+export async function inicializarCatalogo() {
+  const container = document.getElementById("produtos-catalogo");
+
+  if(container){
+    container.innerHTML = `<div class="col-12"><p class="text-center text-primary">Carregando produtos...</p></div>`;
+  }
+
+  try {
+    const dados = await fetchData(url);
+    listaProdutosBancoDeDados = dados;
+  } catch (err) {
+    console.error("Erro ao buscar dados:", err);
+    if (container) {
+      container.innerHTML = `<div class="col-12"><p class="text-center text-danger">Erro ao carregar produtos: ${err.message}. Verifique o servidor.</p></div>`;
+    }
+    return;
+  
+  }
   mostrarProdutos();
 
   linksCategoria.forEach((link) => {
@@ -204,6 +221,7 @@ export function inicializarCatalogo() {
 
   const linkInicio = document.querySelector('[data-categoria="inicio"]');
   if (linkInicio) atualizarEstiloAtivo(linkInicio);
+
 }
 
 //carrinho
@@ -237,7 +255,7 @@ function atualizaCarrinho() {
   const container = document.getElementById("itensCarrinho");
   const contadorItens = document.getElementById("contadorItens");
   const subtotalSpan = document.getElementById("subtotal");
-  
+
   if (!container) return;
 
   let total = 0;
@@ -261,34 +279,28 @@ function atualizaCarrinho() {
 
     html += `
     <div class="card mb-3 border">
-                <button type="button" class="btn-close position-absolute top-0 end-0 m-2" onclick="removeItem(${
-                  item.cdProduto
-                })" aria-label="Remover item"></button>
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-2" onclick="removeItem(${item.cdProduto
+      })" aria-label="Remover item"></button>
                 <div class="card-body">
                     <div class="d-flex gap-3">
-                        <img src="${item.imagem}" alt="${
-      item.nmProduto
-    }" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                        <img src="${item.imagem}" alt="${item.nmProduto
+      }" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
                         <div class="flex-grow-1">
                             <h6 class="mb-1">${item.nmProduto}</h6>
-                            <p class="text-muted small mb-2 badge badge-secondary" style="background-color:#99A1AF">${
-                              item.categoria ?? ""
-                            }</p>
+                            <p class="text-muted small mb-2 badge badge-secondary" style="background-color:#99A1AF">${item.categoria ?? ""
+      }</p>
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="btn-group btn-group-sm" role="group">
-    <button type="button" class="btn btn-outline-secondary" onclick="decrementar(${
-      item.cdProduto
-    })">−</button>
-    <input type="text" class="form-control text-center" min="1" value="${
-      item.quantidade
-    }" style="max-width: 50px;" readonly>
-    <button type="button" class="btn btn-outline-secondary" onclick="incrementar(${
-      item.cdProduto
-    })">+</button>
+    <button type="button" class="btn btn-outline-secondary" onclick="decrementar(${item.cdProduto
+      })">−</button>
+    <input type="text" class="form-control text-center" min="1" value="${item.quantidade
+      }" style="max-width: 50px;" readonly>
+    <button type="button" class="btn btn-outline-secondary" onclick="incrementar(${item.cdProduto
+      })">+</button>
 </div>
                                 <span class="fw-bold" style="color: #9b59b6;">R$ ${Number(
-                                  item.vlProduto
-                                ).toFixed(2)}</span>
+        item.vlProduto
+      ).toFixed(2)}</span>
                             </div>
                         </div>
                     </div>
@@ -359,6 +371,7 @@ window.mudarQuantidade = function (cdProduto, novaQuantidade) {
   salvarCarrinho();
 };
 
+
 window.removeItem = function (cdProduto) {
   carrinho = carrinho.filter((i) => i.cdProduto !== cdProduto);
   atualizaCarrinho();
@@ -394,15 +407,5 @@ document.addEventListener("DOMContentLoaded", () => {
       salvarCarrinho();
       atualizaCarrinho();
     });
-  }
-});
-
-///async do lista
-document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const dados = await fetchData(url);
-    console.log("Olha aqui Jude:", dados);
-  } catch (err) {
-    console.error("Erro ao buscar dados:", err);
   }
 });
