@@ -156,25 +156,25 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
         </div>
         <div class="p-3 border-bottom">
-            <p class="text-muted mb-0 small">1 item no carrinho</p>
+            <p class="text-muted mb-0 small" id="contadorItens"></p>
         </div>
 
         <div class="offcanvas-body d-flex flex-column p-0">
             <div class="flex-grow-1 overflow-auto p-3" id="itensCarrinho">
 
-                <p class="text-muted">Seu carrinho está vazio</p>
+                
             </div>
         </div>
 
         <div class="border-top p-3 ">
             <div class="d-flex justify-content-between mb-2">
                  <span>Subtotal:</span>
-                <span>R$ 91.80</span>
+                <span id="subtotal">R$ 91.80</span>
             </div>
             <div>
                 <div class="d-flex flex-column">
-                    <button class="botao-carrinho btn btn-dark" id="btLimpar">Limpar carrinho</button>
-                <button class="botao-carrinho btn btn-dark mt-2" id="btFinalizar"
+                    <button class="botao-carrinho btn text-light botao-cart" id="btLimpar">Limpar carrinho</button>
+                <button class="botao-carrinho-outline btn btn-outline-dark mt-2" id="btFinalizar"
                     onclick="window.location.href='../pagina-final/index.html';">Finalizar compra</button>
                 </div>
                 
