@@ -40,12 +40,6 @@ function openModalNovoProduto() {
   document.querySelectorAll(".btn-tab")[1].click();
 }
 
-// // Controla o cadastro de produto
-// document.getElementById("productForm").addEventListener("submit", function (e) {
-//   e.preventDefault();
-//   alert("Produto cadastrado com sucesso!");
-//   this.reset();
-// });
 
 
 // Cadastro de Produto
@@ -59,13 +53,16 @@ document.getElementById("productForm").addEventListener("submit", function (even
   const preco = document.getElementById("productPrice").value;
   const descricao = document.getElementById("productDescription").value.trim();
 
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const usuario = JSON.parse(usuarioLogado);
+
   if (nmProduto && categoria && preco && descricao) {
     const payload = {
       nmProduto: nmProduto,
       categoria: categoria,
       vlProduto: parseFloat(preco),
       dsProduto: descricao,
-      cdUsuario:1
+      cdUsuario:usuario.cdUsuario
     };
   
 
@@ -93,7 +90,35 @@ document.getElementById("productForm").addEventListener("submit", function (even
       });
   }
 });
+//Reservado pra função da Pedidos Vendidos
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
 
 // Controla o botão de editar
 document.querySelectorAll(".action-btn.edit").forEach((btn) => {
