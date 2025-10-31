@@ -139,7 +139,7 @@ function mostrarProdutos() {
           </div>
           
           <!-- Informações do Produto -->
-          <div class="col-md-7">  
+          <div class="col-md-12 ">  
             <!-- Preço -->
             <div class="mb-3">
               <h3 class="fw-bold mb-0 price" style="color:#C27AFF">R$ ${precoFormatado.replace(
@@ -155,7 +155,7 @@ function mostrarProdutos() {
             </div>
             
             <!-- Título da descrição -->
-            <h6 class="fw-bold mb-2">Descrição</h6>
+            <h6 class="fw-bold mb-2 w-100">Descrição</h6>
             <p class="text-muted small mb-4">${item.dsProduto}</p>
             
           </div>
