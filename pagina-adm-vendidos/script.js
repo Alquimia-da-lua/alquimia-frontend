@@ -81,8 +81,6 @@ async function deletarProdutoAPI(id) {
     const response = await fetchData(`${URL_PRODUTO_DELETAR}/${id}`, {
       method: "DELETE",
     });
-    console.log(id);
-
     return response;
   } catch (error) {
     console.error("Erro ao deletar produto:", error);
@@ -122,7 +120,6 @@ async function inicializarProdutos() {
   try {
     const dados = await buscarProdutos();
     listaProdutos = dados;
-    console.log("Produtos carregados:", listaProdutos);
     renderizarProdutos(listaProdutos);
   } catch (err) {
     console.error("Erro ao carregar produtos:", err);
@@ -284,7 +281,7 @@ function renderizarPedidos(pedidos) {
   // Renderiza cada pedido
   pedidos.forEach((pedido) => {
     tbody.innerHTML += criarLinhaPedido(pedido);
-    console.log(pedido);
+  
   });
 }
 
@@ -484,8 +481,6 @@ function editarProduto(id) {
     return;
   }
 
-  console.log("Editar produto:", produto);
-
   // Armazena o produto sendo editado
   produtoEmEdicao = produto;
 
@@ -527,7 +522,6 @@ function editarProduto(id) {
 
 async function deletarProduto(id) {
   const produto = listaProdutos.find((p) => p.cdProduto == id);
-  console.log(produto);
   if (!produto) {
     console.error("Produto não encontrado:", id);
     alert("Produto não encontrado!");
