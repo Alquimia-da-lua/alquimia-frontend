@@ -1,6 +1,6 @@
 
 //função do fetch
-const url = "http://localhost:8084/api/produto/listar";
+const url = "http://localhost:8084/api/produto/listar/ativos";
 let listaProdutosBancoDeDados = [];
 
 async function fetchData(url) {

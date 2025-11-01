@@ -5,6 +5,10 @@ const URL_PRODUTOS = `${API_BASE_URL}/produto/listar`;
 const URL_PRODUTO_CRIAR = `${API_BASE_URL}/produto`;
 const URL_PRODUTO_ATUALIZAR = `${API_BASE_URL}/produto/alterar`;
 const URL_PRODUTO_DELETAR = `${API_BASE_URL}/produto/delete`;
+const user = JSON.parse(localStorage.getItem('usuario'));
+
+
+const TOKEN = `${user?.token}`
 
 let listaPedidos = [];
 let listaProdutos = [];
@@ -48,6 +52,7 @@ async function criarProduto(produto) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        'Authorization': `Bearer ${TOKEN}`
       },
       body: JSON.stringify(produto),
     });
@@ -65,6 +70,7 @@ async function atualizarProduto(id, produto) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        'Authorization': `Bearer ${TOKEN}`
       },
       body: JSON.stringify(produto),
     });
@@ -80,6 +86,9 @@ async function deletarProdutoAPI(id) {
   try {
     const response = await fetchData(`${URL_PRODUTO_DELETAR}/${id}`, {
       method: "DELETE",
+      headers:{
+        'Authorization': `Bearer ${TOKEN}`,
+      }
     });
     return response;
   } catch (error) {
@@ -91,7 +100,15 @@ async function deletarProdutoAPI(id) {
 // Buscar todos os pedidos
 async function buscarPedidos() {
   try {
-    const dados = await fetchData(URL_PEDIDOS);
+     if (!TOKEN) {
+      throw new Error('Token não encontrado');
+    }
+    const dados = await fetchData(URL_PEDIDOS,{
+      headers:{
+'Authorization': `Bearer ${TOKEN}`
+      }
+      
+    });
     return dados;
   } catch (error) {
     console.error("Erro ao buscar pedidos:", error);
@@ -558,7 +575,7 @@ function configurarFormularioProduto() {
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const usuarioLogado = localStorage.getItem("usuarioLogado");
+    const usuarioLogado = localStorage.getItem("usuario");
     const usuario = JSON.parse(usuarioLogado);
     // Coleta os dados do formulário
     const dadosProduto = {
@@ -567,7 +584,7 @@ function configurarFormularioProduto() {
       vlProduto: parseFloat(document.getElementById("productPrice").value),
       dsProduto: document.getElementById("productDescription").value.trim(),
       cdUsuario: 1,
-      // cdUsuario: usuario.cdUsuario,
+      cdUsuario: usuario.cdUsuario,
       imagem: "", // Processar upload de imagem real
     };
 
