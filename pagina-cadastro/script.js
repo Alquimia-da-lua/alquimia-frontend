@@ -1,3 +1,29 @@
+//jude: funcao p/ pegar dados de usuario
+function dadosUsuario() {
+  const usuario = localStorage.getItem("usuario");
+  if (!usuario) {
+    return null;
+  }
+  try {
+    const dados = JSON.parse(usuario);
+    return dados && dados.token ? dados : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+//jude: funcao p/ determinar modo de edicao
+function isModoEdicao() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("modo") === "edicao";
+}
+
+//jude: funcao logout
+function logoutUsuario() {
+  localStorage.removeItem('usuario');
+  window.location.href = "../pagina-principal/index.html";
+}
+
 // elementos principais
 const nomeUsuario = document.getElementById("nmUsuario");
 const email = document.getElementById("emailUsuario");
@@ -17,6 +43,51 @@ const feedbackTelefone = document.getElementById("feedback-telefone");
 // formulario
 const botaoCadastrar = document.getElementById("criarContaBtn");
 const form = document.getElementById("form-cadastro");
+
+//jude: ids da interface p/ manipular
+const tituloPagina = document.getElementById("titulo-cadastro");
+const grupoSenha = document.getElementById("grupo-senha");
+const grupoConfirmarSenha = document.getElementById("grupo-confirmar-senha");
+const grupoCpf = document.getElementById("grupo-cpf");
+const grupoLogout = document.getElementById("grupoLogout");
+const grupoLogin = document.getElementById("grupoLogin");
+
+//jude: definindo modo edicao
+const modoEdicao = isModoEdicao();
+const dadosUsuarioLogado = dadosUsuario();
+
+console.log("MODO EDIÇÃO ATIVO?", modoEdicao);
+console.log("DADOS DO USUÁRIO:", dadosUsuarioLogado);
+
+if (modoEdicao) {
+  if (!dadosUsuarioLogado) {
+    window.location.href = "../pagina-login/index.html";
+  } else {
+    if (tituloPagina) {
+      tituloPagina.textContent = "Atualizar Meu Cadastro";
+    }
+    if (botaoCadastrar) {
+      botaoCadastrar.textContent = "Salvar Alterações";
+    }
+    //jude: visibilidade do rodape
+    if (grupoLogin) grupoLogin.classList.add("d-none"); //tira o link de login
+    if (grupoLogout) grupoLogout.classList.remove("d-none"); // mostra o link de logout
+
+    nomeUsuario.value = dadosUsuarioLogado.nome || "";
+    email.value = dadosUsuarioLogado.email || "";
+    telefone.value = dadosUsuarioLogado.telefone || "";
+
+    if (grupoSenha) grupoSenha.style.display = "none";
+    if (grupoConfirmarSenha) grupoConfirmarSenha.style.display = "none";
+    if (grupoCpf) grupoCpf.style.display = "none";
+
+    if (cpf) {
+      cpf.value = dadosUsuarioLogado.cpf || "";
+      cpf.disabled = true;
+    }
+
+  }
+}
 
 //valida nome
 function validarNome() {
@@ -55,6 +126,9 @@ function validarEmail() {
 
 // valida cpf
 function validaCPF(cpf) {
+  //jude
+  if (modoEdicao) return true;
+
   var soma = 0;
   var resto;
   var strCPF = String(cpf).replace(/[^\d]/g, "");
@@ -95,6 +169,9 @@ function validaCPF(cpf) {
 
 // função para validar senha e confirmar senha (ve se a senha tem tamanho minimo e se as senhas sao iguais)
 function validarSenhas() {
+  //jude
+  if (modoEdicao) return true;
+
   const isTamanhoValido = senhaUsuario.value.length >= 8;
   const senhasIguais =
     senhaUsuario.value === confirmarSenha.value &&
@@ -144,42 +221,65 @@ function atualizarEstadoBotao() {
   const telefoneValido = validarTelefone(telefone.value);
   const emailValido = validarEmail();
 
-  if (cpfValido) {
-    cpf.classList.remove("bg-danger");
-    feedbackCpf.classList.add("d-none");
-  } else {
-    cpf.classList.add("bg-danger");
-    feedbackCpf.classList.remove("d-none");
+  if (!modoEdicao) {
+    if (cpfValido) {
+      cpf.classList.remove("bg-danger");
+      feedbackCpf.classList.add("d-none");
+    } else {
+      cpf.classList.add("bg-danger");
+      feedbackCpf.classList.remove("d-none");
+    }
   }
 
-  // desativa o botao se qualquer um for falso
-  botaoCadastrar.disabled = !(
-    nomeValido &&
-    emailValido &&
-    senhaValida &&
-    cpfValido &&
-    telefoneValido
-  );
+  let formValido;
+
+  if (modoEdicao) {
+    formValido = nomeValido && emailValido && telefoneValido;
+  } else {
+    formValido =
+      nomeValido && emailValido && senhaValida && cpfValido && telefoneValido;
+  }
+
+  botaoCadastrar.disabled = !formValido;
 }
 
-//
+// desativa o botao se qualquer um for falso
+/*botaoCadastrar.disabled = !(
+  nomeValido &&
+  emailValido &&
+  senhaValida &&
+  cpfValido &&
+  telefoneValido
+);*/
+
+
+//jude: mudancar para modo edicao
 nomeUsuario.addEventListener("input", atualizarEstadoBotao);
 email.addEventListener("input", atualizarEstadoBotao);
-senhaUsuario.addEventListener("input", atualizarEstadoBotao);
-confirmarSenha.addEventListener("input", atualizarEstadoBotao);
 
-cpf.addEventListener("input", () => {
-  // adiciona pontos e traços no CPF enquanto digita
-  let value = cpf.value;
-  let cpfPattern = value
-    .replace(/\D/g, "")
-    .replace(/(\d{3})(\d)/, "$1.$2")
-    .replace(/(\d{3})(\d)/, "$1.$2")
-    .replace(/(\d{3})(\d)/, "$1-$2")
-    .replace(/(-\d{2})\d+?$/, "$1");
-  cpf.value = cpfPattern;
-  atualizarEstadoBotao();
-});
+if (!modoEdicao) {
+  senhaUsuario.addEventListener("input", atualizarEstadoBotao);
+  confirmarSenha.addEventListener("input", atualizarEstadoBotao);
+
+  cpf.addEventListener("input", () => {
+    // adiciona pontos e traços no CPF enquanto digita
+    let value = cpf.value;
+    let cpfPattern = value
+      .replace(/\D/g, "")
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d)/, "$1-$2")
+      .replace(/(-\d{2})\d+?$/, "$1");
+    cpf.value = cpfPattern;
+    atualizarEstadoBotao();
+  });
+
+  const inputSenha = document.querySelector("#senhaUsuario");
+  const inputConfirmarSenha = document.querySelector("#confirmarSenha");
+  const button = document.querySelector("#verSenha");
+  if (button) button.addEventListener("click", verSenha);
+}
+
 
 telefone.addEventListener("input", (event) => {
   // formata telefone enquanto digita
@@ -215,6 +315,16 @@ function verSenha() {
   }
 }
 
+//jude: botao sair
+const botaoSairPerfil = document.getElementById('botaoSairPerfil')
+
+if (botaoSairPerfil) {
+  botaoSairPerfil.addEventListener('click', (event) => {
+    event.preventDefault();
+    logoutUsuario();
+  });
+}
+
 // toasts
 function toastSucesso() {
   var toastEl = document.getElementById("toastSucesso");
@@ -239,56 +349,103 @@ const apiUrl = "http://localhost:8084/auth/register";
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-
-  const nmUsuario = document.getElementById("nmUsuario").value.trim();
-  const emailUsuario = document.getElementById("emailUsuario").value.trim();
-  const senhaUsuarioVal = document.getElementById("senhaUsuario").value;
-  const nuTelefone = document.getElementById("nuTelefone").value.trim();
-  const nuCpf = document.getElementById("nuCpf").value.trim();
+  //jude: alterei aqui
+  const nmUsuario = nomeUsuario.value.trim();
+  const emailUsuario = email.value.trim();
+  const senhaUsuarioVal = senhaUsuario.value;
+  const nuTelefone = telefone.value.trim();
+  const nuCpf = cpf.value.trim();
 
   // limpa telefone e cpf
   const telefoneLimpo = nuTelefone.replace(/\D/g, "");
   const cpfLimpo = nuCpf.replace(/\D/g, "");
 
-  if (
-    nmUsuario &&
-    emailUsuario &&
-    senhaUsuarioVal &&
-    telefoneLimpo &&
-    cpfLimpo
-  ) {
-    const payload = {
+
+  //jude: variaveis para modo edicao:
+  let finalApiUrl;
+  let finalMethod;
+  let finalPayload;
+  let finalHeaders = { "Content-Type": "application/json" };
+
+  if (modoEdicao && dadosUsuarioLogado) {
+    finalApiUrl = `http://localhost:8084/api/usuario/atualizar/${dadosUsuarioLogado.cdUsuario}`;
+    finalMethod = "PUT";
+
+    let payloadEdicao = {
+      nmUsuario: nmUsuario,
+      nuTelefone: telefoneLimpo,
+    };
+
+    if (emailUsuario !== dadosUsuarioLogado.email) {
+      payloadEdicao.emailUsuario = emailUsuario;
+    }
+
+    finalPayload = payloadEdicao;
+
+    finalHeaders['Authorization'] = `Bearer ${dadosUsuarioLogado.token}`;
+  } else {
+    if (!(nmUsuario && emailUsuario && senhaUsuarioVal && telefoneLimpo && cpfLimpo)) {
+      return;
+    }
+
+    finalApiUrl = "http://localhost:8084/auth/register";
+    finalMethod = "POST";
+
+    finalPayload = {
       nmUsuario: nmUsuario,
       emailUsuario: emailUsuario,
       senhaUsuario: senhaUsuarioVal,
       nuTelefone: telefoneLimpo,
       nuCpf: cpfLimpo,
     };
-
-    fetch(apiUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    })
-      .then(async (response) => {
-        const resposta = await response.json();
-
-        if (response.ok) {
-          toastSucesso();
-          form.reset();
-          return resposta;
-        } else {
-          const mensagemErro = resposta.erro;
-
-          if (mensagemErro.includes("Email")) {
-            toastErroEmail();
-          } else if (mensagemErro.includes("CPF")) {
-            toastErroCpf();
-          }
-        }
-      })
-      .catch((error) => {
-        console.error(`Erro: ${error.message}`);
-      });
   }
+
+  fetch(finalApiUrl, {
+    method: finalMethod,
+    headers: finalHeaders,
+    body: JSON.stringify(finalPayload),
+  }).then(async (response) => {
+    const resposta = await response.json().catch(() => ({}));
+
+    if (response.ok) {
+      toastSucesso();
+
+      if (modoEdicao) {
+        const novoUsuario = {
+          ...dadosUsuarioLogado,
+          nome: finalPayload.nmUsuario,
+          email: finalPayload.emailUsuario || dadosUsuarioLogado.email,
+          telefone: finalPayload.nuTelefone,
+        };
+        localStorage.setItem('usuario', JSON.stringify(novoUsuario));
+
+        setTimeout(() => {
+          window.location.href = "../pagina-principal/index.html";
+        }, 800);
+
+      } else {
+        form.reset();
+      }
+      return resposta;
+    } else {
+      // Trata erros de Cadastro
+      if (!modoEdicao && resposta && resposta.erro) {
+        const mensagemErro = resposta.erro;
+        if (mensagemErro.includes("Email")) {
+          toastErroEmail();
+        } else if (mensagemErro.includes("CPF")) {
+          toastErroCpf();
+        }
+      } else {
+        console.error(`Erro: ${response.status}`, resposta);
+      }
+    }
+  })
+    .catch((error) => {
+      console.error(`Erro: ${error.message}`);
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  atualizarEstadoBotao();
 });

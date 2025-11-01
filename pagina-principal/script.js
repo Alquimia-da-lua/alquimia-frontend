@@ -187,7 +187,7 @@ function mostrarProdutos() {
 export async function inicializarCatalogo() {
   const container = document.getElementById("produtos-catalogo");
 
-  if(container){
+  if (container) {
     container.innerHTML = `<div class="col-12"><p class="text-center text-primary">Carregando produtos...</p></div>`;
   }
 
@@ -200,7 +200,7 @@ export async function inicializarCatalogo() {
       container.innerHTML = `<div class="col-12"><p class="text-center text-danger">Erro ao carregar produtos: ${err.message}. Verifique o servidor.</p></div>`;
     }
     return;
-  
+
   }
   mostrarProdutos();
 
@@ -393,7 +393,79 @@ document.addEventListener("click", function (e) {
   abrirOffcanvasCarrinho();
 });
 
+
+//funcao usuario logado 
+function isUsuarioLogado() {
+  const usuarioString = localStorage.getItem('usuario');
+
+  if (!usuarioString) {
+    return false
+  }
+
+  try {
+    const usuarioJson = JSON.parse(usuarioString);
+
+    return !!usuarioJson.token;
+  } catch (e) {
+    localStorage.removeItem('usuario');
+    return false;
+  }
+}
+
+
+//jude: pegando dados
+
+function getDadosUsuario() { // Renomeado para boa prática
+  const usuarioString = localStorage.getItem('usuario');
+  if (!usuarioString) {
+    return null
+  }
+  try {
+    return JSON.parse(usuarioString);
+  } catch {
+    return null
+  }
+}
+
+//jude: funcao pra deslogar usuario
+function logoutUsuario() {
+  localStorage.removeItem('usuario');
+  window.location.href = "../pagina-principal/index.html";
+}
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
+
+  //jude: botao de usuario para fazer a troca  
+  const botaoUsuario = document.getElementById("botaoUsuario");
+  const botaoLogout = document.getElementById("botaoLogout");
+
+  if (isUsuarioLogado()) {
+    if (botaoUsuario) {
+      botaoUsuario.href = "../pagina-cadastro/index.html?modo=edicao";
+      botaoUsuario.title = "Meu Perfil";
+    }
+    if (botaoLogout) {
+      // Configura o clique para deslogar
+      botaoLogout.style.display = 'block';
+      botaoLogout.addEventListener('click', (e) => {
+        e.preventDefault();
+        logoutUsuario();
+      });
+    }
+
+  } else {
+    // usuario deslogado
+    if (botaoUsuario) {
+      botaoUsuario.href = "../pagina-login/index.html";
+      botaoUsuario.title = "Fazer Login";
+    }
+    if (botaoLogout) {
+      botaoLogout.style.display = 'none'; 
+    }
+  }
+
   inicializarCatalogo?.(setCategoriaAtiva);
   mostrarProdutos();
 
@@ -409,5 +481,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
-//mudei aqui so pra commitar

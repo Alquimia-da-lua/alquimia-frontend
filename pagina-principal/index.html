@@ -39,13 +39,20 @@
                 </div>
                 <section
                     class="col-4 col-md-4 d-flex align-items-center justify-content-end justify-content-md-end gap-3">
+                    
                     <button type="button" class="btn p-0" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasCarrinho">
                         <img src="../images/icon/shopping-cart-preto.png" class="icon-28 icon-carrinho" alt="Carrinho">
                     </button>
-                    <button type="button" class="btn p-0" onclick="window.location.href='../pagina-login/index.html';">
+                    
+                    <a href="#" id="botaoUsuario" class="btn p-0" aria-label="Acessar Perfil">
                         <img src="../images/icon/user-preto.png" class="icon-28 icon-user" alt="Login">
-                    </button>
+                    </a>
+                    
+                    <a href="#" id="botaoLogout" class="btn btn-sm btn-danger d-none" aria-label="Sair da conta">
+                        Sair
+                    </a>
+
                     <button type="button" class="btn p-0" id="mudaTema">
                         <img src="../images/icon/night-mode-dark.png" class="icon-28 icon-dark-mode" alt="Tema">
                     </button>
