@@ -24,7 +24,7 @@ function toastErro() {
 }
 
 // envio do formulario
-const apiUrl = "http://localhost:8084/api/usuario/login";
+const apiUrl = "http://localhost:8084/auth/login";
 const form = document.getElementById("form-login");
 
 form.addEventListener("submit", function (event) {

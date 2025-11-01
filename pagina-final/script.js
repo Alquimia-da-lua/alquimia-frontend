@@ -103,6 +103,11 @@ function validarDadosCartao() {
   return valido;
 }
 
+nuCartao.addEventListener("input", validarDadosCartao);
+nmCartao.addEventListener("input", validarDadosCartao);
+nuValidade.addEventListener("input", validarDadosCartao);
+nuCvv.addEventListener("input", validarDadosCartao);
+
 // validar campos de endereço
 const inputCep = document.getElementById("cep");
 const inputRua = document.getElementById("rua");
@@ -141,13 +146,19 @@ function validarFormulario() {
 
 //finalizar compras itens carrinho
 document.addEventListener("DOMContentLoaded", () => {
-  validarDadosCartao();
   // preencher os dados do usuario com localStorage
   const inputNome = document.getElementById("nmUsuario");
   const inputEmail = document.getElementById("emailUsuario");
   const inputTelefone = document.getElementById("nuTelefone");
 
   const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+  // redireciona para o login caso nao esteja logado
+  if (!usuario || !usuario.cdUsuario) {
+    alert("Você precisa estar logado para finalizar a compra.");
+    window.location.href = "../pagina-login/index.html";
+    return;
+  }
 
   if (usuario) {
     inputNome.value = usuario.nome;

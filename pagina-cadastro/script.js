@@ -20,7 +20,7 @@ function isModoEdicao() {
 
 //jude: funcao logout
 function logoutUsuario() {
-  localStorage.removeItem('usuario');
+  localStorage.removeItem("usuario");
   window.location.href = "../pagina-principal/index.html";
 }
 
@@ -51,6 +51,7 @@ const grupoConfirmarSenha = document.getElementById("grupo-confirmar-senha");
 const grupoCpf = document.getElementById("grupo-cpf");
 const grupoLogout = document.getElementById("grupoLogout");
 const grupoLogin = document.getElementById("grupoLogin");
+const teste = document.getElementById("teste");
 
 //jude: definindo modo edicao
 const modoEdicao = isModoEdicao();
@@ -72,6 +73,7 @@ if (modoEdicao) {
     //jude: visibilidade do rodape
     if (grupoLogin) grupoLogin.classList.add("d-none"); //tira o link de login
     if (grupoLogout) grupoLogout.classList.remove("d-none"); // mostra o link de logout
+    teste.classList.add("d-none");
 
     nomeUsuario.value = dadosUsuarioLogado.nome || "";
     email.value = dadosUsuarioLogado.email || "";
@@ -85,7 +87,6 @@ if (modoEdicao) {
       cpf.value = dadosUsuarioLogado.cpf || "";
       cpf.disabled = true;
     }
-
   }
 }
 
@@ -252,7 +253,6 @@ function atualizarEstadoBotao() {
   telefoneValido
 );*/
 
-
 //jude: mudancar para modo edicao
 nomeUsuario.addEventListener("input", atualizarEstadoBotao);
 email.addEventListener("input", atualizarEstadoBotao);
@@ -279,7 +279,6 @@ if (!modoEdicao) {
   const button = document.querySelector("#verSenha");
   if (button) button.addEventListener("click", verSenha);
 }
-
 
 telefone.addEventListener("input", (event) => {
   // formata telefone enquanto digita
@@ -316,10 +315,10 @@ function verSenha() {
 }
 
 //jude: botao sair
-const botaoSairPerfil = document.getElementById('botaoSairPerfil')
+const botaoSairPerfil = document.getElementById("botaoSairPerfil");
 
 if (botaoSairPerfil) {
-  botaoSairPerfil.addEventListener('click', (event) => {
+  botaoSairPerfil.addEventListener("click", (event) => {
     event.preventDefault();
     logoutUsuario();
   });
@@ -360,7 +359,6 @@ form.addEventListener("submit", function (event) {
   const telefoneLimpo = nuTelefone.replace(/\D/g, "");
   const cpfLimpo = nuCpf.replace(/\D/g, "");
 
-
   //jude: variaveis para modo edicao:
   let finalApiUrl;
   let finalMethod;
@@ -382,9 +380,17 @@ form.addEventListener("submit", function (event) {
 
     finalPayload = payloadEdicao;
 
-    finalHeaders['Authorization'] = `Bearer ${dadosUsuarioLogado.token}`;
+    finalHeaders["Authorization"] = `Bearer ${dadosUsuarioLogado.token}`;
   } else {
-    if (!(nmUsuario && emailUsuario && senhaUsuarioVal && telefoneLimpo && cpfLimpo)) {
+    if (
+      !(
+        nmUsuario &&
+        emailUsuario &&
+        senhaUsuarioVal &&
+        telefoneLimpo &&
+        cpfLimpo
+      )
+    ) {
       return;
     }
 
@@ -404,43 +410,43 @@ form.addEventListener("submit", function (event) {
     method: finalMethod,
     headers: finalHeaders,
     body: JSON.stringify(finalPayload),
-  }).then(async (response) => {
-    const resposta = await response.json().catch(() => ({}));
-
-    if (response.ok) {
-      toastSucesso();
-
-      if (modoEdicao) {
-        const novoUsuario = {
-          ...dadosUsuarioLogado,
-          nome: finalPayload.nmUsuario,
-          email: finalPayload.emailUsuario || dadosUsuarioLogado.email,
-          telefone: finalPayload.nuTelefone,
-        };
-        localStorage.setItem('usuario', JSON.stringify(novoUsuario));
-
-        setTimeout(() => {
-          window.location.href = "../pagina-principal/index.html";
-        }, 800);
-
-      } else {
-        form.reset();
-      }
-      return resposta;
-    } else {
-      // Trata erros de Cadastro
-      if (!modoEdicao && resposta && resposta.erro) {
-        const mensagemErro = resposta.erro;
-        if (mensagemErro.includes("Email")) {
-          toastErroEmail();
-        } else if (mensagemErro.includes("CPF")) {
-          toastErroCpf();
-        }
-      } else {
-        console.error(`Erro: ${response.status}`, resposta);
-      }
-    }
   })
+    .then(async (response) => {
+      const resposta = await response.json().catch(() => ({}));
+
+      if (response.ok) {
+        toastSucesso();
+
+        if (modoEdicao) {
+          const novoUsuario = {
+            ...dadosUsuarioLogado,
+            nome: finalPayload.nmUsuario,
+            email: finalPayload.emailUsuario || dadosUsuarioLogado.email,
+            telefone: finalPayload.nuTelefone,
+          };
+          localStorage.setItem("usuario", JSON.stringify(novoUsuario));
+
+          setTimeout(() => {
+            window.location.href = "../pagina-principal/index.html";
+          }, 800);
+        } else {
+          form.reset();
+        }
+        return resposta;
+      } else {
+        // Trata erros de Cadastro
+        if (!modoEdicao && resposta && resposta.erro) {
+          const mensagemErro = resposta.erro;
+          if (mensagemErro.includes("Email")) {
+            toastErroEmail();
+          } else if (mensagemErro.includes("CPF")) {
+            toastErroCpf();
+          }
+        } else {
+          console.error(`Erro: ${response.status}`, resposta);
+        }
+      }
+    })
     .catch((error) => {
       console.error(`Erro: ${error.message}`);
     });
