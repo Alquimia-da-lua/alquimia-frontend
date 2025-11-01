@@ -24,7 +24,10 @@ function validarNome() {
   const isNomeValido =
     /^[A-Za-zÀ-ÖØ-öø-ÿĀ-žḀ-ỹ ]+$/.test(valorNome) && valorNome.length >= 3;
 
-  if (isNomeValido) {
+  // verifica quantos espacos tem no nome
+  const partesNome = valorNome.split(" ").filter((parte) => parte.length > 0);
+
+  if (isNomeValido && partesNome.length > 1) {
     nomeUsuario.classList.remove("bg-danger");
     feedbackNome.classList.add("d-none");
   } else {
@@ -232,7 +235,7 @@ function toastErroCpf() {
 }
 
 // envio do formulario
-const apiUrl = "http://localhost:8084/api/usuario/cadastrar";
+const apiUrl = "http://localhost:8084/auth/register";
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -275,7 +278,7 @@ form.addEventListener("submit", function (event) {
           form.reset();
           return resposta;
         } else {
-          const mensagemErro = resposta.message;
+          const mensagemErro = resposta.erro;
 
           if (mensagemErro.includes("Email")) {
             toastErroEmail();
