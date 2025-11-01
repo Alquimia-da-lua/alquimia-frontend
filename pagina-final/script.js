@@ -1,12 +1,5 @@
 let tipoPagamento = "CREDITO";
 
-const inputCep = document.getElementById("cep");
-const inputRua = document.getElementById("rua");
-const inputNumero = document.getElementById("numero");
-const inputComplemento = document.getElementById("complemento");
-const inputBairro = document.getElementById("bairro");
-const inputCidade = document.getElementById("cidade");
-
 function selecionarPagamento(type) {
   tipoPagamento = type;
   document.querySelectorAll(".payment-option").forEach((option) => {
@@ -67,13 +60,77 @@ document
     e.target.value = value;
   });
 
+// validar campos do cartão
+const nuCartao = document.getElementById("nuCartao");
+const nmCartao = document.getElementById("nmCartao");
+const nuValidade = document.getElementById("vCartao");
+const nuCvv = document.getElementById("cvvCartao");
+
+// feedbacks
+const feedbackCartao = document.getElementById("feedback-numero");
+const feedbackNome = document.getElementById("feedback-nome-cartao");
+const feedbackValidade = document.getElementById("feedback-validade");
+const feedbackCvv = document.getElementById("feedback-cvv");
+
+function validarDadosCartao() {
+  let valido = true;
+
+  if (nuCartao.value.trim().length < 19 || nuCartao.value.trim().length > 19) {
+    feedbackCartao.classList.remove("d-none");
+    valido = false;
+  } else {
+    feedbackCartao.classList.add("d-none");
+  }
+  if (nmCartao.value.trim().length < 3) {
+    feedbackNome.classList.remove("d-none");
+    valido = false;
+  } else {
+    feedbackNome.classList.add("d-none");
+  }
+  if (nuValidade.value.trim().length < 5) {
+    feedbackValidade.classList.remove("d-none");
+    valido = false;
+  } else {
+    feedbackValidade.classList.add("d-none");
+  }
+  if (nuCvv.value.trim().length < 3) {
+    feedbackCvv.classList.remove("d-none");
+    valido = false;
+  } else {
+    feedbackCvv.classList.add("d-none");
+  }
+
+  return valido;
+}
+
+// validar campos de endereço
+const inputCep = document.getElementById("cep");
+const inputRua = document.getElementById("rua");
+const inputComplemento = document.getElementById("complemento");
+const inputBairro = document.getElementById("bairro");
+const inputCidade = document.getElementById("cidade");
+
+function validarCamposEndereco() {
+  let valido = true;
+
+  if (inputCep.value.trim().length < 9) {
+    valido = false;
+  }
+  if (inputRua.value.trim().length < 3) {
+    valido = false;
+  }
+  if (inputBairro.value.trim().length < 3) {
+    valido = false;
+  }
+  if (inputCidade.value.trim().length < 3) {
+    valido = false;
+  }
+  return valido;
+}
+
+// validando se os campos de endewreco e pagamento estao preenchidos
 function validarFormulario() {
-  if (
-    !inputCep.value.trim() ||
-    !inputRua.value.trim() ||
-    !inputBairro.value.trim() ||
-    !inputCidade.value.trim()
-  ) {
+  if (!validarCamposEndereco()) {
     return alert("Preencha todos os campos obrigatórios do endereço.");
   }
   if (!validarDadosCartao() && tipoPagamento !== "pix") {
@@ -82,58 +139,7 @@ function validarFormulario() {
   return true;
 }
 
-// validar dados do cartao
-const cartaoInputs = [
-  {
-    input: document.getElementById("nuCartao"),
-    feedback: document.getElementById("feedback-numero"),
-    minLength: 19,
-  },
-  {
-    input: document.getElementById("nmCartao"),
-    feedback: document.getElementById("feedback-nome-cartao"),
-    tamMininmo: 3,
-  },
-  {
-    input: document.getElementById("vCartao"),
-    feedback: document.getElementById("feedback-validade"),
-    tamMinimo: 5,
-  },
-  {
-    input: document.getElementById("cvvCartao"),
-    feedback: document.getElementById("feedback-cvv"),
-    tamMinimo: 3,
-  },
-];
-
-function validarCampo(campo) {
-  if (campo.input.value.trim().length >= campo.tamMinimo) {
-    campo.feedback.classList.add("d-none");
-    return true;
-  } else {
-    campo.feedback.classList.remove("d-none");
-    return false;
-  }
-}
-
-function validarDadosCartao() {
-  let valido = true;
-  for (let campo of cartaoInputs) {
-    if (!validarCampo(campo)) {
-      valido = false;
-      return;
-    }
-  }
-  return valido;
-}
-
-// adiciona listeners em tempo real para esconder feedback quando o usuário corrige
-cartaoInputs.forEach((campo) => {
-  campo.input.addEventListener("input", () => validarCampo(campo));
-});
-
 //finalizar compras itens carrinho
-
 document.addEventListener("DOMContentLoaded", () => {
   validarDadosCartao();
   // preencher os dados do usuario com localStorage
@@ -252,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
             inputRua.value = resposta.logradouro || "";
             inputBairro.value = resposta.bairro || "";
             inputCidade.value = resposta.localidade || "";
-            estado = resposta.estado;
+            estado = resposta.uf;
           }
         })
         .catch((error) => {
@@ -302,6 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!enderecoResponse.ok) {
           alert("Erro ao cadastrar endereço");
+          console.log("Erro ao cadastrar endereço:", enderecoResponse);
           return;
         }
 
