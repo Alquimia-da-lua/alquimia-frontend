@@ -296,33 +296,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // validar todos os campos do endereco e pagamento
         if (!validarFormulario()) return;
 
-        // cadastrar endereco
-        const enderecoResponse = await fetch(
-          `http://localhost:8084/api/usuario/${cdUsuario}/endereco`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${usuario.token}`,
-            },
-            body: JSON.stringify({
-              cdUsuario: cdUsuario,
-              nuCep: cep,
-              dsLogradouro: rua,
-              dsComplemento: complemento,
-              dsBairro: bairro,
-              dsLocalidade: cidade,
-              nmEstado: estado,
-            }),
-          }
-        );
-
-        if (!enderecoResponse.ok) {
-          alert("Erro ao cadastrar endereço");
-          console.log("Erro ao cadastrar endereço:", enderecoResponse);
-          return;
-        }
-
         // criar pedido
         const pedidoResponse = await fetch(urlPedido, {
           method: "POST",
@@ -338,8 +311,65 @@ document.addEventListener("DOMContentLoaded", () => {
           }),
         });
 
+        // criar itens do pedido
         if (pedidoResponse.ok) {
-          alert(`Compra finalizada!`);
+          const pedido = await pedidoResponse.json();
+          const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+          const urlItemPedido = `http://localhost:8084/api/itempedido`;
+
+          for (const item of carrinho) {
+            const itemPedidoResponse = await fetch(urlItemPedido, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${usuario.token}`,
+              },
+              body: JSON.stringify({
+                cdPedido: pedido.cdPedido,
+                cdProduto: item.cdProduto,
+                qtItemPedido: item.quantidade,
+                vlItemPedido: item.vlProduto,
+              }),
+            });
+
+            if (!itemPedidoResponse.ok) {
+              console.error(
+                `Erro ao criar item do pedido para o produto ${item.cdProduto}`
+              );
+              alert("Ocorreu um erro ao adicionar um item ao pedido.");
+              return;
+            }
+          }
+
+          // cadastrar endereco
+          const enderecoResponse = await fetch(
+            `http://localhost:8084/api/usuario/${cdUsuario}/endereco`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${usuario.token}`,
+              },
+              body: JSON.stringify({
+                cdUsuario: cdUsuario,
+                nuCep: cep,
+                dsLogradouro: rua,
+                dsComplemento: complemento,
+                dsBairro: bairro,
+                dsLocalidade: cidade,
+                nmEstado: estado,
+              }),
+            }
+          );
+
+          if (!enderecoResponse.ok) {
+            alert("Erro ao cadastrar endereço");
+            console.log("Erro ao cadastrar endereço:", enderecoResponse);
+            return;
+          }
+
+          alert(`Compra finalizada com sucesso!`);
           localStorage.removeItem("carrinho");
           window.location.href = "../pagina-principal/index.html";
         } else {
