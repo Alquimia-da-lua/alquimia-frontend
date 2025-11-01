@@ -24,19 +24,19 @@ function toastErro() {
 }
 
 // envio do formulario
-const apiUrl = "http://localhost:8084/api/usuario/login";
+const apiUrl = "http://localhost:8084/auth/login";
 const form = document.getElementById("form-login");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const emailUsuario = document.getElementById("emailUsuario").value.trim();
-  const senhaUsuarioVal = document.getElementById("senhaUsuario").value;
+  const senhaUsuario = document.getElementById("senhaUsuario").value;
 
-  if (emailUsuario && senhaUsuarioVal) {
+  if (emailUsuario && senhaUsuario) {
     const payload = {
       emailUsuario: emailUsuario,
-      senhaUsuario: senhaUsuarioVal,
+      senhaUsuario: senhaUsuario,
     };
 
     fetch(apiUrl, {
@@ -56,14 +56,23 @@ form.addEventListener("submit", function (event) {
         localStorage.setItem(
           "usuario",
           JSON.stringify({
+            cdUsuario: data.cdUsuario,
             nome: data.nmUsuario,
             email: data.emailUsuario,
             telefone: data.nuTelefone,
             roleUsuario: data.roleUsuario,
+            token: data.token,
+            refreshToken: data.refreshToken,
           })
         );
         toastSucesso();
-        window.location.href = "../pagina-principal/index.html";
+        setTimeout(() => {
+          if (data.roleUsuario === "FUNCIONARIO") {
+            window.location.href = "../pagina-adm-vendidos/index.html";
+          } else {
+            window.location.href = "../pagina-principal/index.html";
+          }
+        }, 800);
       })
 
       .catch((error) => {
