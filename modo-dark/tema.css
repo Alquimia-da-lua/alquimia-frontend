@@ -203,3 +203,11 @@
 [data-bs-theme="dark"] .titulo-card {
   border: none !important;
 }
+
+[data-bs-theme="dark"] #input-buscar-produtos{
+  background-color: #c27aff !important;
+}
+
+[data-bs-theme="dark"] .btn-cancel{
+  background-color: var(--bs-body-bg) !important;
+}
