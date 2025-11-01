@@ -81,6 +81,7 @@ body {
 }
 
 .btn-outline-primary-custom {
+  transform: translateY(-2px);
   background-color: white;
   color: var(--primary-purple);
   border: 2px solid var(--primary-purple);
